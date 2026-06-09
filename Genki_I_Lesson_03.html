@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genki I - Lesson 3 (Making a Date)</title>
+<style>
+:root {
+  --rose-fg: #b34155; --rose-bg: #f7d8de; --rose-light: #fce8eb;
+  --green-fg: #2f7d3e; --green-bg: #cce8d1; --green-light: #e8f4eb;
+  --blue-fg: #2a4f7c; --blue-bg: #d4dfee; --blue-light: #ecf1f8;
+  --orange-fg: #b35900; --orange-bg: #ffd9a8; --orange-light: #fff1de;
+  --purple-fg: #6b3fa0; --purple-bg: #e0d4ef; --purple-light: #f3edfa;
+  --ink: #1a1a1a; --ink-soft: #555;
+}
+* { box-sizing: border-box; }
+body { font-family: "Hiragino Sans","Yu Gothic","Noto Sans CJK JP","Helvetica Neue",Arial,sans-serif; color: var(--ink); margin: 0; background: #f4f4f6; line-height: 1.55; }
+.deck-head { background: var(--rose-fg); color: white; padding: 18px 28px; }
+.deck-head h1 { margin: 0; font-size: 1.6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.slide { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 24px 28px; margin-bottom: 28px; position: relative; }
+.frametitle { font-size: 1.35rem; font-weight: 700; color: var(--rose-fg); border-bottom: 2px solid var(--rose-bg); padding-bottom: 10px; margin: 0 0 16px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; }
+.alertblock, .exampleblock, .blockbox, .practiceblock, .kanjiblock { border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.alertblock { background: var(--rose-light); border: 1px solid var(--rose-bg); }
+.alertblock > .block-title { background: var(--rose-fg); color: white; }
+.exampleblock { background: var(--green-light); border: 1px solid var(--green-bg); }
+.exampleblock > .block-title { background: var(--green-fg); color: white; }
+.blockbox { background: var(--blue-light); border: 1px solid var(--blue-bg); }
+.blockbox > .block-title { background: var(--blue-fg); color: white; }
+.practiceblock { background: var(--orange-light); border: 1px solid var(--orange-bg); }
+.practiceblock > .block-title { background: var(--orange-fg); color: white; }
+.kanjiblock { background: var(--purple-light); border: 1px solid var(--purple-bg); }
+.kanjiblock > .block-title { background: var(--purple-fg); color: white; }
+.block-title { padding: 6px 12px; font-weight: 600; font-size: 0.95rem; }
+.block-body { padding: 12px 16px; font-size: 0.93rem; }
+.block-body p { margin: 0.4em 0; }
+.block-body ul, .block-body ol { margin: 0.45em 0 0.45em 0; padding-left: 1.6em; }
+.block-body li { margin: 0.28em 0; }
+.item-label { display: inline-block; min-width: 1.5em; font-weight: 600; color: var(--ink-soft); margin-right: 0.4em; }
+ul.itm li::marker { color: var(--rose-fg); }
+ol.enum li::marker { font-weight: 600; color: var(--ink-soft); }
+.c-red { color: #d23047; font-weight: 600; }
+.c-blue { color: #2a59a8; font-weight: 600; }
+.c-brown { color: #8a5a2b; font-weight: 600; }
+.sc { font-variant: small-caps; font-size: 0.85em; letter-spacing: 0.05em; }
+s { text-decoration: line-through; text-decoration-color: #c33; text-decoration-thickness: 2px; }
+sub, sup { font-size: 0.7em; }
+.fmb { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 600; padding: 0 2px; }
+.framebox { display: inline-block; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1px 6px; font-weight: 600; background: white; }
+ruby rt { font-size: 0.55em; color: var(--ink-soft); }
+.multicols { columns: 2; column-gap: 1.4em; }
+.multicols-2 { columns: 2; }
+.multicols-3 { columns: 3; }
+.multicols-4 { columns: 4; }
+ul.multicols-2, ol.multicols-2 { columns: 2; column-gap: 1.4em; }
+ul.multicols-3, ol.multicols-3 { columns: 3; column-gap: 1.2em; }
+ul.multicols-2 li, ol.multicols-2 li,
+ul.multicols-3 li, ol.multicols-3 li { break-inside: avoid-column; }
+.multicols ul, .multicols ol { break-inside: avoid-column; margin-top: 0; }
+.multicols li { break-inside: avoid-column; }
+.cols-wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+.col { flex: 1 1 40%; }
+.minipage { display: inline-block; vertical-align: top; }
+.center { text-align: center; }
+.spts { font-size: 0.78em; }
+.fns  { font-size: 0.86em; }
+.small { font-size: 0.92em; }
+.large { font-size: 1.1em; }
+.Large { font-size: 1.25em; }
+table.tex-table { border-collapse: collapse; margin: 6px 0; font-size: 0.88em; }
+table.tex-table th, table.tex-table td { border: 1px solid #999; padding: 4px 8px; vertical-align: middle; text-align: center; }
+table.tex-table th { background: #f4f4f4; font-weight: 600; }
+.writing-line { height: 1px; background: #b88a4a; margin: 18px 0; }
+.practice-body { padding-top: 4px; padding-bottom: 4px; }
+.slide-counter { position: absolute; bottom: 8px; right: 14px; font-size: 0.78rem; color: var(--ink-soft); }
+.nav-bar { position: sticky; top: 0; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ddd; padding: 8px 16px; z-index: 100; font-size: 0.85rem; }
+.nav-bar a { color: var(--rose-fg); margin-right: 14px; text-decoration: none; font-weight: 500; white-space: nowrap; }
+.nav-bar a:hover { text-decoration: underline; }
+
+.brace-group {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 0.2em 1.0em;
+  margin: 0.1em 0;
+  vertical-align: middle;
+}
+.brace-group > * {
+  display: inline-block;
+}
+.brace-group::before,
+.brace-group::after {
+  content: "";
+  position: absolute;
+  top: 0.1em;
+  bottom: 0.1em;
+  width: 0.9em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.brace-group::before {
+  left: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 9 0 C 6 0 5 2 5 8 V 45 C 5 48 4 50 0 50 C 4 50 5 52 5 55 V 92 C 5 98 6 100 9 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group::after {
+  right: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 1 0 C 4 0 5 2 5 8 V 45 C 5 48 6 50 10 50 C 6 50 5 52 5 55 V 92 C 5 98 4 100 1 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group table.tex-table { border: none; }
+.brace-group table.tex-table th,
+.brace-group table.tex-table td { border: none; padding: 0 8px; text-align: left; }
+
+.kanji-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; padding: 0; list-style: none; }
+.kanji-grid li { display: inline-flex; flex-direction: column; align-items: center; padding: 8px 10px 4px; background: white; border: 1px solid var(--purple-bg); border-radius: 6px; min-width: 52px; }
+.kanji-grid a.k { color: var(--purple-fg); text-decoration: none; font-size: 1.7rem; font-weight: 600; line-height: 1; padding: 2px 4px; border-radius: 3px; transition: background 0.15s; }
+.kanji-grid a.k:hover { background: var(--purple-bg); }
+.kanji-grid .gnum { font-size: 0.62rem; color: var(--ink-soft); margin-top: 4px; }
+.tex-image { max-width: 100%; height: auto; display: block; margin: 8px auto; }
+.bare-block { margin: 14px 0; }
+.bare-block > .block-body { padding: 4px 4px; }
+@media (max-width: 600px) {
+  .frametitle { font-size: 1.05rem; }
+  .deck-head h1 { font-size: 1.2rem; }
+  .deck { padding: 12px 8px 32px; }
+  .slide { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<header class="deck-head"><h1>Genki I - Lesson 3 (Making a Date)</h1></header>
+<nav class="nav-bar"><a href="#s1">Slide 3.1</a><a href="#s2">Slide 3.2</a><a href="#s3">Slide 3.3</a><a href="#s4">Slide 3.4</a><a href="#s5">Slide 3.5</a><a href="#s6">Slide 3.6</a><a href="#s7">Slide 3.7</a><a href="#s8">Slide 3.8</a><a href="#s9">Slide 3.9</a><a href="#s10">Slide 3.10</a><a href="#s11">Slide 3.11</a><a href="#s12">Slide 3.12</a><a href="#s13">Slide 3.13</a><a href="#s14">Slide 3.14</a><a href="#s15">Slide 3.15</a><a href="#s16">Slide 3.16</a><a href="#s17">Slide 3.17</a><a href="#s18">Slide 3.18</a><a href="#s19">Slide 3.19</a></nav>
+<main class="deck">
+<section class='slide' id='s1'>
+<h2 class='frametitle'>Verbs 1: Dictionary Forms: <span class='c-red'>る</span>-Verbs \& <span class='c-red'>う</span>-Verbs</h2>
+<div class='alertblock'><div class='block-title'>Two Conjugational Types:</div><div class='block-body'><span class='small'>
+Verbs in Modern Japanese are grouped as <span class='c-red'>る</span>-verbs or <span class='c-red'>う</span>-verbs in terms of their conjugations (except the two irregular verbs, する \& くる).
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'>
+<div class='center'>
+<table class='tex-table'>
+<tr><th><span class='c-red'>る</span>-Verbs</th><th><span class='c-blue'>う</span>-Verbs</th><th><span class='c-red'><em>ru</em></span>-Verbs</th><th><span class='c-blue'><em>u</em></span>-Verbs</th></tr>
+<tr><td>たべ<span class='c-red'>る</span></td><td>の<span class='c-blue'>む</span></td><td>tabe<span class='c-red'>ru</span></td><td>nom<span class='c-blue'>u</span></td></tr>
+<tr><td>ね<span class='c-red'>る</span></td><td>よ<span class='c-blue'>む</span></td><td>ne<span class='c-red'>ru</span></td><td>yom<span class='c-blue'>u</span></td></tr>
+<tr><td>おき<span class='c-red'>る</span></td><td>はな<span class='c-blue'>す</span></td><td>oki<span class='c-red'>ru</span></td><td>hanas<span class='c-blue'>u</span></td></tr>
+<tr><td>み<span class='c-red'>る</span></td><td>き<span class='c-blue'>く</span></td><td>mi<span class='c-red'>ru</span></td><td>kik<span class='c-blue'>u</span></td></tr>
+<tr><td>みせ<span class='c-red'>る</span></td><td>い<span class='c-blue'>く</span></td><td>mise<span class='c-red'>ru</span></td><td>ik<span class='c-blue'>u</span></td></tr>
+<tr><td>かけ<span class='c-red'>る</span></td><td>かえ<span class='c-blue'>る</span></td><td>kake<span class='c-red'>ru</span></td><td>kaer<span class='c-blue'>u</span></td></tr>
+</table>
+</div>
+</div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>Some [...る]-verbs are <span class='c-blue'>う</span>-verbs as かえ<span class='c-blue'>る</span>. The /r/ part of such う-verbs are actually a part of the base: かえ<span class='c-blue'>る</span>/[kaer]<span class='c-blue'>u</span> vis. かけ<span class='c-red'>る</span>/[kake]<span class='c-red'>ru</span></li>
+<li>Verbs that have /a,u,o/ before the terminal る (.../a,u,o/-る) are all <span class='c-blue'><em>u</em></span>-verbs while most of the verbs with the .../i,e/-る terminal are <span class='c-red'><em>ru</em></span>-verbs with some exceptions (like かえる).</li>
+</ol>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>1 / 19</div>
+</section>
+<section class='slide' id='s2'>
+<h2 class='frametitle'>Verbs 2: Verb Stems: [<span class='c-red'>る</span>-Verb]-る \& [<span class='c-blue'>う</span>-Verb]-/u/+/i/</h2>
+<div class='alertblock'><div class='block-title'>Verb Stems:</div><div class='block-body'><span class='small'>
+<ul class='itm multicols-2'>
+<li><span class='item-label'>-</span> [<span class='c-red'>る</span>-Verb] - る＝<span class='framebox'>V<sub>STEM</sub></span><br>
+- たべ<s><span class='c-red'>る</span></s>　=　<span class='framebox'>たべ</span></li>
+<li><span class='item-label'>-</span> [<span class='c-blue'>う</span>-Verb] - /<span class='c-blue'>u</span>/ + /i/＝<span class='framebox'>V<sub>STEM</sub></span><br>
+- の(む/m<s><span class='c-blue'>u</span></s>) + /i/　=　<span class='framebox'>のみ</span></li>
+</ul>
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<div class='center'>
+<table class='tex-table'>
+<tr><th><span class='c-red'>る</span>-Verbs</th><th><span class='c-blue'>う</span>-Verbs</th><th><span class='c-red'><em>ru</em></span>-Verbs - る</th><th><span class='c-blue'><em>u</em></span>-Verbs - /u/ + /i/</th></tr>
+<tr><td>たべ<span class='c-red'>る</span></td><td>の<span class='c-blue'>む</span></td><td>たべ</td><td>nom<span class='c-blue'>i</span> - のみ</td></tr>
+<tr><td>ね<span class='c-red'>る</span></td><td>よ<span class='c-blue'>む</span></td><td>ね</td><td>yom<span class='c-blue'>i</span> - よみ</td></tr>
+<tr><td>おき<span class='c-red'>る</span></td><td>はな<span class='c-blue'>す</span></td><td>おき</td><td>hanas<span class='c-blue'>i</span> - はなし</td></tr>
+<tr><td>み<span class='c-red'>る</span></td><td>き<span class='c-blue'>く</span></td><td>み</td><td>kik<span class='c-blue'>i</span> - きき</td></tr>
+<tr><td>みせ<span class='c-red'>る</span></td><td>い<span class='c-blue'>く</span></td><td>みせ</td><td>ik<span class='c-blue'>i</span> - いき</td></tr>
+<tr><td>かけ<span class='c-red'>る</span></td><td>かえ<span class='c-blue'>る</span></td><td>かけ</td><td>kaer<span class='c-blue'>i</span> - かえり</td></tr>
+<tr><td colspan='4'>2 Irregular Verbs</td></tr>
+<tr><td colspan='2'>する → し</td><td colspan='2'>くる → き</td></tr>
+</table>
+</div>
+
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Many verbal expressions are built upon the verb stems. For example, long/polite forms (to which we will shortly turn) are based on the stems.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>2 / 19</div>
+</section>
+<section class='slide' id='s3'>
+<h2 class='frametitle'>Verb 2: Polite-Present: aff. 〜ます and neg. 〜ません</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='framebox'>V<sub>STEM</sub></span>＋<span class='c-red'>ます</span>・<span class='c-red'>ません</span>: たべ<span class='c-red'>ます</span>・たべ<span class='c-red'>ません</span>/のみ<span class='c-red'>ます</span>・のみ<span class='c-red'>ません</span> <br>
+
+<span class='small'>
+Polite Form affirmative 〜ます and negative 〜ません are interpreted as present/future expressions.<br>
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>トムは たべ<span class='c-red'>ます</span>/Tom will eat.</li>
+<li>トムは のみ<span class='c-red'>ます</span>/Tom drinks.</li>
+<li>トムは し<span class='c-red'>ます</span>/Tom does.</li>
+<li>トムは き<span class='c-red'>ます</span>/Tom comes.</li>
+<li>トムは たべ<span class='c-red'>ません</span>/Tom won't eat.</li>
+<li>トムは のみ<span class='c-red'>ません</span>/Tom doesn't drink.</li>
+<li>トムは し<span class='c-red'>ません</span>/Tom doesn't do.</li>
+<li>トムは き<span class='c-red'>ません</span>/Tom doesn't come.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Memorize Japanese verbs in Dictionary AND Polite Form. When a [...る]-verb is given, you will be able to tell if it is a る- or う- verb:<br> <span class='framebox'>かえる/かえ<span class='c-blue'>ります</span>(<span class='c-blue'>う</span>/go home)</span> vis-à-vis <span class='framebox'>かえる/かえ<span class='c-red'>ます</span>(<span class='c-red'>る</span>/change)</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>3 / 19</div>
+</section>
+<section class='slide' id='s4'>
+<h2 class='frametitle'>Lesson 3 Verbs</h2>
+<div class='bare-block'><div class='block-body'><table class='tex-table'>
+<tr><th>Type</th><th>Gloss</th><th>Dict. Form</th><th>Long Affirmative</th><th>Long Negative</th></tr>
+<tr><td rowspan='4'>る</td><td>eat</td><td>たべる</td><td>たべます</td><td>たべません</td></tr>
+<tr><td>get up</td><td>おきる</td><td>おきます</td><td>おきません</td></tr>
+<tr><td>sleep</td><td>ねる</td><td>ねます</td><td>ねません</td></tr>
+<tr><td>see</td><td>みる</td><td>みます</td><td>みません</td></tr>
+<tr><td rowspan='6'>う</td><td>go</td><td>いく</td><td>いきます</td><td>いきません</td></tr>
+<tr><td>return</td><td>かえる</td><td>かえります</td><td>かえりません</td></tr>
+<tr><td>hear</td><td>きく</td><td>ききます</td><td>ききません</td></tr>
+<tr><td>drink</td><td>のむ</td><td>のみます</td><td>のみません</td></tr>
+<tr><td>speak</td><td>はなす</td><td>はなします</td><td>はなしません</td></tr>
+<tr><td>read</td><td>よむ</td><td>よみます</td><td>よみません</td></tr>
+<tr><td rowspan='2'>Irr.</td><td>come</td><td>くる</td><td>きます</td><td>きません</td></tr>
+<tr><td>do</td><td>する</td><td>します</td><td>しません</td></tr>
+</table></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>4 / 19</div>
+</section>
+<section class='slide' id='s5'>
+<h2 class='frametitle'>Case Particles 1: [Noun]+<span class='framebox'><span class='c-red'>を</span></span>, accusative, direct object</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Japanese case particles are a suffix. 〜<span class='c-red'>を</span> is an <span class='c-red'>accusative</span> marker; it indicates that its (host) noun is a <span class='c-red'>direct object</span> of a sentence.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li><ruby>私<rt>わたし</rt></ruby>は コーヒー<span class='c-red'>を</span> <ruby>飲<rt>の</rt></ruby>みます。<br>I drink coffee.</li>
+<li>ボブは コーヒー<span class='c-red'>を</span> <ruby>飲<rt>の</rt></ruby>みません。<br>Bob does not drink coffee.</li>
+<li>トムは <ruby>寿司<rt>すし</rt></ruby><span class='c-red'>を</span> たべます。<br>
+Tom eats Sushi.</li>
+<li><ruby>私<rt>わたし</rt></ruby>は <ruby>寿司<rt>すし</rt></ruby><span class='c-red'>を</span> たべません。<br>
+I do not eat Sushi.</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><ol class='enum'>
+<li>The accusative marker is the only occurrence of を in Modern Japanese.</li>
+<li>It is pronounced as /o/ just as お.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>5 / 19</div>
+</section>
+<section class='slide' id='s6'>
+<h2 class='frametitle'>Case Particles 2: [Noun<sub>LOC</sub>]+<span class='framebox'><span class='c-red'>で</span></span>, location of an event</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Locative 〜で marks an <span class='c-red'>location</span> of an event</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li>うち<span class='c-red'>で</span>　ごはんを　<ruby>食<rt>た</rt></ruby>べます。<br>
+I eat a meal at home.</li>
+<li>うち<span class='c-red'>で</span>　コーヒーを <ruby>飲<rt>の</rt></ruby>みません <br>
+I don't drink coffee at home.</li>
+<li><ruby>図書館<rt>としょかん</rt></ruby><span class='c-red'>で</span> <ruby>本<rt>ほん</rt></ruby>を <ruby>読<rt>よ</rt></ruby>みます。<br>
+I read books at a library.</li>
+<li><ruby>図書館<rt>としょかん</rt></ruby><span class='c-red'>で</span> マンガを <ruby>読<rt>よ</rt></ruby>みません。<br>
+I don't read Manga at a library.</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>で marks a location of an <span class='c-red'>event</span>.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>6 / 19</div>
+</section>
+<section class='slide' id='s7'>
+<h2 class='frametitle'>Case Particles 3.1: [Noun]+<span class='framebox'><span class='c-red'>に</span></span>, direction/goal of an movement</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>〜に marks a goal/direction of an movement.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum multicols-2'>
+<li>わたしは <ruby>今日<rt>きょう</rt></ruby> 学校に<ruby>行<rt>い</rt></ruby>きます。<br>
+I go to school today.</li>
+<li><ruby>山田<rt>やまだ</rt></ruby>さんは <ruby>日本<rt>にほん</rt></ruby>に <ruby>帰<rt>かえ</rt></ruby>りません<br>
+Yamada-san doesn't go back to Japan.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Along with the directional interpretation, the に-suffix has many functions.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>7 / 19</div>
+</section>
+<section class='slide' id='s8'>
+<h2 class='frametitle'>Case Particles 3.2: [Noun]+<span class='framebox'><span class='c-red'>に</span></span>, time of an event</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>〜に marks a time of an event .</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum multicols-2'>
+<li><ruby>日曜日<rt>にちようび</rt></ruby><span class='c-red'>に</span> <ruby>大阪<rt>おおさか</rt></ruby>に いきます。<br>
+I will go to Osaka on Sunday.</li>
+<li><ruby>八時<rt>はちじ</rt></ruby><span class='c-blue'>ごろ</span>(<span class='c-red'>に</span>) <ruby>大学<rt>だいがく</rt></ruby>に <ruby>行<rt>い</rt></ruby>きます。<br>
+I go to University at around 8:00.</li>
+<li><ruby>十時<rt>じゅうじ</rt></ruby><span class='c-red'>に</span> ねます。<br>
+I go to bed at 10 o'clock.</li>
+<li><ruby>何時<rt>なんじ</rt></ruby><span class='c-red'>に</span> ねますか。<br>
+What time do you go to bed?</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>[time]-<span class='c-blue'>ごろ</span> means `about', and, with 〜ごろ, 〜に becomes optional.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>8 / 19</div>
+</section>
+<section class='slide' id='s9'>
+<h2 class='frametitle'>Time Reference 1: without 〜に</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Some time-of-an-event expressions cannot carry a particle:<br>
+(1) deictic time expressions: <em>today</em>, <em>yesterday</em> etc.;<br>(2) interval words: <em>everyday</em>, <em>every night</em> etc.; and <br>(3) when/いつ</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>トムは あした-<ruby>来<rt>き</rt></ruby>ます。</li>
+<li><ruby>毎日<rt>まいにち</rt></ruby>-、<ruby>図書館<rt>としょかん</rt></ruby>で <ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>みます。</li>
+<li>いつ-<ruby>日本<rt>にほん</rt></ruby>に <ruby>帰<rt>かえ</rt></ruby>りますか。</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>means zero or not pronounced; 〜に can be there.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>9 / 19</div>
+</section>
+<section class='slide' id='s10'>
+<h2 class='frametitle'>Time Reference 2: usually without 〜に</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+〜に can be added to time-of-an-event expressions to emphasize:<br>
+(1) parts-of-a-day expressions: <ruby>朝<rt>あさ</rt></ruby>/<em>the morning</em>, <ruby>夜<rt>よる</rt></ruby>/<em>the night</em> etc.;<br>
+(2) <ruby>週末<rt>しゅうまつ</rt></ruby>/<em>weekend</em>
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+
+
+<ol class='enum multicols-2'>
+<li><ruby>朝<rt>あさ</rt></ruby>(に) テレビを みます。<br>
+I watch TV in the morning.</li>
+<li><ruby>週末<rt>しゅうまつ</rt></ruby>(に) どこに いきますか。<br>
+Where do you go on the weekend?</li>
+</ol>
+
+
+
+
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Usually these expressions are not suffixed with 〜に unless the time phrase is emphasized.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>10 / 19</div>
+</section>
+<section class='slide' id='s11'>
+<h2 class='frametitle'>Case Particles 4: [Noun]+<span class='framebox'><span class='c-red'>へ</span></span>, direction/goal of an movement</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>へ marks a goal/direction of an movement just as diretctional 〜に (cf. 3.1)</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li>わたしは <ruby>今日<rt>きょう</rt></ruby> 学校<span class='c-red'>へ</span> <ruby>行<rt>い</rt></ruby>きます。<br>
+I go to school today.</li>
+<li><ruby>山田<rt>やまだ</rt></ruby>さんは <ruby>日本<rt>にほん</rt></ruby><span class='c-red'>へ</span> <ruby>帰<rt>かえ</rt></ruby>りません<br>
+Yamada-san don't go back to Japan.</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><ol class='enum'>
+<li>〜へ as a case particle is pronounced as /e/ as え.</li>
+<li>〜へ can only replace directional/goal 〜に. It cannot replace, for example, temporal 〜に.</li>
+<li>〜へ is more formal than 〜に.. It is often used in the written language.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>11 / 19</div>
+</section>
+<section class='slide' id='s12'>
+<h2 class='frametitle'>Idiomatic 〜ませんか: Invitation, ``why don't you/we ...?''</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Present Negative expressions as 〜ませんか can be used to invite someone to do something.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li><ruby>週末<rt>しゅうまつ</rt></ruby>、ゲームを しませんか。</li>
+<li><span class='small'><ruby>いっしょに<rt>together</rt></ruby> ごはんを たべませんか。</span></li>
+<li>Response:
+<ol class='enum'>
+<li>いいですね。- Sounds great!</li>
+<li>う〜ん、ちょっと。。。 - Umm, its slightly .... (inconvenient ...)</li>
+</ol></li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>It has to be present-negative, the affirmative counterpart, 〜ますか, can be merely a question: たべますか。/Do you eat?</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>12 / 19</div>
+</section>
+<section class='slide' id='s13'>
+<h2 class='frametitle'>Japanese, a free-word-order Language</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Japanese is flexible on its word order. Although a subject (if pronounced) is usually sentence-initial and a predicate, a verb or an adjective, sentence-terminal, it's what a speaker wants to emphasize that determines the word order of the rest.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li><ruby>私<rt>わたし</rt></ruby>は <span class='c-blue'><ruby>今日<rt>きょう</rt></ruby></span> <span class='c-brown'><ruby>家<rt>うち</rt></ruby>で</span> <span class='c-red'><ruby>本<rt>ほん</rt></ruby>を</span> <ruby>読<rt>よ</rt></ruby>みます。<br></li>
+<li><ruby>私<rt>わたし</rt></ruby>は <span class='c-brown'><ruby>家<rt>うち</rt></ruby>で</span> <span class='c-red'><ruby>本<rt>ほん</rt></ruby>を</span> <span class='c-blue'><ruby>今日<rt>きょう</rt></ruby></span> <ruby>読<rt>よ</rt></ruby>みます。</li>
+<li><ruby>私<rt>わたし</rt></ruby>は <span class='c-red'><ruby>本<rt>ほん</rt></ruby>を</span> <span class='c-blue'><ruby>今日<rt>きょう</rt></ruby></span> <span class='c-brown'><ruby>家<rt>うち</rt></ruby>で</span>  <ruby>読<rt>よ</rt></ruby>みます。<br></li>
+<li><ruby>私<rt>わたし</rt></ruby>は <span class='c-blue'><ruby>今日<rt>きょう</rt></ruby></span> <span class='c-red'><ruby>本<rt>ほん</rt></ruby>を</span> <span class='c-brown'><ruby>家<rt>うち</rt></ruby>で</span>  <ruby>読<rt>よ</rt></ruby>みます。</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Even the subject of a sentence can be preceded by another phrase:<br>
+<span class='c-blue'><ruby>今日<rt>きょう</rt></ruby></span> <span class='c-red'><ruby>本<rt>ほん</rt></ruby>を</span> <span class='c-brown'><ruby>家<rt>うち</rt></ruby>で</span>  <ruby>私<rt>わたし</rt></ruby>は <ruby>読<rt>よ</rt></ruby>みます。<br>
+ However, let us keep things simple.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>13 / 19</div>
+</section>
+<section class='slide' id='s14'>
+<h2 class='frametitle'>Frequency Adverbs</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+Frequency adverbs can be added to a sentence, usually after the subject to indicate frequency of the event/action: <span class='c-blue'><ruby>毎日<rt>まいにち</rt></ruby></span>/<em>everyday</em>; <span class='c-blue'>よく</span>/<em>often</em>; <span class='c-blue'>ときどき</span>/<em>sometimes</em>. Also, there are <span class='c-blue'>ぜんぜん</span>/<em>never</em> and <span class='c-blue'>あまり</span>/<em>(not) so</em> that <span class='c-red'>must be used in a negative sentence</span>.
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+
+
+
+
+<ol class='enum multicols-2'>
+<li>私は <span class='c-blue'>ときどき</span> <ruby>喫茶店<rt>きっさてん</rt></ruby>に いきます。<br>I go to a coffee shop sometimes.</li>
+<li>私は <span class='c-blue'><ruby>毎日<rt>まいにち</rt></ruby></span> ラーメンを たべます。<br> I eat ramen everyday.</li>
+<li>私は <span class='c-blue'>よく</span> すしを たべます。<br>I eat sushi often.</li>
+<li>私は <span class='c-blue'>ぜんぜん</span> <ruby>喫茶店<rt>きっさてん</rt></ruby>に <span class='c-red'>いきません</span>。<br>I don't go to a coffee shop at all.</li>
+<li>私は <span class='c-blue'>あまり</span> <ruby>喫茶店<rt>きっさてん</rt></ruby>に <span class='c-red'>いきません</span>。<br>I don't go to a coffee shop very often.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Unlike English <em>never</em>, ぜんぜん and あまり does not make sentences negative by themselves:
+<em>I <span class='c-red'>never</span> eat sushi</em>. vs. 私は <span class='c-blue'>ぜんぜん</span> すしを <span class='c-red'>たべません</span>.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>14 / 19</div>
+</section>
+<section class='slide' id='s15'>
+<h2 class='frametitle'>The Topic Particle: 〜は</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>So far, we have only used 〜は with the subject. `X〜は' literally means `As for X, it is such that ...' However, 〜は can put a topic on most of the nouns in a sentence.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li><ruby>肉<rt>にく</rt></ruby><s>を</s><span class='c-red'>は</span> たべません。- As for meat, (it is such that) I don't eat.</li>
+<li><ruby>明日<rt>あした</rt></ruby><span class='c-red'>は</span> 何をしますか。- As for tomorrow, what do you do.</li>
+<li><ruby>大阪<rt>おおさか</rt></ruby>に<span class='c-red'>は</span> いきません。- As for (to) Oosaka, I will not go.</li>
+<li><ruby>図書館<rt>としょかん</rt></ruby>で<span class='c-red'>は</span> マンガ<span class='c-red'>は</span> よみません- As for Manga and in a library, I don't read.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>〜は replace 〜を while 〜は is suffixed to other case particles (e.g., 〜には, 〜では, etc.)</li>
+<li>When you have to translate into English, it is not always easy to translate topic interpretations. keep your translation as natural as possible.</li>
+</ol>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>15 / 19</div>
+</section>
+<section class='slide' id='s16'>
+<h2 class='frametitle'>How to use くる/いく in Japanese (come/go)</h2>
+<div class='alertblock'><div class='block-title'>Grammar:</div><div class='block-body'>In Japanese, <span class='c-red'>the location of the speaker</span> determines the selection of くる or いく. If a movement is towards the speaker's location, くる is always selected, away form the location いく is selected. In English, the onus of decision can shift.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><div class='minipage'> 
+<span class='c-brown'>Japanese</span><br>
+Tel A: パティーに <span class='c-blue'>きます</span>か。<br>
+Tel B: はい。<span class='c-red'>いきます</span>よ。 
+</div>
+<div class='minipage'>
+<span class='c-brown'>English</span><br>
+Tel A: Are you <span class='c-blue'>coming</span> to the party?<br>
+Tel B: Yes, I am <span class='c-blue'>coming</span>.	
+</div></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>16 / 19</div>
+</section>
+<section class='slide' id='s17'>
+<h2 class='frametitle'>Idiomatic ちょっと</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>ちょっと literally means <em>a little</em>. However, it can idiomatically functions as a polite (or indirect) negative response.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ul class='itm'>
+<li><span class='item-label'>Lit.</span> <span class='c-blue'>ちょっと</span> <ruby>待<rt>ま</rt></ruby>ってください。- Wait a little!</li>
+<li><span class='item-label'>Lit.</span> <span class='c-blue'>ちょっと</span> ください。- Please give me a little!</li>
+<li><span class='item-label'>Idi.</span> A: <ruby>明日<rt>あした</rt></ruby>、いっしょに <ruby>映画<rt>えいが</rt></ruby>を みませんか<br>Why don't we (go out and) see a movie tomorrow.<br>
+B: <ruby>明日<rt>あした</rt></ruby>は、<span class='c-red'>ちょっと</span>。<br>
+Tomorrow is a little (inconvenient).</li>
+</ul></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Being indirect is decent or polite in Japan.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>17 / 19</div>
+</section>
+<section class='slide' id='s18'>
+<h2 class='frametitle'>Slide 18</h2>
+<div class='blockbox'><div class='block-title'>Kanji</div><div class='block-body'><ul class='itm'>
+<li><ruby>漢字<rt>かんじ</rt></ruby>' means '<span class='c-red'>Chinese characters</span>' and are adopted from the Chinese writing system.</li>
+<li>Many kanji are read in <span class='c-red'>Japanese way</span> (kun-yomi) or <span class='c-red'>Chinese way</span> (on-yomi) based on their context as in :
+<ul class='itm'>
+<li><ruby>私<rt><span class='c-red'>わたし</span></rt></ruby>-の-<ruby>私的<rt><span class='c-red'>し</span>てき</rt></ruby>な もの `my private things'</li>
+</ul>
+Thus, one is required to know when and how a given kanji is read in a given context.</li>
+<li>All usages of <em>pictographic</em> kanji in Japanese can be rewritten in <em>phonetic</em> kana/かな
+<ul class='itm'>
+<li><span class='c-red'>わたし</span>の<span class='c-red'>し</span>てきな もの `my personal things'</li>
+</ul></li>
+<li>You will learn about 70 of them this semester.</li>
+</ul></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>18 / 19</div>
+</section>
+<section class='slide' id='s19'>
+<h2 class='frametitle'>3.19: Kanji / 漢字 (新しい漢字)</h2>
+<div class='kanjiblock'>
+<div class='block-title'>Click each kanji for details on Kanshudo</div>
+<div class='block-body'>
+<ul class='kanji-grid'>
+<li><a class="k" href="https://www.kanshudo.com/kanji/一" target="_blank" rel="noopener">一</a><span class="gnum">1</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/二" target="_blank" rel="noopener">二</a><span class="gnum">2</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/三" target="_blank" rel="noopener">三</a><span class="gnum">3</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/四" target="_blank" rel="noopener">四</a><span class="gnum">4</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/五" target="_blank" rel="noopener">五</a><span class="gnum">5</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/六" target="_blank" rel="noopener">六</a><span class="gnum">6</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/七" target="_blank" rel="noopener">七</a><span class="gnum">7</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/八" target="_blank" rel="noopener">八</a><span class="gnum">8</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/九" target="_blank" rel="noopener">九</a><span class="gnum">9</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/十" target="_blank" rel="noopener">十</a><span class="gnum">10</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/百" target="_blank" rel="noopener">百</a><span class="gnum">11</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/千" target="_blank" rel="noopener">千</a><span class="gnum">12</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/万" target="_blank" rel="noopener">万</a><span class="gnum">13</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/円" target="_blank" rel="noopener">円</a><span class="gnum">14</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/時" target="_blank" rel="noopener">時</a><span class="gnum">15</span></li>
+</ul>
+</div>
+</div>
+<div class='slide-counter'>19 / 19</div>
+</section>
+</main>
+</body>
+</html>

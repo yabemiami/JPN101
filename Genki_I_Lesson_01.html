@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genki I - Lesson 1 (New Friends)</title>
+<style>
+:root {
+  --rose-fg: #b34155; --rose-bg: #f7d8de; --rose-light: #fce8eb;
+  --green-fg: #2f7d3e; --green-bg: #cce8d1; --green-light: #e8f4eb;
+  --blue-fg: #2a4f7c; --blue-bg: #d4dfee; --blue-light: #ecf1f8;
+  --orange-fg: #b35900; --orange-bg: #ffd9a8; --orange-light: #fff1de;
+  --purple-fg: #6b3fa0; --purple-bg: #e0d4ef; --purple-light: #f3edfa;
+  --ink: #1a1a1a; --ink-soft: #555;
+}
+* { box-sizing: border-box; }
+body { font-family: "Hiragino Sans","Yu Gothic","Noto Sans CJK JP","Helvetica Neue",Arial,sans-serif; color: var(--ink); margin: 0; background: #f4f4f6; line-height: 1.55; }
+.deck-head { background: var(--rose-fg); color: white; padding: 18px 28px; }
+.deck-head h1 { margin: 0; font-size: 1.6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.slide { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 24px 28px; margin-bottom: 28px; position: relative; }
+.frametitle { font-size: 1.35rem; font-weight: 700; color: var(--rose-fg); border-bottom: 2px solid var(--rose-bg); padding-bottom: 10px; margin: 0 0 16px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; }
+.alertblock, .exampleblock, .blockbox, .practiceblock, .kanjiblock { border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.alertblock { background: var(--rose-light); border: 1px solid var(--rose-bg); }
+.alertblock > .block-title { background: var(--rose-fg); color: white; }
+.exampleblock { background: var(--green-light); border: 1px solid var(--green-bg); }
+.exampleblock > .block-title { background: var(--green-fg); color: white; }
+.blockbox { background: var(--blue-light); border: 1px solid var(--blue-bg); }
+.blockbox > .block-title { background: var(--blue-fg); color: white; }
+.practiceblock { background: var(--orange-light); border: 1px solid var(--orange-bg); }
+.practiceblock > .block-title { background: var(--orange-fg); color: white; }
+.kanjiblock { background: var(--purple-light); border: 1px solid var(--purple-bg); }
+.kanjiblock > .block-title { background: var(--purple-fg); color: white; }
+.block-title { padding: 6px 12px; font-weight: 600; font-size: 0.95rem; }
+.block-body { padding: 12px 16px; font-size: 0.93rem; }
+.block-body p { margin: 0.4em 0; }
+.block-body ul, .block-body ol { margin: 0.45em 0 0.45em 0; padding-left: 1.6em; }
+.block-body li { margin: 0.28em 0; }
+.item-label { display: inline-block; min-width: 1.5em; font-weight: 600; color: var(--ink-soft); margin-right: 0.4em; }
+ul.itm li::marker { color: var(--rose-fg); }
+ol.enum li::marker { font-weight: 600; color: var(--ink-soft); }
+.c-red { color: #d23047; font-weight: 600; }
+.c-blue { color: #2a59a8; font-weight: 600; }
+.c-brown { color: #8a5a2b; font-weight: 600; }
+.sc { font-variant: small-caps; font-size: 0.85em; letter-spacing: 0.05em; }
+s { text-decoration: line-through; text-decoration-color: #c33; text-decoration-thickness: 2px; }
+sub, sup { font-size: 0.7em; }
+.fmb { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 600; padding: 0 2px; }
+.framebox { display: inline-block; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1px 6px; font-weight: 600; background: white; }
+ruby rt { font-size: 0.55em; color: var(--ink-soft); }
+.multicols { columns: 2; column-gap: 1.4em; }
+.multicols-2 { columns: 2; }
+.multicols-3 { columns: 3; }
+ul.multicols-2, ol.multicols-2 { columns: 2; column-gap: 1.4em; }
+ul.multicols-3, ol.multicols-3 { columns: 3; column-gap: 1.2em; }
+ul.multicols-2 li, ol.multicols-2 li,
+ul.multicols-3 li, ol.multicols-3 li { break-inside: avoid-column; }
+.multicols ul, .multicols ol { break-inside: avoid-column; margin-top: 0; }
+.multicols li { break-inside: avoid-column; }
+.cols-wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+.col { flex: 1 1 40%; }
+.center { text-align: center; }
+.spts { font-size: 0.78em; }
+.fns { font-size: 0.86em; }
+.small { font-size: 0.92em; }
+.large { font-size: 1.1em; }
+table.tex-table { border-collapse: collapse; margin: 6px 0; font-size: 0.88em; }
+table.tex-table th, table.tex-table td { border: 1px solid #999; padding: 4px 8px; vertical-align: middle; text-align: center; }
+table.tex-table th { background: #f4f4f4; font-weight: 600; }
+.writing-line { height: 1px; background: #b88a4a; margin: 18px 0; }
+.practice-body { padding-top: 4px; padding-bottom: 4px; }
+.slide-counter { position: absolute; bottom: 8px; right: 14px; font-size: 0.78rem; color: var(--ink-soft); }
+.nav-bar { position: sticky; top: 0; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ddd; padding: 8px 16px; z-index: 100; font-size: 0.85rem; overflow-x: auto; white-space: nowrap; }
+.nav-bar a { color: var(--rose-fg); margin-right: 14px; text-decoration: none; font-weight: 500; white-space: nowrap; }
+.nav-bar a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .frametitle { font-size: 1.05rem; }
+  .deck-head h1 { font-size: 1.2rem; }
+  .deck { padding: 12px 8px 32px; }
+  .slide { padding: 16px 14px; }
+}
+/* video popup modal */
+.kv-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.kv-overlay.open { display: flex; }
+.kv-box { background: #111; border-radius: 8px; padding: 14px; max-width: 480px; width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: relative; }
+.kv-box video { width: 100%; height: auto; display: block; background: #000; border-radius: 4px; }
+.kv-close { position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border-radius: 50%; background: white; color: #b34155; border: 2px solid #b34155; font-size: 1.3rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.kv-close:hover { background: #b34155; color: white; }
+.kv-label { color: white; text-align: center; font-size: 1.6rem; font-weight: 600; margin-top: 8px; }
+</style>
+</head>
+<body>
+<header class="deck-head"><h1>Genki I - Lesson 1 (New Friends / あたらしい ともだち)</h1></header>
+<nav class="nav-bar">
+<a href="#s1">1.1 Kana</a>
+<a href="#s2">1.2 Hiragana Videos</a>
+<a href="#s3">1.3 Greetings I</a>
+<a href="#s4">1.4 Greetings II</a>
+<a href="#s5">1.5 Xは Yです</a>
+<a href="#s6">1.6 〜か</a>
+<a href="#s7">1.7 Nの N</a>
+<a href="#s8">1.8 Voiced/っ</a>
+<a href="#s9">1.9 Glides</a>
+<a href="#s10">1.10 Long Vowels</a>
+<a href="#s11">1.11 Numbers</a>
+<a href="#s12">1.12 Time/Age</a>
+<a href="#s13">1.13 Exercises A–D</a>
+<a href="#s14">1.14 Exercises E–I</a>
+<a href="#s15">1.15 Vocab</a>
+</nav>
+<main class="deck">
+
+<!-- ====== SLIDE 1: Writing System ====== -->
+<section class='slide' id='s1'>
+<h2 class='frametitle'>The Writing System: げ P20–27</h2>
+<div class='alertblock'><div class='block-title'>かな</div><div class='block-body'>
+The Japanese writing system uses a combination of <span class='c-red'>Kana</span> and <span class='c-red'>Kanji</span>.
+</div></div>
+<div class='blockbox'><div class='block-title'>Kana / かな</div><div class='block-body'>
+There are 2 types of syllabary set, called かな:
+<ul class='itm'>
+<li>ひらがな <em>hiragana</em></li>
+<li>カタカナ <em>katakana</em></li>
+</ul>
+<span class='small'>Syllabic structures: <span class='framebox'>V</span>, <span class='framebox'>CV</span> or <span class='framebox'>/n/</span> (no CVC like English <em>book</em>). Katakana is used for foreign-origin words and some onomatopoeia.</span>
+<div class='center' style='margin-top:8px;'><strong>ひらがな</strong></div>
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th rowspan='2'><span class='framebox'>/n/</span></th><th colspan='9'><span class='framebox'>CV</span></th><th rowspan='2'><span class='framebox'>V</span></th><th rowspan='2'></th></tr>
+<tr><th>/w/</th><th>/r/</th><th>/y/</th><th>/m/</th><th>/h/</th><th>/n/</th><th>/t/</th><th>/s/</th><th>/k/</th></tr>
+<tr><td rowspan='5'><span class='framebox'>ん</span></td><td>わ</td><td>ら</td><td>や</td><td>ま</td><td>は</td><td>な</td><td>た</td><td>さ</td><td>か</td><td>あ</td><td>/a/</td></tr>
+<tr><td>(*ゐ)</td><td>り</td><td></td><td>み</td><td>ひ</td><td>に</td><td><span class='c-red'>ち</span></td><td><span class='c-red'>し</span></td><td>き</td><td>い</td><td>/i/</td></tr>
+<tr><td></td><td>る</td><td>ゆ</td><td>む</td><td>ふ</td><td>ぬ</td><td><span class='c-red'>つ</span></td><td>す</td><td>く</td><td>う</td><td>/u/</td></tr>
+<tr><td>(*ゑ)</td><td>れ</td><td></td><td>め</td><td>へ</td><td>ね</td><td>て</td><td>せ</td><td>け</td><td>え</td><td>/e/</td></tr>
+<tr><td><span class='c-red'>を</span></td><td>ろ</td><td>よ</td><td>も</td><td>ほ</td><td>の</td><td>と</td><td>そ</td><td>こ</td><td>お</td><td>/o/</td></tr>
+</table>
+<div class='center small'><span class='c-red'>し</span>=/shi/, <span class='c-red'>ち</span>=/chi/, <span class='c-red'>つ</span>=/tsu/, <span class='c-red'>を</span>=/o/; ゐ and ゑ are only used in Classical Japanese.</div>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write the kana for あ・い・う・え・お and your name.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>1 / 15</div>
+</section>
+
+<!-- ====== SLIDE 2: Hiragana Videos ====== -->
+<section class='slide' id='s2'>
+<h2 class='frametitle'>ひらがな Videos</h2>
+<div class='alertblock'><div class='block-title'>Click any kana to play its stroke-order video</div><div class='block-body'><span class='small'>
+Miami University Japanese Program — GRAMELAC.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Hiragana stroke-order videos</div><div class='block-body'>
+<style>
+table.kana-grid { border-collapse: collapse; margin: 6px auto; }
+table.kana-grid th, table.kana-grid td { border: 1px solid #888; width: 56px; height: 56px; text-align: center; vertical-align: middle; padding: 0; }
+table.kana-grid th { background: #f4f4f4; font-weight: 600; }
+table.kana-grid td.empty { background: #f9f9f9; }
+table.kana-grid a.kana { display: inline-block; padding: 6px 10px; font-size: 1.6rem; font-weight: 600; color: var(--rose-fg); text-decoration: none; border-radius: 4px; line-height: 1; }
+table.kana-grid a.kana:hover { background: var(--rose-bg); color: #7a0a25; }
+</style>
+<table class='kana-grid'>
+<tr><th></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+<tr><th>∅</th>
+  <td><a class='kana' href='movies/hiragana/695_a.mp4'>あ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_i.mp4'>い</a></td>
+  <td><a class='kana' href='movies/hiragana/695_u.mp4'>う</a></td>
+  <td><a class='kana' href='movies/hiragana/695_e.mp4'>え</a></td>
+  <td><a class='kana' href='movies/hiragana/695_o.mp4'>お</a></td></tr>
+<tr><th>k</th>
+  <td><a class='kana' href='movies/hiragana/695_ka.mp4'>か</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ki.mp4'>き</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ku.mp4'>く</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ke.mp4'>け</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ko.mp4'>こ</a></td></tr>
+<tr><th>s</th>
+  <td><a class='kana' href='movies/hiragana/695_sa.mp4'>さ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_shi.mp4'>し</a></td>
+  <td><a class='kana' href='movies/hiragana/695_su.mp4'>す</a></td>
+  <td><a class='kana' href='movies/hiragana/695_se.mp4'>せ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_so.mp4'>そ</a></td></tr>
+<tr><th>t</th>
+  <td><a class='kana' href='movies/hiragana/695_ta.mp4'>た</a></td>
+  <td><a class='kana' href='movies/hiragana/695_chi.mp4'>ち</a></td>
+  <td><a class='kana' href='movies/hiragana/695_tsu.mp4'>つ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_te.mp4'>て</a></td>
+  <td><a class='kana' href='movies/hiragana/695_to.mp4'>と</a></td></tr>
+<tr><th>n</th>
+  <td><a class='kana' href='movies/hiragana/695_na.mp4'>な</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ni.mp4'>に</a></td>
+  <td><a class='kana' href='movies/hiragana/695_nu.mp4'>ぬ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ne.mp4'>ね</a></td>
+  <td><a class='kana' href='movies/hiragana/695_no.mp4'>の</a></td></tr>
+<tr><th>h</th>
+  <td><a class='kana' href='movies/hiragana/695_ha.mp4'>は</a></td>
+  <td><a class='kana' href='movies/hiragana/695_hi.mp4'>ひ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_fu.mp4'>ふ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_he.mp4'>へ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ho.mp4'>ほ</a></td></tr>
+<tr><th>m</th>
+  <td><a class='kana' href='movies/hiragana/695_ma.mp4'>ま</a></td>
+  <td><a class='kana' href='movies/hiragana/695_mi.mp4'>み</a></td>
+  <td><a class='kana' href='movies/hiragana/695_mu.mp4'>む</a></td>
+  <td><a class='kana' href='movies/hiragana/695_me.mp4'>め</a></td>
+  <td><a class='kana' href='movies/hiragana/695_mo.mp4'>も</a></td></tr>
+<tr><th>y</th>
+  <td><a class='kana' href='movies/hiragana/695_ya.mp4'>や</a></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/hiragana/695_yu.mp4'>ゆ</a></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/hiragana/695_yo.mp4'>よ</a></td></tr>
+<tr><th>r</th>
+  <td><a class='kana' href='movies/hiragana/695_ra.mp4'>ら</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ri.mp4'>り</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ru.mp4'>る</a></td>
+  <td><a class='kana' href='movies/hiragana/695_re.mp4'>れ</a></td>
+  <td><a class='kana' href='movies/hiragana/695_ro.mp4'>ろ</a></td></tr>
+<tr><th>w</th>
+  <td><a class='kana' href='movies/hiragana/695_wa.mp4'>わ</a></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/hiragana/695_wo.mp4'>を</a></td></tr>
+<tr><th>n</th>
+  <td><a class='kana' href='movies/hiragana/695_n.mp4'>ん</a></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td></tr>
+</table>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: pick five kana and trace each three times after the video.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>2 / 15</div>
+</section>
+
+<!-- ====== SLIDE 3: Greetings Set 1 ====== -->
+<section class='slide' id='s3'>
+<h2 class='frametitle'>Greetings &amp; Useful Expressions (Set 1): げ P34</h2>
+<div class='alertblock'><div class='block-title'>Expressions Set 1</div><div class='block-body'><span class='small'>
+<ul class='multicols-3 itm'>
+<li><ruby>はい<rt>hai</rt></ruby>/<ruby>いいえ<rt>iie</rt></ruby> — Yes/No</li>
+<li><ruby>おはよう<rt>ohayoo</rt></ruby>(<ruby>ございます<rt>gozaimasu</rt></ruby>)。 — Good morning (polite).</li>
+<li><ruby>こんにちは<rt>kon'nichiwa</rt></ruby>。 — Good afternoon.</li>
+<li><ruby>こんばんは<rt>konbanwa</rt></ruby>。 — Good evening.</li>
+<li><ruby>さようなら<rt>sayoonara</rt></ruby>。 — Good-bye.</li>
+<li><ruby>おやすみ<rt>oyasumi</rt></ruby>(<ruby>なさい<rt>nasai</rt></ruby>)。 — Good night.</li>
+<li><ruby>ありがとう<rt>arigatoo</rt></ruby>(<ruby>ございます<rt>gozaimasu</rt></ruby>)。 — Thank you (polite).</li>
+<li><ruby>すみません<rt>sumimasen</rt></ruby>。 — Excuse me. / I'm sorry.</li>
+<li><ruby>いってきます<rt>ittekimasu</rt></ruby>。 — I'll go and come back.</li>
+<li><ruby>いってらっしゃい<rt>itterasshai</rt></ruby>。 — Please go and come back.</li>
+<li><ruby>ただいま<rt>tadaima</rt></ruby>。 — I'm home.</li>
+<li><ruby>おかえり(なさい)<rt>okaeri(nasai)</rt></ruby>。 — Welcome home.</li>
+<li><ruby>いただきます<rt>itadakimasu</rt></ruby>。 — Thanks for the meal (before).</li>
+<li><ruby>ごちそうさま<rt>gochisoosama</rt></ruby>(<ruby>でした<rt>deshita</rt></ruby>)。 — Thanks for the meal (after).</li>
+<li><ruby>はじめまして<rt>hajimemashite</rt></ruby>。 — How do you do?</li>
+<li><ruby>よろしくおねがいします<rt>yoroshiku onegaishimasu</rt></ruby>。 — Nice to meet you.</li>
+<li><ruby>あのう...<rt>anoo</rt></ruby> — (hesitation sound)</li>
+<li><ruby>そうですか<rt>soo desu ka</rt></ruby>。 — Is that so. / I see.</li>
+</ul>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: pair-greet your neighbor in three different times of day.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>3 / 15</div>
+</section>
+
+<!-- ====== SLIDE 3: Greetings Set 2 ====== -->
+<section class='slide' id='s4'>
+<h2 class='frametitle'>Classroom Expressions (Set 2)</h2>
+<div class='alertblock'><div class='block-title'>Expressions Set 2: Extra</div><div class='block-body'>
+<ul class='multicols-2 itm'>
+<li><ruby>いって ください<rt>itte kudasai</rt></ruby> — Please say it!</li>
+<li><ruby>みて ください<rt>mite kudasai</rt></ruby> — Please look!</li>
+<li><ruby>かいて ください<rt>kaite kudasai</rt></ruby> — Please write!</li>
+<li><ruby>きいて ください<rt>kiite kudasai</rt></ruby> — Please listen!</li>
+<li><ruby>もう いちど<rt>moo ichido</rt></ruby> — one more time</li>
+<li><ruby>おおきい こえ で<rt>ookii koe de</rt></ruby> — louder</li>
+<li><ruby>みんな<rt>minna</rt></ruby> — everyone</li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write a sentence asking your partner to repeat.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>4 / 15</div>
+</section>
+
+<!-- ====== SLIDE 4: X-wa Y-desu ====== -->
+<section class='slide' id='s5'>
+<h2 class='frametitle'>Less. 1.1: [X-は Y です] : げ P41</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+<span class='framebox'>X</span>-<ruby>は<rt>wa</rt></ruby> <span class='framebox'>Y</span><ruby>です<rt>desu</rt></ruby>。 = "X is Y."
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><span class='framebox'><ruby>わたし<rt>watashi</rt></ruby></span><ruby>は<rt>wa</rt></ruby> <span class='framebox'><ruby>がくせい<rt>gakusee</rt></ruby></span><ruby>です<rt>desu</rt></ruby>。 = I am a student.</li>
+<li><span class='framebox'><ruby>これ<rt>kore</rt></ruby></span><ruby>は<rt>wa</rt></ruby> <span class='framebox'><ruby>コンピューター<rt>konpyuutaa</rt></ruby></span>です。 = This is a computer.</li>
+<li><span class='framebox'><ruby>たなかさん<rt>tanaka-san</rt></ruby></span>は <span class='framebox'><ruby>にほんじん<rt>nihonjin</rt></ruby></span>です。 = Mr. Tanaka is Japanese.</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'><span class='small'>
+<ul class='itm'>
+<li>〜は is a <em>topic marker</em>: "As for X, it is such that..."</li>
+<li>Japanese has no conjugation for person/number (cf. English <em>am</em>, <em>are</em>, <em>is</em>).</li>
+<li>The subject is often dropped: <s>わたしは</s> がくせいです。 = "I am a student."</li>
+<li>Japanese is verb-final (SOV) — unlike English (SVO) <em>I eat meat</em>, or Chinese (SVO) <em>我吃肉</em>.</li>
+</ul>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: introduce yourself using Xは Yです.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>5 / 15</div>
+</section>
+
+<!-- ====== SLIDE 5: ~ka ====== -->
+<section class='slide' id='s6'>
+<h2 class='frametitle'>Less. 1.2: Interrogative particle 〜か : げ P42</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+<span class='framebox sc'>Sentence</span>-か。 The suffix 〜か turns a sentence into a question.
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>これは コンピューターです<span class='framebox'><ruby>か<rt>ka</rt></ruby></span>。 = Is this a computer?</li>
+<li>たなかさんは にほんじんです<span class='framebox'>か</span>。 = Is Mr. Tanaka Japanese?</li>
+<li>これは <ruby>なん<rt>nan</rt></ruby>です<span class='framebox'>か</span>。 = What is this?</li>
+<li>たなかさんは <ruby>なにじん<rt>nani-jin</rt></ruby>です<span class='framebox'>か</span>。 = Where is Mr. Tanaka from? (person of which nation?)</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+〜か is used for both <em>yes</em>/<em>no</em> questions (1 &amp; 2) and <em>wh-</em> questions (3 &amp; 4).
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: turn a Xは Yです statement into a question with 〜か.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>6 / 15</div>
+</section>
+
+<!-- ====== SLIDE 6: N1 no N2 ====== -->
+<section class='slide' id='s7'>
+<h2 class='frametitle'>Less. 1.3: [Noun<sub>1</sub>-の-Noun<sub>2</sub>] : げ P43</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+In [Noun<sub>1</sub>-<ruby>の<rt>no</rt></ruby>-Noun<sub>2</sub>], Noun<sub>1</sub> modifies Noun<sub>2</sub>.
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><ruby>わたし<rt>watashi</rt></ruby><span class='framebox'>の</span><ruby>なまえ<rt>namae</rt></ruby> = my name</li>
+<li><ruby>やまださん<rt>yamada-san</rt></ruby><span class='framebox'>の</span><ruby>せんこう<rt>senkoo</rt></ruby> = Mr. Yamada's major</li>
+<li><ruby>ともだち<rt>tomodachi</rt></ruby><span class='framebox'>の</span>ジョン = (my) friend John</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+The modification の establishes between two nouns is <span class='c-red'>not just possession</span> (cf. Ex. 3 — ジョン is identified, not possessed).
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write three Noun の Noun phrases about yourself.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>7 / 15</div>
+</section>
+
+<!-- ====== SLIDE 7: Kana - voiced + double consonants ====== -->
+<section class='slide' id='s8'>
+<h2 class='frametitle'>Kana Usages: Voiced &amp; Double Consonants</h2>
+<div class='alertblock'><div class='block-title'>Voiced consonants <span class='framebox'>X゛</span>: /k/, /s/, /t/ → /g/, /z/, /d/</div><div class='block-body'>
+<ul class='multicols-2 itm large'>
+<li>かきくけこ ⇒ がぎぐげご</li>
+<li>さしすせそ ⇒ ざ<span class='c-red'>じ</span>ずぜぞ</li>
+<li>たちつてと ⇒ だ<span class='c-red'>ぢ</span>づでど</li>
+</ul>
+</div></div>
+<div class='alertblock'><div class='block-title'>/h/ /b/ /p/: は, ば and ぱ</div><div class='block-body'>
+<span class='large'>はひふへほ ⇒ ばびぶべぼ ⇒ ぱぴぷぺぽ</span>
+</div></div>
+<div class='blockbox'><div class='block-title'>Glottalization / double consonant: little っ</div><div class='block-body'>
+A consonant — usually /k/, /s/, /t/, or /p/ — is glottalized when preceded by little っ/ッ:
+<ul class='multicols-2 itm'>
+<li>さ<span class='c-red'>っ</span>か /sa<span class='c-red'>kk</span>a/ cf. さか /saka/</li>
+<li>だ<span class='c-red'>っ</span>し /da<span class='c-red'>ssh</span>i/ cf. だし /dashi/</li>
+<li>た<span class='c-red'>っ</span>た /ta<span class='c-red'>tt</span>a/</li>
+<li>か<span class='c-red'>っ</span>ぱ /ka<span class='c-red'>pp</span>a/</li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write two voiced-pair words and one little っ word.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>8 / 15</div>
+</section>
+
+<!-- ====== SLIDE 8: Glide sounds ====== -->
+<section class='slide' id='s9'>
+<h2 class='frametitle'>Kana Usages (cont'd): Glide Sounds</h2>
+<div class='alertblock'><div class='block-title'>Glide sounds: contractions with /y/, using ゃ, ゅ, ょ</div><div class='block-body'>
+/k/, /sh/, /ch/, /n/, /h/, /m/, /r/, /g/, /j/, /b/, /p/ can contract with や/ゆ/よ to denote glide sounds: e.g., kya, kyu, kyo → <span class='c-red'>きゃ・きゅ・きょ</span>. Pattern: <span class='framebox'>C+/i/ kana</span> + ゃ・ゅ・ょ.
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>base</th><th>+ゃ</th><th>+ゅ</th><th>+ょ</th></tr>
+<tr><td>き (ki)</td><td>きゃ kya</td><td>きゅ kyu</td><td>きょ kyo</td></tr>
+<tr><td>し (shi)</td><td>しゃ sha</td><td>しゅ shu</td><td>しょ sho</td></tr>
+<tr><td>ち (chi)</td><td>ちゃ cha</td><td>ちゅ chu</td><td>ちょ cho</td></tr>
+<tr><td>に (ni)</td><td>にゃ nya</td><td>にゅ nyu</td><td>にょ nyo</td></tr>
+<tr><td>ひ (hi)</td><td>ひゃ hya</td><td>ひゅ hyu</td><td>ひょ hyo</td></tr>
+<tr><td>み (mi)</td><td>みゃ mya</td><td>みゅ myu</td><td>みょ myo</td></tr>
+<tr><td>り (ri)</td><td>りゃ rya</td><td>りゅ ryu</td><td>りょ ryo</td></tr>
+<tr><td>ぎ (gi)</td><td>ぎゃ gya</td><td>ぎゅ gyu</td><td>ぎょ gyo</td></tr>
+<tr><td>じ (ji)</td><td>じゃ ja</td><td>じゅ ju</td><td>じょ jo</td></tr>
+<tr><td>び (bi)</td><td>びゃ bya</td><td>びゅ byu</td><td>びょ byo</td></tr>
+<tr><td>ぴ (pi)</td><td>ぴゃ pya</td><td>ぴゅ pyu</td><td>ぴょ pyo</td></tr>
+</table>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write three words containing glide sounds.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>9 / 15</div>
+</section>
+
+<!-- ====== SLIDE 9: Long Vowels ====== -->
+<section class='slide' id='s10'>
+<h2 class='frametitle'>Kana Readings: Long Vowels</h2>
+<div class='alertblock'><div class='block-title'>Vowel lengthening: /aa/ /ii/ /uu/ /ee/ /ei/ /oo/ /ou/</div><div class='block-body'>
+The following two-vowel segments indicate a long vowel that extends over two slots:
+<ul class='itm'>
+<li>/aa/ ⇒ /ā/: おば<span class='c-red'>あ</span>さん → ob<span class='c-red'>ā</span>san</li>
+<li>/ii/ ⇒ /ī/: おじ<span class='c-red'>い</span>さん → oj<span class='c-red'>ī</span>san</li>
+<li>/uu/ ⇒ /ū/: す<span class='c-red'>う</span> → s<span class='c-red'>ū</span></li>
+<li>/ee/ &amp; /ei/ ⇒ /ē/: おね<span class='c-red'>え</span>さん → on<span class='c-red'>ē</span>san; <span class='c-red'>えい</span>が → <span class='c-red'>ē</span>ga</li>
+<li>/oo/ &amp; /ou/ ⇒ /ō/: <span class='c-red'>おお</span>い → <span class='c-red'>ō</span>i; <span class='c-red'>おう</span> → <span class='c-red'>ō</span></li>
+</ul>
+</div></div>
+<div class='alertblock'><div class='block-title'>Vowel lengthening with Katakana</div><div class='block-body'>
+With katakana, <strong>ー</strong> indicates a long vowel (two slots):
+<ul class='multicols-2 itm'>
+<li>ア / アー = a / <span class='c-red'>aa</span></li>
+<li>キャ / キャー = kya / ky<span class='c-red'>aa</span></li>
+<li>バタ / バター = bata / bat<span class='c-red'>aa</span></li>
+<li>タキ / ターキー = taki / t<span class='c-red'>aa</span>k<span class='c-red'>ii</span></li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write three long-vowel words in hiragana and three in katakana.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>10 / 15</div>
+</section>
+
+<!-- ====== SLIDE 10: Numbers ====== -->
+<section class='slide' id='s11'>
+<h2 class='frametitle'>Numbers 1–100: げ P35</h2>
+<div class='alertblock'><div class='block-title'>Numbers: 1–100</div><div class='block-body'>
+<div class='center'>
+<table class='tex-table'>
+<tr><th></th><th>0–10 &amp; 100</th><th>11–19</th><th>×10</th></tr>
+<tr><td>0</td><td><ruby>ゼロ<rt>zero</rt></ruby> / <ruby>れい<rt>ree</rt></ruby></td><td></td><td></td></tr>
+<tr><td>1</td><td><ruby>いち<rt>ichi</rt></ruby></td><td><ruby>じゅういち<rt>juuichi</rt></ruby></td><td><ruby>じゅう<rt>juu</rt></ruby></td></tr>
+<tr><td>2</td><td><ruby>に<rt>ni</rt></ruby></td><td><ruby>じゅうに<rt>juuni</rt></ruby></td><td><ruby>にじゅう<rt>nijuu</rt></ruby></td></tr>
+<tr><td>3</td><td><ruby>さん<rt>san</rt></ruby></td><td><ruby>じゅうさん<rt>juusan</rt></ruby></td><td><ruby>さんじゅう<rt>sanjuu</rt></ruby></td></tr>
+<tr><td>4</td><td><ruby>よん<rt>yon</rt></ruby> / <ruby>し<rt>shi</rt></ruby></td><td>じゅう(よん/し)</td><td><span class='c-red'>よん</span>じゅう</td></tr>
+<tr><td>5</td><td><ruby>ご<rt>go</rt></ruby></td><td>じゅうご</td><td>ごじゅう</td></tr>
+<tr><td>6</td><td><ruby>ろく<rt>roku</rt></ruby></td><td>じゅうろく</td><td>ろくじゅう</td></tr>
+<tr><td>7</td><td><ruby>なな<rt>nana</rt></ruby> / <ruby>しち<rt>shichi</rt></ruby></td><td>じゅう(なな/しち)</td><td><span class='c-red'>なな</span>じゅう</td></tr>
+<tr><td>8</td><td><ruby>はち<rt>hachi</rt></ruby></td><td>じゅうはち</td><td>はちじゅう</td></tr>
+<tr><td>9</td><td><ruby>きゅう<rt>kyuu</rt></ruby></td><td>じゅう(きゅう/く)</td><td>きゅうじゅう</td></tr>
+<tr><td>10</td><td>じゅう</td><td colspan='2'>＋ <em><ruby>たす<rt>tasu</rt></ruby></em> · − <em><ruby>ひく<rt>hiku</rt></ruby></em> · ＝ <em><ruby>は<rt>wa</rt></ruby> / <ruby>イコール<rt>ikooru</rt></ruby></em></td></tr>
+<tr><td>100</td><td><ruby>ひゃく<rt>hyaku</rt></ruby></td><td colspan='2'>１＋１＝２: いち <span class='c-red'>たす</span> いち <span class='c-red'>は</span> に</td></tr>
+</table>
+</div>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write your phone number and your age in hiragana.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>11 / 15</div>
+</section>
+
+<!-- ====== SLIDE 11: Hour Minute Age ====== -->
+<section class='slide' id='s12'>
+<h2 class='frametitle'>Hour, Minute, Age: げ P55</h2>
+<div class='alertblock'><div class='block-title'>Hour, Minute, Age</div><div class='block-body'>
+<div class='center'>
+<table class='tex-table'>
+<tr><th></th><th>hour 〜じ</th><th>minute 〜ふん/ぷん</th><th>age 〜さい</th></tr>
+<tr><td>0</td><td>れいじ</td><td>れいふん</td><td>れいさい</td></tr>
+<tr><td>1</td><td>いちじ</td><td><span class='c-red'>いっぷん</span></td><td><span class='c-red'>いっさい</span></td></tr>
+<tr><td>2</td><td>にじ</td><td>にふん</td><td>にさい</td></tr>
+<tr><td>3</td><td>さんじ</td><td><span class='c-red'>さんぷん</span></td><td>さんさい</td></tr>
+<tr><td>4</td><td><span class='c-red'>よじ</span></td><td><span class='c-red'>よんぷん</span></td><td>よんさい</td></tr>
+<tr><td>5</td><td>ごじ</td><td>ごふん</td><td>ごさい</td></tr>
+<tr><td>6</td><td>ろくじ</td><td><span class='c-red'>ろっぷん</span></td><td>ろくさい</td></tr>
+<tr><td>7</td><td><span class='c-red'>しちじ</span></td><td>ななふん</td><td>ななさい</td></tr>
+<tr><td>8</td><td>はちじ</td><td><span class='c-red'>はっぷん</span> / はちふん</td><td><span class='c-red'>はっさい</span></td></tr>
+<tr><td>9</td><td><span class='c-red'>くじ</span></td><td>きゅうふん</td><td>きゅうさい</td></tr>
+<tr><td>10</td><td>じゅうじ</td><td><span class='c-red'>じゅっぷん</span> / <span class='c-red'>じっぷん</span></td><td><span class='c-red'>じゅっさい</span> / <span class='c-red'>じっさい</span></td></tr>
+<tr><td>20</td><td>—</td><td>—</td><td>はたち / <span class='c-red'>にじゅっさい</span></td></tr>
+</table>
+</div>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: state the current time and your age in Japanese.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>12 / 15</div>
+</section>
+
+<!-- ====== SLIDE 12: Exercises A–D ====== -->
+<section class='slide' id='s13'>
+<h2 class='frametitle'>In-Class Exercises: A–D</h2>
+<div class='blockbox'><div class='block-title'>Exercise A — Greeting Situations (TXB p.34)</div><div class='block-body'><span class='small'>
+Act out with a partner, using the right greeting:
+<ol class='enum multicols-2'>
+<li>1:00 p.m. — see neighbor Mr. Yamada.</li>
+<li>Morning class — greet teacher, then friends.</li>
+<li>Stepped on someone's foot on a train.</li>
+<li>Someone picked up your dropped book.</li>
+<li>8:00 p.m. — meet teacher at conbini.</li>
+<li>Watching TV with host family at bedtime.</li>
+<li>Leaving home.</li>
+<li>Just got home.</li>
+<li>About to eat.</li>
+<li>Finished eating.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise B — Self-introduction (TXB p.34)</div><div class='block-body'>
+Walk around the classroom; introduce yourself to as many classmates as possible. Model:
+<div class='framebox'>A: <ruby>はじめまして<rt>hajimemashite</rt></ruby>。___ <ruby>です<rt>desu</rt></ruby>。<ruby>よろしく おねがいします<rt>yoroshiku onegaishimasu</rt></ruby>。<br>
+B: ___ です。よろしく おねがいします。</div>
+Extension: add (a) year — <ruby>〜ねんせい<rt>… nensee</rt></ruby>, (b) age — <ruby>〜さい<rt>… sai</rt></ruby>, (c) major — <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>〜です<rt>… desu</rt></ruby>.
+</div></div>
+<div class='blockbox'><div class='block-title'>Exercise C — Numbers Warm-up (TXB p.35 / WB p.15)</div><div class='block-body'><span class='small'>
+<strong>(1)</strong> Read aloud: 5 · 9 · 7 · 1 · 10 · 8 · 2 · 6 · 4 · 3<br>
+<strong>(2)</strong> Two-digit: 45 · 83 · 19 · 76 · 52 · 100 · 38 · 61 · 24 · 97<br>
+<strong>(3)</strong> Quick math (<ruby>たす<rt>tasu</rt></ruby> / <ruby>ひく<rt>hiku</rt></ruby> / <ruby>は<rt>wa</rt></ruby>): 5+3 · 9+1 · 3+4 · 6−6 · 10+9 · 8−7 · 40−25
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise D — Xは Yです Pattern (TXB p.46 / WB p.16)</div><div class='block-body'><span class='small'>
+Produce a sentence from each row using <strong>Xは Yです</strong>.
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>Person</th><th>Nationality</th><th>Year</th><th>Age</th></tr>
+<tr><td>Mary Hart</td><td>American</td><td>2nd</td><td>19</td></tr>
+<tr><td>Takeshi Kimura</td><td>Japanese</td><td>4th</td><td>22</td></tr>
+<tr><td>Sora Kim</td><td>Korean</td><td>3rd</td><td>20</td></tr>
+<tr><td>Robert Smith</td><td>British</td><td>4th</td><td>22</td></tr>
+<tr><td>Prof. Yamashita</td><td>Japanese</td><td>—</td><td>47</td></tr>
+</table>
+Example: <em><ruby>メアリーさんは<rt>Mearii-san wa</rt></ruby> <ruby>アメリカじんです<rt>amerikajin desu</rt></ruby>。</em>
+</span></div></div>
+<div class='slide-counter'>13 / 15</div>
+</section>
+
+<!-- ====== SLIDE 13: Exercises E–I ====== -->
+<section class='slide' id='s14'>
+<h2 class='frametitle'>In-Class Exercises: E–I</h2>
+<div class='blockbox'><div class='block-title'>Exercise E — Yes/No &amp; Wh-Questions with 〜<ruby>か<rt>ka</rt></ruby> (TXB p.47 / WB p.17)</div><div class='block-body'><span class='small'>
+<ol class='enum multicols-2'>
+<li><ruby>メアリーさん<rt>Mearii-san</rt></ruby> / <ruby>いちねんせい<rt>ichinensee</rt></ruby></li>
+<li><ruby>たけしさん<rt>Takeshi-san</rt></ruby> / <ruby>にほんじん<rt>nihonjin</rt></ruby></li>
+<li>たけしさん / <ruby>じゅうきゅうさい<rt>juukyuusai</rt></ruby></li>
+<li><ruby>ソラさん<rt>Sora-san</rt></ruby> / <ruby>アメリカじん<rt>amerikajin</rt></ruby></li>
+<li><ruby>ロバートさん<rt>Robaato-san</rt></ruby> / <ruby>よねんせい<rt>yonensee</rt></ruby></li>
+<li><ruby>やましたせんせい<rt>Yamashita-sensee</rt></ruby> / にほんじん</li>
+</ol>
+Then ask freely: <em><ruby>なんねんせいですか<rt>nan-nensee desu ka</rt></ruby> / <ruby>なんさいですか<rt>nansai desu ka</rt></ruby> / <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。</em>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise F — Noun の Noun (TXB p.50 / WB p.18)</div><div class='block-body'><span class='small'>
+Translate using の: (1) my teacher, (2) my phone number, (3) my name, (4) Takeshi's major, (5) Mary's friend, (6) student at the University of London, (7) teacher of the Japanese language, (8) high school teacher.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise G — What time is it now? (TXB p.52)</div><div class='block-body'><span class='small'>
+Pair work:
+<div class='framebox'>
+A: <ruby>すみません<rt>sumimasen</rt></ruby>。<ruby>いま<rt>ima</rt></ruby> <ruby>なんじですか<rt>nan-ji desu ka</rt></ruby>。<br>
+B: <ruby>〜じ<rt>… ji</rt></ruby> (<ruby>はん<rt>han</rt></ruby>) <ruby>です<rt>desu</rt></ruby>。<br>
+A: <ruby>ありがとう ございます<rt>arigatoo gozaimasu</rt></ruby>。 &nbsp;&nbsp; B: <ruby>いいえ<rt>iie</rt></ruby>。
+</div>
+Cue times: 3:00 · 9:00 · 11:00 · 7:30 · 2:30 · 4:30 · 12:00 · 6:30.<br>
+World times: London 6 p.m. · Stockholm 7 p.m. · New York 1 p.m. · Sydney 4 a.m. · Bangkok 1 a.m. · Tokyo 3 a.m. — Q: <ruby>ロンドンは<rt>Rondon wa</rt></ruby> いま なんじですか。 A: <ruby>ごご<rt>gogo</rt></ruby> <ruby>ろくじです<rt>roku-ji desu</rt></ruby>。
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise H — Telephone Numbers (TXB p.51 / WB p.19)</div><div class='block-body'><span class='small'>
+<div class='framebox'>
+A: <ruby>でんわばんごうは<rt>denwa bangoo wa</rt></ruby> <ruby>なんばんですか<rt>nan-ban desu ka</rt></ruby>。<br>
+B: ___-____ です。 &nbsp;&nbsp; A: ___-____ <ruby>ですね<rt>desu ne</rt></ruby>。 &nbsp;&nbsp; B: <ruby>はい<rt>hai</rt></ruby>、<ruby>そうです<rt>soo desu</rt></ruby>。
+</div>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise I — Group Round-up Interview (TXB p.54)</div><div class='block-body'><span class='small'>
+Interview five classmates: (1) name, (2) hometown, (3) occupation/school, (4) age, (5) major.
+<ul class='itm'>
+<li>Q: <ruby>おなまえは<rt>onamae wa</rt></ruby>？</li>
+<li>Q: <ruby>ごしゅっしんは<rt>goshusshin wa</rt></ruby>？</li>
+<li>Q: <ruby>おしごとは<rt>oshigoto wa</rt></ruby>？</li>
+<li>Q: <ruby>なんねんせいですか<rt>nan-nensee desu ka</rt></ruby>。</li>
+<li>Q: <ruby>なんさいですか<rt>nansai desu ka</rt></ruby>。</li>
+<li>Q: <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。</li>
+</ul>
+</span></div></div>
+<div class='slide-counter'>14 / 15</div>
+</section>
+
+<!-- ====== SLIDE 14: Vocabulary ====== -->
+<section class='slide' id='s15'>
+<h2 class='frametitle'>Practice Vocabulary (Starter Set)</h2>
+<div class='alertblock'><div class='block-title'>Memorize for next class — a small set drawn from Lesson 1</div><div class='block-body'><span class='small'>
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>かな</th><th>romaji</th><th>English</th></tr>
+<tr><td colspan='3'><strong>School</strong></td></tr>
+<tr><td>がくせい</td><td>gakusee</td><td>student</td></tr>
+<tr><td>だいがく</td><td>daigaku</td><td>college, university</td></tr>
+<tr><td>こうこう</td><td>kookoo</td><td>high school</td></tr>
+<tr><td>せんせい</td><td>sensee</td><td>teacher, professor</td></tr>
+<tr><td>りゅうがくせい</td><td>ryuugakusee</td><td>international student</td></tr>
+<tr><td>せんこう</td><td>senkoo</td><td>major</td></tr>
+<tr><td>〜ねんせい</td><td>… nensee</td><td>… -year student</td></tr>
+<tr><td colspan='3'><strong>People</strong></td></tr>
+<tr><td>わたし</td><td>watashi</td><td>I</td></tr>
+<tr><td>ともだち</td><td>tomodachi</td><td>friend</td></tr>
+<tr><td>〜さん</td><td>… san</td><td>Mr. / Ms. …</td></tr>
+<tr><td>にほんじん</td><td>nihonjin</td><td>Japanese person</td></tr>
+<tr><td>アメリカじん</td><td>amerikajin</td><td>American</td></tr>
+<tr><td colspan='3'><strong>Time</strong></td></tr>
+<tr><td>いま</td><td>ima</td><td>now</td></tr>
+<tr><td>ごぜん / ごご</td><td>gozen / gogo</td><td>a.m. / p.m.</td></tr>
+<tr><td>〜じ</td><td>… ji</td><td>… o'clock</td></tr>
+<tr><td>はん</td><td>han</td><td>half</td></tr>
+<tr><td colspan='3'><strong>Other</strong></td></tr>
+<tr><td>にほん / にほんご</td><td>nihon / nihongo</td><td>Japan / Japanese language</td></tr>
+<tr><td>〜さい</td><td>… sai</td><td>… years old</td></tr>
+<tr><td>でんわ / でんわばんごう</td><td>denwa / denwa bangoo</td><td>telephone / phone number</td></tr>
+<tr><td>なまえ</td><td>namae</td><td>name</td></tr>
+<tr><td>なん / なに</td><td>nan / nani</td><td>what</td></tr>
+</table>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Mini drill: translate each sentence and write below.</div>
+<div class='block-body practice-body'><span class='small'>
+1. I am a student. — <div class='writing-line'></div>
+2. My major is Japanese. — <div class='writing-line'></div>
+3. What time is it now? It's 4:30 p.m. — <div class='writing-line'></div>
+4. Mr. Tanaka is Japanese, isn't he? — <div class='writing-line'></div>
+5. What is your phone number? — <div class='writing-line'></div>
+6. My friend John is an international student. — <div class='writing-line'></div>
+7. Professor Yamashita is a Japanese-language teacher. — <div class='writing-line'></div>
+8. I am 19 years old. — <div class='writing-line'></div>
+</span></div>
+</div>
+<div class='slide-counter'>15 / 15</div>
+</section>
+
+</main>
+
+<!-- ====== Kana Video Modal ====== -->
+<div class='kv-overlay' id='kvOverlay'>
+  <div class='kv-box'>
+    <button class='kv-close' id='kvClose' aria-label='Close'>×</button>
+    <video id='kvVideo' controls autoplay playsinline></video>
+    <div class='kv-label' id='kvLabel'></div>
+  </div>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('kvOverlay');
+  var video = document.getElementById('kvVideo');
+  var label = document.getElementById('kvLabel');
+  var closeBtn = document.getElementById('kvClose');
+  function open(src, text){
+    video.src = src;
+    label.textContent = text || '';
+    overlay.classList.add('open');
+    try { video.play(); } catch(e){}
+  }
+  function close(){
+    overlay.classList.remove('open');
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+  document.querySelectorAll('a.kana').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      open(a.getAttribute('href'), a.textContent.trim());
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

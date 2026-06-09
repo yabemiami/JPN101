@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genki I - Lesson 5 (A Trip to Okinawa)</title>
+<style>
+:root {
+  --rose-fg: #b34155; --rose-bg: #f7d8de; --rose-light: #fce8eb;
+  --green-fg: #2f7d3e; --green-bg: #cce8d1; --green-light: #e8f4eb;
+  --blue-fg: #2a4f7c; --blue-bg: #d4dfee; --blue-light: #ecf1f8;
+  --orange-fg: #b35900; --orange-bg: #ffd9a8; --orange-light: #fff1de;
+  --purple-fg: #6b3fa0; --purple-bg: #e0d4ef; --purple-light: #f3edfa;
+  --ink: #1a1a1a; --ink-soft: #555;
+}
+* { box-sizing: border-box; }
+body { font-family: "Hiragino Sans","Yu Gothic","Noto Sans CJK JP","Helvetica Neue",Arial,sans-serif; color: var(--ink); margin: 0; background: #f4f4f6; line-height: 1.55; }
+.deck-head { background: var(--rose-fg); color: white; padding: 18px 28px; }
+.deck-head h1 { margin: 0; font-size: 1.6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.slide { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 24px 28px; margin-bottom: 28px; position: relative; }
+.frametitle { font-size: 1.35rem; font-weight: 700; color: var(--rose-fg); border-bottom: 2px solid var(--rose-bg); padding-bottom: 10px; margin: 0 0 16px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; }
+.alertblock, .exampleblock, .blockbox, .practiceblock, .kanjiblock { border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.alertblock { background: var(--rose-light); border: 1px solid var(--rose-bg); }
+.alertblock > .block-title { background: var(--rose-fg); color: white; }
+.exampleblock { background: var(--green-light); border: 1px solid var(--green-bg); }
+.exampleblock > .block-title { background: var(--green-fg); color: white; }
+.blockbox { background: var(--blue-light); border: 1px solid var(--blue-bg); }
+.blockbox > .block-title { background: var(--blue-fg); color: white; }
+.practiceblock { background: var(--orange-light); border: 1px solid var(--orange-bg); }
+.practiceblock > .block-title { background: var(--orange-fg); color: white; }
+.kanjiblock { background: var(--purple-light); border: 1px solid var(--purple-bg); }
+.kanjiblock > .block-title { background: var(--purple-fg); color: white; }
+.block-title { padding: 6px 12px; font-weight: 600; font-size: 0.95rem; }
+.block-body { padding: 12px 16px; font-size: 1.08rem; }
+.block-body p { margin: 0.4em 0; }
+.block-body ul, .block-body ol { margin: 0.45em 0 0.45em 0; padding-left: 1.6em; }
+.block-body li { margin: 0.28em 0; }
+.item-label { display: inline-block; min-width: 1.5em; font-weight: 600; color: var(--ink-soft); margin-right: 0.4em; }
+ul.itm li::marker { color: var(--rose-fg); }
+ol.enum li::marker { font-weight: 600; color: var(--ink-soft); }
+.c-red { color: #d23047; font-weight: 600; }
+.c-blue { color: #2a59a8; font-weight: 600; }
+.c-brown { color: #8a5a2b; font-weight: 600; }
+.sc { font-variant: small-caps; font-size: 0.85em; letter-spacing: 0.05em; }
+s { text-decoration: line-through; text-decoration-color: #c33; text-decoration-thickness: 2px; }
+sub, sup { font-size: 0.7em; }
+.fmb { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 600; padding: 0 2px; }
+.framebox { display: inline-block; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1px 6px; font-weight: 600; background: white; }
+ruby rt { font-size: 0.55em; color: var(--ink-soft); }
+.multicols { columns: 2; column-gap: 1.4em; }
+.multicols-2 { columns: 2; }
+.multicols-3 { columns: 3; }
+.multicols-4 { columns: 4; }
+ul.multicols-2, ol.multicols-2 { columns: 2; column-gap: 1.4em; }
+ul.multicols-3, ol.multicols-3 { columns: 3; column-gap: 1.2em; }
+ul.multicols-2 li, ol.multicols-2 li,
+ul.multicols-3 li, ol.multicols-3 li { break-inside: avoid-column; }
+.multicols ul, .multicols ol { break-inside: avoid-column; margin-top: 0; }
+.multicols li { break-inside: avoid-column; }
+.cols-wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+.col { flex: 1 1 40%; }
+.minipage { display: inline-block; vertical-align: top; }
+.center { text-align: center; }
+.spts { font-size: 0.78em; }
+.fns  { font-size: 0.86em; }
+.small { font-size: 1em; }
+.large { font-size: 1.1em; }
+.Large { font-size: 1.25em; }
+table.tex-table { border-collapse: collapse; margin: 6px 0; font-size: 1em; }
+table.tex-table th, table.tex-table td { border: 1px solid #999; padding: 4px 8px; vertical-align: middle; text-align: center; }
+table.tex-table th { background: #f4f4f4; font-weight: 600; }
+.writing-line { height: 1px; background: #b88a4a; margin: 18px 0; }
+.practice-body { padding-top: 4px; padding-bottom: 4px; }
+.slide-counter { position: absolute; bottom: 8px; right: 14px; font-size: 0.78rem; color: var(--ink-soft); }
+.nav-bar { position: sticky; top: 0; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ddd; padding: 8px 16px; z-index: 100; font-size: 0.85rem; }
+.nav-bar a { color: var(--rose-fg); margin-right: 14px; text-decoration: none; font-weight: 500; white-space: nowrap; }
+.nav-bar a:hover { text-decoration: underline; }
+
+.brace-group {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 0.2em 1.0em;
+  margin: 0.1em 0;
+  vertical-align: middle;
+}
+.brace-group > * {
+  display: inline-block;
+}
+.brace-group::before,
+.brace-group::after {
+  content: "";
+  position: absolute;
+  top: 0.1em;
+  bottom: 0.1em;
+  width: 0.9em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.brace-group::before {
+  left: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 9 0 C 6 0 5 2 5 8 V 45 C 5 48 4 50 0 50 C 4 50 5 52 5 55 V 92 C 5 98 6 100 9 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group::after {
+  right: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 1 0 C 4 0 5 2 5 8 V 45 C 5 48 6 50 10 50 C 6 50 5 52 5 55 V 92 C 5 98 4 100 1 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group table.tex-table { border: none; }
+.brace-group table.tex-table th,
+.brace-group table.tex-table td { border: none; padding: 0 8px; text-align: left; }
+
+.kanji-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; padding: 0; list-style: none; }
+.kanji-grid li { display: inline-flex; flex-direction: column; align-items: center; padding: 8px 10px 4px; background: white; border: 1px solid var(--purple-bg); border-radius: 6px; min-width: 52px; }
+.kanji-grid a.k { color: var(--purple-fg); text-decoration: none; font-size: 1.7rem; font-weight: 600; line-height: 1; padding: 2px 4px; border-radius: 3px; transition: background 0.15s; }
+.kanji-grid a.k:hover { background: var(--purple-bg); }
+.kanji-grid .gnum { font-size: 0.62rem; color: var(--ink-soft); margin-top: 4px; }
+.tex-image { max-width: 100%; height: auto; display: block; margin: 8px auto; }
+.bare-block { margin: 14px 0; }
+.bare-block > .block-body { padding: 4px 4px; }
+@media (max-width: 600px) {
+  .frametitle { font-size: 1.05rem; }
+  .deck-head h1 { font-size: 1.2rem; }
+  .deck { padding: 12px 8px 32px; }
+  .slide { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<header class="deck-head"><h1>Genki I - Lesson 5 (A Trip to Okinawa)</h1></header>
+<nav class="nav-bar"><a href="#s1">Slide 5.1</a><a href="#s2">Slide 5.2</a><a href="#s3">Slide 5.3</a><a href="#s4">Slide 5.4</a><a href="#s5">Slide 5.5</a><a href="#s6">Slide 5.6</a><a href="#s7">Slide 5.7</a><a href="#s8">Slide 5.8</a><a href="#s9">Slide 5.9</a></nav>
+<main class="deck">
+<section class='slide' id='s1'>
+<h2 class='frametitle'>Japanese Adjectives: い & な Adjectives</h2>
+<div class='alertblock'><div class='block-title'>Grammar: 2 Types of Adjectives</div><div class='block-body'><span class='small'>
+Japanese adjectives are divided into two types based on their conjugations: <span class='c-red'>い</span> & <span class='c-blue'>な</span> Adjectives except irregular <span class='c-brown'>いい</span>. Adjectives show their earmark when they modify a noun attributively (inside a noun phrase) in a structure:<br>
+ [<sub>NP</sub> ADJ NOUN].
+
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ul class='itm multicols-2'>
+<li><span class='item-label'><span class='c-red'><span class='framebox'>い:</span></span></span> おいし<span class='c-red'>い</span>そば/ delicious soba<br>
+こわ<span class='c-red'>い</span><ruby>映画<rt>えいが</rt></ruby>/ a scary movie</li>
+<li><span class='item-label'><span class='c-blue'><span class='framebox'>な:</span></span></span> げんき<span class='c-blue'>な</span>人/ a lively person<br>
+しずか<span class='c-blue'>な</span><ruby>町<rt>まち</rt></ruby>/ a quiet town</li>
+</ul></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Grammatically speaking, an attributive adjective modifies a noun inside of a noun phrase as the examples above. On the other hand, there is an predicate adjective. It is an adjective that functions as a predicate of a sentence. In Japanese, the <span class='c-red'>い</span> & <span class='c-blue'>な</span> adjectives conjugate differently.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>1 / 9</div>
+</section>
+<section class='slide' id='s2'>
+<h2 class='frametitle'>Adjectives 2: い & な Adjectives and conjugations</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+When they are used as a predicate of a sentence, the <span class='c-red'>い</span> & <span class='c-blue'>な</span> adjectives conjugate differently:
+
+<table class='tex-table'>
+<tr><th><span class='c-red'>い</span></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td rowspan='2'>Present</td><td rowspan='2'>さむ<span class='c-red'>いです</span></td><td>さむ<span class='c-red'>くないです</span></td></tr>
+<tr><td>さむ<span class='c-red'>くありません</span></td></tr>
+<tr><td rowspan='2'>Past</td><td rowspan='2'>さむ<span class='c-red'>かったです</span></td><td>さむ<span class='c-red'>くなかったです</span></td></tr>
+<tr><td>さむ<span class='c-red'>くありませんでした</span></td></tr>
+</table>
+
+
+<div class='minipage'> 
+<table class='tex-table'>
+<tr><th><span class='c-blue'>な</span></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td rowspan='2'>Present</td><td rowspan='2'>げんき<span class='c-blue'>です</span></td><td>げんき<span class='c-blue'>じゃないです</span></td></tr>
+<tr><td>げんき<span class='c-blue'>じゃありません</span></td></tr>
+<tr><td rowspan='2'>Past</td><td rowspan='2'>げんき<span class='c-blue'>でした</span></td><td>げんき<span class='c-blue'>じゃなかったです</span></td></tr>
+<tr><td>げんき<span class='c-blue'>じゃありませんでした</span></td></tr>
+</table>
+</div>
+<div class='minipage'>
+
+<span class='c-blue'>じゃ</span> can be substituted by<span class='c-blue'>で<span class='c-red'>は</span></span>which sounds more formal; it is used often in the written language
+
+</div>
+
+
+<div class='minipage'> 
+<table class='tex-table'>
+<tr><th><span class='c-brown'>Irr. いい</span></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td rowspan='2'>Present</td><td rowspan='2'>い<span class='c-brown'>いです</span></td><td>よ<span class='c-brown'>くないです</span></td></tr>
+<tr><td>よ<span class='c-brown'>くありません</span></td></tr>
+<tr><td rowspan='2'>Past</td><td rowspan='2'>よ<span class='c-brown'>かったです</span></td><td>よ<span class='c-brown'>くなかったです</span></td></tr>
+<tr><td>よ<span class='c-brown'>くありませんでした</span></td></tr>
+</table>
+</div>
+<div class='minipage'>
+
+いい can be substituted by よい. It is a relic from Classical Japanese. It is not often used.
+</div>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>2 / 9</div>
+</section>
+<section class='slide' id='s3'>
+<h2 class='frametitle'>Degree Adverbs with Adjectives</h2>
+<div class='alertblock'><div class='block-title'>Degree Adverbs with Adjectives: すごく , とても, ちょっと</div><div class='block-body'>Degree adverbs that can modify the degree of adjectival expressions are placed right before adjectives:</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>ハワイの<ruby>海<rt>うみ</rt></ruby><span class='c-red'>は</span> <span class='c-red'>すごく</span> きれいです。/ The sea is very beautiful in Hawaii.</span>
+{</li>
+<li><ruby>台湾<rt>たいわん</rt></ruby>のたべもの<span class='c-red'>は</span> <span class='c-red'>とても</span> おいしかったです。/The food in Taiwan was very delicious.}
+<span class='small'></li>
+<li>この<ruby>部屋<rt>へや</rt></ruby><span class='c-red'>は</span> <span class='c-red'>ちょっと</span> <ruby>寒<rt>さむ</rt></ruby>いです/ This room is a little cold.</span></li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>You may hear Japanese speakers pronouncing as すごい or すげえ instead すごく. We will stick with すごく.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>3 / 9</div>
+</section>
+<section class='slide' id='s4'>
+<h2 class='frametitle'>Like & Dislike with すき(な) & きらい(な)</h2>
+<div class='alertblock'><div class='block-title'>すき(な) & きらい(な)</div><div class='block-body'><span class='small'>
+Like and Dislike expressions in Japanese are formed with the すき(な)/きらい(な) adjectives applied to what is liked/disliked:
+<ol class='enum'>
+<li>[X-<span class='c-red'><span class='c-red'>は</span></span> Y<span class='c-blue'>が</span> すきです/きらいです] X like Y/(As for X, Y is favored)</li>
+<li>[X-<span class='c-red'><span class='c-red'>は</span></span> Y<span class='c-blue'>が</span> きらいです] X dislike Y/(As for X, Y is unappealing)</li>
+</ol>
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><ruby>私<rt>わたし</rt></ruby><span class='c-red'>は</span> お<ruby>茶<rt>ちゃ</rt></ruby><span class='c-blue'>が</span> すきです/I like tea.</li>
+<li><ruby>私<rt>わたし</rt></ruby><span class='c-red'>は</span> ソーダ<span class='c-blue'>が</span> きらいです/I dislike soda.</li>
+<li>ボブ<span class='c-red'>は</span> コーヒー<span class='c-blue'>が</span> すきです/Bob likes coffee.</li>
+<li>ボブ<span class='c-red'>は</span> すし<span class='c-blue'>が</span> きらいです/Bob dislikes Sushi.
+</span></li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>You can add だい in front of すき/きらい to emphasize the expressions:
+
+<ol class='enum'>
+<li><ruby>私<rt>わたし</rt></ruby><span class='c-red'>は</span> お<ruby>茶<rt>ちゃ</rt></ruby><span class='c-blue'>が</span> <span class='c-brown'><ruby>大<rt>だい</rt></ruby></span>すきです/I like(love) tea very much.</li>
+<li><ruby>私<rt>わたし</rt></ruby><span class='c-red'>は</span> ソーダ<span class='c-blue'>が</span> <span class='c-brown'><ruby>大<rt>だい</rt></ruby></span>きらいです/I dislike(hate) soda very much.
+</span></li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>4 / 9</div>
+</section>
+<section class='slide' id='s5'>
+<h2 class='frametitle'>すき(な) & きらい(な) are な-Adjectives</h2>
+<div class='alertblock'><div class='block-title'>Conjugations:</div><div class='block-body'><span class='fns'>
+They are な-adjectives:<br>
+<table class='tex-table'>
+<tr><th><span class='c-blue'>な</span></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td rowspan='2'>Present</td><td rowspan='2'>すき<span class='c-blue'>です</span></td><td>すき<span class='c-blue'>じゃないです</span></td></tr>
+<tr><td>すき<span class='c-blue'>じゃありません</span></td></tr>
+<tr><td rowspan='2'>Past</td><td rowspan='2'>すき<span class='c-blue'>でした</span></td><td>すき<span class='c-blue'>じゃなかったです</span></td></tr>
+<tr><td>すき<span class='c-blue'>じゃありませんでした</span></td></tr>
+</table>
+
+<table class='tex-table'>
+<tr><th><span class='c-blue'>な</span></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td rowspan='2'>Present</td><td rowspan='2'>きらい<span class='c-blue'>です</span></td><td>きらい<span class='c-blue'>じゃないです</span></td></tr>
+<tr><td>きらい<span class='c-blue'>じゃありません</span></td></tr>
+<tr><td rowspan='2'>Past</td><td rowspan='2'>きらい<span class='c-blue'>でした</span></td><td>きらい<span class='c-blue'>じゃなかったです</span></td></tr>
+<tr><td>きらい<span class='c-blue'>じゃありませんでした</span></td></tr>
+</table>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>[すき/きらい-な Noun]:</div><div class='block-body'><ol class='enum'>
+<li>これは わたしの<ruby>好<rt>す</rt></ruby>きな<ruby>本<rt>ほん</rt></ruby> です。/This is my favorite book.</li>
+<li>わたしのきらいなたべものは すしです。/My dislike food is Sushi.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>5 / 9</div>
+</section>
+<section class='slide' id='s6'>
+<h2 class='frametitle'>Let us/Shall we: 〜ましょう/〜ましょうか</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Volitional ましょう(か) expressions are built upon the Verb<sub>STEM</sub>-ま<s>す</s> form:
+Verb<sub>STEM</sub>-ま<s>す</s> ⇒ Verb<sub>STEM</sub>-ましょう(か)</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><ruby>一緒<rt>いっしょ</rt></ruby>に ゲームを しましょうか。/Shall we play games together.</li>
+<li>スターバックスに <ruby>行<rt>い</rt></ruby>きましょう。/Let's go to Starbucks.</li>
+<li>どこに <ruby>行<rt>い</rt></ruby>きましょうか。/Where shall we go to.</li>
+<li><ruby>何<rt>なに</rt></ruby>を しましょうか。/What shall we do.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>6 / 9</div>
+</section>
+<section class='slide' id='s7'>
+<h2 class='frametitle'>Counters</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+Nouns in Japanese must have a <span class='c-red'>counter expression</span> to be modified by a <span class='c-blue'>number</span> just as mass nouns in English (e.g., <em>2 glasses of water</em> or <em>4 sheets of paper</em>): [<span class='c-blue'>\#</span>+<span class='c-red'>Counter</span>]. There are specific counters for nouns of different natures. We will lean a counter, \#-まい, which is a counter for flat object like sheets of paper, CDs, pancakes, etc. Counters are added immediately in front of or after its modified noun:</span>
+<ul class='itm'>
+<li>{[<sub>SENTENCE</sub> ... (<span class='c-blue'>\#</span>+<span class='c-red'>Counter</span>) Noun-(Prt.) (<span class='c-blue'>\#</span>+<span class='c-red'>Counter</span>) ...]}</li>
+<li>[(<span class='c-blue'>いち</span><span class='c-red'>まい</span>) パンケーキを (<span class='c-blue'>いち</span><span class='c-red'>まい</span>) <ruby>食<rt>た</rt></ruby>べました]</li>
+</ul></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><ruby>CD<rt>シーディー</rt></ruby>を　さんまい <ruby>買<rt>か</rt></ruby>います。/I will but three CD.</li>
+<li>カードを にまい おくりました (おくる.[u])。 /I sent out two cards.</span>
+<span class='small'></li>
+<li>よんまい パジャンを <ruby>食<rt>た</rt></ruby>べました。I ate four Korean Scallion Pancakes.</span></li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>いち<span class='c-red'>まい</span>/に<span class='c-red'>まい</span>/さん<span class='c-red'>まい</span>/よん<span class='c-red'>まい</span>/ご<span class='c-red'>まい</span>/ろく<span class='c-red'>まい</span>/なな<span class='c-red'>まい</span>-しち<span class='c-red'>まい</span>/はち<span class='c-red'>まい</span>/きゅう<span class='c-red'>まい</span>/じゅう<span class='c-red'>まい</span>/ひゃく<span class='c-red'>まい</span>/せん<span class='c-red'>まい</span>/いちまん<span class='c-red'>まい</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>7 / 9</div>
+</section>
+<section class='slide' id='s8'>
+<h2 class='frametitle'>Some Adjectives</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Be aware that a set of interpretations conveyed by a word may not be carried over to  a equivalent word from another language:</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>Tom is busy. - トムは <ruby>忙<rt>いそが</rt></ruby>しいです。</li>
+<li>Tokyo is busy (lively). - <ruby>東京<rt>とうきょう</rt></ruby>はにぎやかです。</li>
+<li>Tom is lively. -トムは<ruby>元気<rt>げんき</rt></ruby>です。</li>
+<li><ruby>日曜日<rt>にちようび</rt></ruby>は<ruby>忙<rt>いそが</rt></ruby>しいです。→ (<ruby>私<rt>わたし</rt></ruby>は) <ruby>日曜日<rt>にちようび</rt></ruby>は<ruby>忙<rt>いそが</rt></ruby>しいです</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>8 / 9</div>
+</section>
+<section class='slide' id='s9'>
+<h2 class='frametitle'>5.9: Kanji / 漢字 (新しい漢字)</h2>
+<div class='kanjiblock'>
+<div class='block-title'>Click each kanji for details on Kanshudo</div>
+<div class='block-body'>
+<ul class='kanji-grid'>
+<li><a class="k" href="https://www.kanshudo.com/kanji/山" target="_blank" rel="noopener">山</a><span class="gnum">30</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/川" target="_blank" rel="noopener">川</a><span class="gnum">31</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/元" target="_blank" rel="noopener">元</a><span class="gnum">32</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/気" target="_blank" rel="noopener">気</a><span class="gnum">33</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/天" target="_blank" rel="noopener">天</a><span class="gnum">34</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/私" target="_blank" rel="noopener">私</a><span class="gnum">35</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/今" target="_blank" rel="noopener">今</a><span class="gnum">36</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/田" target="_blank" rel="noopener">田</a><span class="gnum">37</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/女" target="_blank" rel="noopener">女</a><span class="gnum">38</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/男" target="_blank" rel="noopener">男</a><span class="gnum">39</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/見" target="_blank" rel="noopener">見</a><span class="gnum">40</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/行" target="_blank" rel="noopener">行</a><span class="gnum">41</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/食" target="_blank" rel="noopener">食</a><span class="gnum">42</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/飲" target="_blank" rel="noopener">飲</a><span class="gnum">43</span></li>
+</ul>
+</div>
+</div>
+<div class='slide-counter'>9 / 9</div>
+</section>
+</main>
+</body>
+</html>

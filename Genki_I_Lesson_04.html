@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genki I - Lesson 4 (The First Date)</title>
+<style>
+:root {
+  --rose-fg: #b34155; --rose-bg: #f7d8de; --rose-light: #fce8eb;
+  --green-fg: #2f7d3e; --green-bg: #cce8d1; --green-light: #e8f4eb;
+  --blue-fg: #2a4f7c; --blue-bg: #d4dfee; --blue-light: #ecf1f8;
+  --orange-fg: #b35900; --orange-bg: #ffd9a8; --orange-light: #fff1de;
+  --purple-fg: #6b3fa0; --purple-bg: #e0d4ef; --purple-light: #f3edfa;
+  --ink: #1a1a1a; --ink-soft: #555;
+}
+* { box-sizing: border-box; }
+body { font-family: "Hiragino Sans","Yu Gothic","Noto Sans CJK JP","Helvetica Neue",Arial,sans-serif; color: var(--ink); margin: 0; background: #f4f4f6; line-height: 1.55; }
+.deck-head { background: var(--rose-fg); color: white; padding: 18px 28px; }
+.deck-head h1 { margin: 0; font-size: 1.6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.slide { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 24px 28px; margin-bottom: 28px; position: relative; }
+.frametitle { font-size: 1.35rem; font-weight: 700; color: var(--rose-fg); border-bottom: 2px solid var(--rose-bg); padding-bottom: 10px; margin: 0 0 16px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; }
+.alertblock, .exampleblock, .blockbox, .practiceblock, .kanjiblock { border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.alertblock { background: var(--rose-light); border: 1px solid var(--rose-bg); }
+.alertblock > .block-title { background: var(--rose-fg); color: white; }
+.exampleblock { background: var(--green-light); border: 1px solid var(--green-bg); }
+.exampleblock > .block-title { background: var(--green-fg); color: white; }
+.blockbox { background: var(--blue-light); border: 1px solid var(--blue-bg); }
+.blockbox > .block-title { background: var(--blue-fg); color: white; }
+.practiceblock { background: var(--orange-light); border: 1px solid var(--orange-bg); }
+.practiceblock > .block-title { background: var(--orange-fg); color: white; }
+.kanjiblock { background: var(--purple-light); border: 1px solid var(--purple-bg); }
+.kanjiblock > .block-title { background: var(--purple-fg); color: white; }
+.block-title { padding: 6px 12px; font-weight: 600; font-size: 0.95rem; }
+.block-body { padding: 12px 16px; font-size: 1.08rem; }
+.block-body p { margin: 0.4em 0; }
+.block-body ul, .block-body ol { margin: 0.45em 0 0.45em 0; padding-left: 1.6em; }
+.block-body li { margin: 0.28em 0; }
+.item-label { display: inline-block; min-width: 1.5em; font-weight: 600; color: var(--ink-soft); margin-right: 0.4em; }
+ul.itm li::marker { color: var(--rose-fg); }
+ol.enum li::marker { font-weight: 600; color: var(--ink-soft); }
+.c-red { color: #d23047; font-weight: 600; }
+.c-blue { color: #2a59a8; font-weight: 600; }
+.c-brown { color: #8a5a2b; font-weight: 600; }
+.sc { font-variant: small-caps; font-size: 0.85em; letter-spacing: 0.05em; }
+s { text-decoration: line-through; text-decoration-color: #c33; text-decoration-thickness: 2px; }
+sub, sup { font-size: 0.7em; }
+.fmb { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 600; padding: 0 2px; }
+.framebox { display: inline-block; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1px 6px; font-weight: 600; background: white; }
+ruby rt { font-size: 0.55em; color: var(--ink-soft); }
+.multicols { columns: 2; column-gap: 1.4em; }
+.multicols-2 { columns: 2; }
+.multicols-3 { columns: 3; }
+.multicols-4 { columns: 4; }
+ul.multicols-2, ol.multicols-2 { columns: 2; column-gap: 1.4em; }
+ul.multicols-3, ol.multicols-3 { columns: 3; column-gap: 1.2em; }
+ul.multicols-2 li, ol.multicols-2 li,
+ul.multicols-3 li, ol.multicols-3 li { break-inside: avoid-column; }
+.multicols ul, .multicols ol { break-inside: avoid-column; margin-top: 0; }
+.multicols li { break-inside: avoid-column; }
+.cols-wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+.col { flex: 1 1 40%; }
+.minipage { display: inline-block; vertical-align: top; }
+.center { text-align: center; }
+.spts { font-size: 0.78em; }
+.fns  { font-size: 0.86em; }
+.small { font-size: 1em; }
+.large { font-size: 1.1em; }
+.Large { font-size: 1.25em; }
+table.tex-table { border-collapse: collapse; margin: 6px 0; font-size: 1em; }
+table.tex-table th, table.tex-table td { border: 1px solid #999; padding: 4px 8px; vertical-align: middle; text-align: center; }
+table.tex-table th { background: #f4f4f4; font-weight: 600; }
+.writing-line { height: 1px; background: #b88a4a; margin: 18px 0; }
+.practice-body { padding-top: 4px; padding-bottom: 4px; }
+.slide-counter { position: absolute; bottom: 8px; right: 14px; font-size: 0.78rem; color: var(--ink-soft); }
+.nav-bar { position: sticky; top: 0; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ddd; padding: 8px 16px; z-index: 100; font-size: 0.85rem; }
+.nav-bar a { color: var(--rose-fg); margin-right: 14px; text-decoration: none; font-weight: 500; white-space: nowrap; }
+.nav-bar a:hover { text-decoration: underline; }
+
+.brace-group {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 0.2em 1.0em;
+  margin: 0.1em 0;
+  vertical-align: middle;
+}
+.brace-group > * {
+  display: inline-block;
+}
+.brace-group::before,
+.brace-group::after {
+  content: "";
+  position: absolute;
+  top: 0.1em;
+  bottom: 0.1em;
+  width: 0.9em;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+.brace-group::before {
+  left: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 9 0 C 6 0 5 2 5 8 V 45 C 5 48 4 50 0 50 C 4 50 5 52 5 55 V 92 C 5 98 6 100 9 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group::after {
+  right: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 100' preserveAspectRatio='none'><path d='M 1 0 C 4 0 5 2 5 8 V 45 C 5 48 6 50 10 50 C 6 50 5 52 5 55 V 92 C 5 98 4 100 1 100' stroke='%231a1a1a' stroke-width='0.9' fill='none' /></svg>");
+}
+.brace-group table.tex-table { border: none; }
+.brace-group table.tex-table th,
+.brace-group table.tex-table td { border: none; padding: 0 8px; text-align: left; }
+
+.kanji-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 4px; padding: 0; list-style: none; }
+.kanji-grid li { display: inline-flex; flex-direction: column; align-items: center; padding: 8px 10px 4px; background: white; border: 1px solid var(--purple-bg); border-radius: 6px; min-width: 52px; }
+.kanji-grid a.k { color: var(--purple-fg); text-decoration: none; font-size: 1.7rem; font-weight: 600; line-height: 1; padding: 2px 4px; border-radius: 3px; transition: background 0.15s; }
+.kanji-grid a.k:hover { background: var(--purple-bg); }
+.kanji-grid .gnum { font-size: 0.62rem; color: var(--ink-soft); margin-top: 4px; }
+.tex-image { max-width: 100%; height: auto; display: block; margin: 8px auto; }
+.bare-block { margin: 14px 0; }
+.bare-block > .block-body { padding: 4px 4px; }
+@media (max-width: 600px) {
+  .frametitle { font-size: 1.05rem; }
+  .deck-head h1 { font-size: 1.2rem; }
+  .deck { padding: 12px 8px 32px; }
+  .slide { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<header class="deck-head"><h1>Genki I - Lesson 4 (The First Date)</h1></header>
+<nav class="nav-bar"><a href="#s1">Slide 4.1</a><a href="#s2">Slide 4.2</a><a href="#s3">Slide 4.3</a><a href="#s4">Slide 4.4</a><a href="#s5">Slide 4.5</a><a href="#s6">Slide 4.6</a><a href="#s7">Slide 4.7</a><a href="#s8">Slide 4.8</a><a href="#s9">Slide 4.9</a><a href="#s10">Slide 4.10</a><a href="#s11">Slide 4.11</a><a href="#s12">Slide 4.12</a></nav>
+<main class="deck">
+<section class='slide' id='s1'>
+<h2 class='frametitle'>Existential 1: あります/います</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+あります/います express existence of something: あります for inanimate things and います animate. Also they can mean things are possessed by someone. The existent object is marked with 〜が and the possessor is marked with 〜は. 
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum multicols-2'>
+<li><ruby>火曜日<rt>かようび</rt></ruby>に テスト<span class='c-red'>が</span> あります。<br>
+There is a test on Tuesday</li>
+<li><ruby>今晩<rt>こんばん</rt></ruby>は パーティー<span class='c-red'>が</span> ありません。<br>
+There isn't a party tonight (oh no!).</li>
+<li><ruby>私<rt>わたし</rt></ruby><span class='c-blue'>は</span> <ruby>あに<rt>older brother</rt></ruby><span class='c-red'>が</span> います。<br>
+I have an older brother.</li>
+<li><ruby>山田<rt>やまだ</rt></ruby>さん<span class='c-blue'>は</span> ともだち<span class='c-red'>が</span> いません。<br>
+Yamada-san doesn't have a friend.
+</span></li>
+</ol>
+
+<span class='small'>
+
+<table class='tex-table'>
+<tr><th colspan='2'><span class='sc'>inanimate</span></th><th colspan='2'><span class='sc'>animate</span></th></tr>
+<tr><td colspan='4'>Polite/Present</td></tr>
+<tr><td>Affirmative</td><td>Nagative</td><td>Affirmative</td><td>Nagative</td></tr>
+<tr><td>あります</td><td>ありません</td><td>います</td><td>いません</td></tr>
+</table>
+</span>
+</div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><span class='small'>
+The negative copular 〜じゃありません and negative existential ありません should not be confused.
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>1 / 12</div>
+</section>
+<section class='slide' id='s2'>
+<h2 class='frametitle'>Existential 2: あります/います with a location</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>A location can be added to the あります・います constructions:
+<ul class='itm'>
+<li><span class='item-label'>Obj:</span> <span class='framebox'>Location〜<span class='c-red'>に</span> <span class='sc'>object</span>-が います/あります</span></li>
+<li><span class='item-label'><span class='c-blue'>Evt:</span></span> <span class='framebox'>Location〜<span class='c-blue'>で</span> <span class='sc'>event</span>-が あります</span></li>
+</ul></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>あそこ<span class='c-red'>に</span> トムが います。<br>
+There is Tom over there.</li>
+<li><ruby>日本<rt>にほん</rt></ruby><span class='c-red'>に</span> <ruby>富士山<rt>ふじさん</rt></ruby>が あります。<br>
+There is Mt. Fuji in Japan.</li>
+<li><ruby>山田<rt>やまだ</rt></ruby>さんのアパート<span class='c-blue'>で</span> パーティーが あります。<br>
+There is a party at Yamada's apartment.</li>
+<li><ruby>日本<rt>にほん</rt></ruby><span class='c-blue'>で</span> オリンピックが あります。<br>
+There will be Olympics in Japan.
+
+</span></li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>2 / 12</div>
+</section>
+<section class='slide' id='s3'>
+<h2 class='frametitle'>Locative Expressions with です</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>In Chap 2, we saw the following constructions with deictic locatives:
+
+<div class='cols-wrap'>
+
+<ruby>図書館<rt>としょかん</rt></ruby>は <span class='brace-group'>
+<table class='tex-table'>
+<tr><th>あそこ</th></tr>
+<tr><td>そこ</td></tr>
+<tr><td>ここ</td></tr>
+</table>
+</span> です。/
+
+The library is <span class='brace-group'>
+<table class='tex-table'>
+<tr><th>over there</th></tr>
+<tr><td>there (near you)</td></tr>
+<tr><td>here</td></tr>
+</table>
+</span>
+
+</div>
+
+Now we learn constructions with locative nouns that are relative to the location of an given object:<br>
+
+<span class='framebox'><ruby>図書館<rt>としょかん</rt></ruby>は <span class='c-red'>カフェの<ruby>前<rt>まえ</rt></ruby></span> です。- The library is <span class='c-red'>in front of the café</span> </span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+
+<table class='tex-table'>
+<tr><th>Yの</th></tr>
+<tr><td>カフェの</td></tr>
+</table>
+ <span class='brace-group'>
+
+  <table class='tex-table'>
+<tr><th>みぎ(to the right of Y)</th><th>うえ(on/above Y)</th></tr>
+<tr><td>ひだり(to the left of Y)</td><td>した(under/beneath Y)</td></tr>
+<tr><td>まえ(in front of Y)</td><td>ちかく/そば (near Y)</td></tr>
+<tr><td>うしろ(behind Y)</td><td>となり(next to Y)</td></tr>
+<tr><td>なか(inside Y)</td><td></td></tr>
+</table>
+  
+</span>
+
+  YとZの<span class='c-red'>あいだ (between Y and Z)</span>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Block</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>3 / 12</div>
+</section>
+<section class='slide' id='s4'>
+<h2 class='frametitle'>Locative Expressions with です (Continued)</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>The locative expressions can be used variously:</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>カフェは[<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>]です。<br>
+The café is in the library.</li>
+<li>[<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>]に カフェが あります。<br>
+There is a café in the library.</li>
+<li>[<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>]で パーティーが あります。<br>
+There will be a party in the library.</li>
+<li>[<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>]で <ruby>山田<rt>やまだ</rt></ruby>さんを みました。<br>
+I saw Yamada-san in the library.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>となり is used only when the things involved in the construction are in the same category. Otherwise, よこ/side is used:
+<ol class='enum'>
+<li>トムは ボブのとなり です。Tom is next to Bob.</li>
+<li>トムは テレビのよこ です。Tom is on the side of the TV</li>
+<li>トムは テレビのとなり です。Tom is on next of the TV</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>4 / 12</div>
+</section>
+<section class='slide' id='s5'>
+<h2 class='frametitle'>Capular です: Past and Present</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><div class='center'>
+<table class='tex-table'>
+<tr><th></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td>Present</td><td>〜です</td><td>〜じゃないです</td></tr>
+<tr><td>Past</td><td>〜でした</td><td>〜じゃなかったです</td></tr>
+</table>
+</div></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>私は ブルックリン大学の学生 でした。- I was a student at Brooklyn College.</li>
+<li>あれは 日本の映画 じゃなかったです。- That was not a Japanese movie.</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><span class='small'>
+
+<div class='minipage'> 
+<table class='tex-table'>
+<tr><th></th><th>Negative</th></tr>
+<tr><td>Present</td><td>〜じゃありません</td></tr>
+<tr><td>Past</td><td>〜じゃありませんでした</td></tr>
+</table>
+</div>
+<div class='minipage'> 
+These two expressions are more formal and often used in the written language.
+</div>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>5 / 12</div>
+</section>
+<section class='slide' id='s6'>
+<h2 class='frametitle'>Verb: Polite Past and Present</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><div class='center'>
+<table class='tex-table'>
+<tr><th></th><th>Affirmative</th><th>Negative</th></tr>
+<tr><td>Present</td><td>V<sub>STEM</sub>-ます</td><td>V<sub>STEM</sub>-ません</td></tr>
+<tr><td>Past</td><td>V<sub>STEM</sub>-ました</td><td>V<sub>STEM</sub>-ませんでした</td></tr>
+</table>
+</div></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>私は 8時に <ruby>晩<rt>ばん</rt></ruby>ごはんを たべました。- I ate dinner at 8 o'clock.</li>
+<li>きのう ゲームを しませんでした。- I did not play games yesterday.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>6 / 12</div>
+</section>
+<section class='slide' id='s7'>
+<h2 class='frametitle'>Using も for on an object and more</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><span class='small'>
+We have learned how to use も on a subject of a sentence:<br>
+ボブ<span class='c-blue'>は</span> きのう ゲームを しました。わたし<span class='c-red'>も</span> きのう ゲームを しました。<br>
+<span class='c-red'>も can be used on an object or prepositional phrases</span> (に, で, etc.)<br>
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>ボブは [すし]<span class='c-blue'>を</span> たべました。[ラーメン]<span class='c-red'>も</span> たべました。</li>
+<li><ruby>私<rt>わたし</rt></ruby>は [<ruby>あに<rt>older brother</rt></ruby>]<span class='c-blue'>が</span> います。[<ruby>あね<rt>older sister</rt></ruby>]<span class='c-red'>も</span> います。</li>
+<li>ボブは [<ruby>日本<rt>にほん</rt></ruby>]<span class='c-blue'>に</span> <ruby>行<rt>い</rt></ruby>きます。ボブは [<ruby>中国<rt>ちゅうごく</rt></ruby>]<span class='c-blue'>に</span><span class='c-red'>も</span> <ruby>行<rt>い</rt></ruby>きます。</li>
+<li>ボブは [<ruby>東京<rt>とうきょう</rt></ruby>]<span class='c-blue'>で</span> ラーメンを <ruby>食<rt>た</rt></ruby>べました。 [<ruby>大阪<rt>おおさか</rt></ruby>]<span class='c-blue'>で</span><span class='c-red'>も</span> ラーメンを <ruby>食<rt>た</rt></ruby>べました。</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>〜も replace 〜は, 〜が or 〜を while 〜も is suffixed to other case particles (e.g., 〜にも, 〜でも, etc.)</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>7 / 12</div>
+</section>
+<section class='slide' id='s8'>
+<h2 class='frametitle'>Duration expressions with without a particle</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>Hour(s) durational expressions can be derived by addiing 〜<span class='c-red'><ruby>間<rt>かん</rt></ruby></span> to the o'clock expressions and they are <span class='c-red'>not suffixed by any case particle</span>:
+
+私は ボブを <span class='framebox'><span class='c-blue'><ruby>一時<rt>いちじ</rt></ruby></span><span class='c-red'><ruby>間<rt>かん</rt></ruby></span>-&#8709;</span> <ruby>待<rt>ま</rt></ruby>ちました。/I waited for Bob for an hour.</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'>
+<span class='brace-group'>
+<table class='tex-table'>
+<tr><th>1</th><th>いちじ</th><th>6</th><th>ろくじ</th></tr>
+<tr><td>2</td><td>にじ</td><td>7</td><td>しちじ</td></tr>
+<tr><td>3</td><td>さんじ</td><td>8</td><td>はちじ</td></tr>
+<tr><td>4</td><td>よじ</td><td>9</td><td>くじ</td></tr>
+<tr><td>5</td><td>ごじ</td><td>10</td><td>じゅうじ</td></tr>
+</table>
+</span> かん(＋<ruby>はん<rt>half</rt></ruby>)(＋<ruby>ぐらい<rt>about</rt></ruby>)
+
+<ol class='enum'>
+<li><ruby>二時間<rt>にじかん</rt></ruby> <ruby>本<rt>ほん</rt></ruby>を <ruby>読<rt>よ</rt></ruby>みました。/I read a book for two hours.</li>
+<li><ruby>一時間<rt>いちじかん</rt></ruby>ぐらい <ruby>待<rt>ま</rt></ruby>ちました。/I waited for about an hour.</li>
+<li><ruby>六時間<rt>ろくじかん</rt></ruby><ruby>半<rt>はん</rt></ruby>ぐらい ねました。/I slept for about six and a half hours.</li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>8 / 12</div>
+</section>
+<section class='slide' id='s9'>
+<h2 class='frametitle'>A Quatity Abverb: たくさん many, much, plenty ...</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'>たくさん (many/much) is added as an adverb when it modify an a direct object of a sentence. It is added right before or after 〜を (〜も/〜は): <span class='framebox'>... (たくさん) Dir.Obj.-<span class='c-blue'>を</span> (たくさん) ...</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>ボブは 日本で <span class='c-red'>たくさん</span> <span class='c-blue'>ラーメンを</span> たべました。</li>
+<li>ボブは 日本で <span class='c-blue'>ラーメンを</span> <span class='c-red'>たくさん</span> たべました。</li>
+<li>きのうは <span class='c-red'>たくさん</span> <span class='c-blue'><ruby>日本語<rt>にほんご</rt></ruby>を</span> <ruby>勉強<rt>べんきょう</rt></ruby>しました。</li>
+<li>きのうは <span class='c-blue'><ruby>日本語<rt>にほんご</rt></ruby>を</span> <span class='c-red'>たくさん</span> <ruby>勉強<rt>べんきょう</rt></ruby>しました。</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>Quantity Adverbs: たくさん・いっぱい</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>9 / 12</div>
+</section>
+<section class='slide' id='s10'>
+<h2 class='frametitle'>Two Functions of と: [Noun and Noun] & [with A]</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction:</div><div class='block-body'><ol class='enum'>
+<li>と connect nouns: A <span class='c-red'>と</span> B (<span class='c-red'>と</span> C ...)</li>
+<li>[noun <span class='c-blue'>と</span>] means `<em>with</em> noun' (never as instrumental `<em>with a pen</em>')</li>
+</ol></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>チーズバーガー<span class='c-red'>と</span>ポテトを 食べました。</li>
+<li>ボブ<span class='c-red'>と</span>トム(<span class='c-red'>と</span>ジョン)は チーズバーガーを 食べました。</li>
+<li>日本<span class='c-red'>と</span>韓国に 行きました。</li>
+<li>私は ボブ<span class='c-blue'>と</span> ごはんを たべました。</li>
+<li>私は ボブ<span class='c-red'>と</span>トム<span class='c-blue'>と</span> ごはんを たべました。</li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'><span class='c-red'>と</span> can add a noun more than once (cf. 2).</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>10 / 12</div>
+</section>
+<section class='slide' id='s11'>
+<h2 class='frametitle'>Some Expressions:</h2>
+<div class='alertblock'><div class='block-title'>More locative expressions</div><div class='block-body'><span class='small'>
+Xの<ruby>前<rt>まえ</rt></ruby>/<em>in front of X</em> can convey `across (the street) from X' or `opposite X' interpretations. Xのむかい is an equivalent expressions that has the `across from' or `opposite' expressions.
+</span></div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>ボブの<ruby>家<rt>うち</rt></ruby>は <ruby>図書館<rt>としょかん</rt></ruby>の<ruby>前<rt>まえ</rt></ruby> です。/Bob's home is across from the library.</li>
+<li>ボブの<ruby>家<rt>うち</rt></ruby>は <ruby>図書館<rt>としょかん</rt></ruby>のむかい です。/Bob's home is across from the library.
+</span></li>
+</ol></div></div>
+<div class='alertblock'><div class='block-title'>えっ & あっ</div><div class='block-body'>えっ and あっ are often used in colloquially.  えっ would be translated into English as `what?' or `really' as you are surprised by or cannot believe something, and あっ is like `oh yeah' as you say when you suddenly remember or realized something.</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
+<div class='block-body practice-body'>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</div>
+</div>
+<div class='slide-counter'>11 / 12</div>
+</section>
+<section class='slide' id='s12'>
+<h2 class='frametitle'>4.12: Kanji / 漢字 (新しい漢字)</h2>
+<div class='kanjiblock'>
+<div class='block-title'>Click each kanji for details on Kanshudo</div>
+<div class='block-body'>
+<ul class='kanji-grid'>
+<li><a class="k" href="https://www.kanshudo.com/kanji/日" target="_blank" rel="noopener">日</a><span class="gnum">16</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/本" target="_blank" rel="noopener">本</a><span class="gnum">17</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/人" target="_blank" rel="noopener">人</a><span class="gnum">18</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/月" target="_blank" rel="noopener">月</a><span class="gnum">19</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/火" target="_blank" rel="noopener">火</a><span class="gnum">20</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/水" target="_blank" rel="noopener">水</a><span class="gnum">21</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/木" target="_blank" rel="noopener">木</a><span class="gnum">22</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/金" target="_blank" rel="noopener">金</a><span class="gnum">23</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/土" target="_blank" rel="noopener">土</a><span class="gnum">24</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/曜" target="_blank" rel="noopener">曜</a><span class="gnum">25</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/上" target="_blank" rel="noopener">上</a><span class="gnum">26</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/下" target="_blank" rel="noopener">下</a><span class="gnum">27</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/中" target="_blank" rel="noopener">中</a><span class="gnum">28</span></li>
+<li><a class="k" href="https://www.kanshudo.com/kanji/半" target="_blank" rel="noopener">半</a><span class="gnum">29</span></li>
+</ul>
+</div>
+</div>
+<div class='slide-counter'>12 / 12</div>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genki I - Lesson 2 (Shopping)</title>
+<style>
+:root {
+  --rose-fg: #b34155; --rose-bg: #f7d8de; --rose-light: #fce8eb;
+  --green-fg: #2f7d3e; --green-bg: #cce8d1; --green-light: #e8f4eb;
+  --blue-fg: #2a4f7c; --blue-bg: #d4dfee; --blue-light: #ecf1f8;
+  --orange-fg: #b35900; --orange-bg: #ffd9a8; --orange-light: #fff1de;
+  --purple-fg: #6b3fa0; --purple-bg: #e0d4ef; --purple-light: #f3edfa;
+  --ink: #1a1a1a; --ink-soft: #555;
+}
+* { box-sizing: border-box; }
+body { font-family: "Hiragino Sans","Yu Gothic","Noto Sans CJK JP","Helvetica Neue",Arial,sans-serif; color: var(--ink); margin: 0; background: #f4f4f6; line-height: 1.55; }
+.deck-head { background: var(--rose-fg); color: white; padding: 18px 28px; }
+.deck-head h1 { margin: 0; font-size: 1.6rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+.slide { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 24px 28px; margin-bottom: 28px; position: relative; }
+.frametitle { font-size: 1.35rem; font-weight: 700; color: var(--rose-fg); border-bottom: 2px solid var(--rose-bg); padding-bottom: 10px; margin: 0 0 16px; white-space: nowrap; overflow-x: auto; overflow-y: hidden; }
+.alertblock, .exampleblock, .blockbox, .practiceblock, .kanjiblock { border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.alertblock { background: var(--rose-light); border: 1px solid var(--rose-bg); }
+.alertblock > .block-title { background: var(--rose-fg); color: white; }
+.exampleblock { background: var(--green-light); border: 1px solid var(--green-bg); }
+.exampleblock > .block-title { background: var(--green-fg); color: white; }
+.blockbox { background: var(--blue-light); border: 1px solid var(--blue-bg); }
+.blockbox > .block-title { background: var(--blue-fg); color: white; }
+.practiceblock { background: var(--orange-light); border: 1px solid var(--orange-bg); }
+.practiceblock > .block-title { background: var(--orange-fg); color: white; }
+.kanjiblock { background: var(--purple-light); border: 1px solid var(--purple-bg); }
+.kanjiblock > .block-title { background: var(--purple-fg); color: white; }
+.block-title { padding: 6px 12px; font-weight: 600; font-size: 0.95rem; }
+.block-body { padding: 12px 16px; font-size: 0.93rem; }
+.block-body p { margin: 0.4em 0; }
+.block-body ul, .block-body ol { margin: 0.45em 0 0.45em 0; padding-left: 1.6em; }
+.block-body li { margin: 0.28em 0; }
+.item-label { display: inline-block; min-width: 1.5em; font-weight: 600; color: var(--ink-soft); margin-right: 0.4em; }
+ul.itm li::marker { color: var(--rose-fg); }
+ol.enum li::marker { font-weight: 600; color: var(--ink-soft); }
+.c-red { color: #d23047; font-weight: 600; }
+.c-blue { color: #2a59a8; font-weight: 600; }
+.c-brown { color: #8a5a2b; font-weight: 600; }
+.sc { font-variant: small-caps; font-size: 0.85em; letter-spacing: 0.05em; }
+s { text-decoration: line-through; text-decoration-color: #c33; text-decoration-thickness: 2px; }
+sub, sup { font-size: 0.7em; }
+.framebox { display: inline-block; border: 1.5px solid var(--ink); border-radius: 3px; padding: 1px 6px; font-weight: 600; background: white; }
+ruby rt { font-size: 0.55em; color: var(--ink-soft); }
+.multicols { columns: 2; column-gap: 1.4em; }
+.multicols-2 { columns: 2; }
+.multicols-3 { columns: 3; }
+ul.multicols-2, ol.multicols-2 { columns: 2; column-gap: 1.4em; }
+ul.multicols-3, ol.multicols-3 { columns: 3; column-gap: 1.2em; }
+ul.multicols-2 li, ol.multicols-2 li,
+ul.multicols-3 li, ol.multicols-3 li { break-inside: avoid-column; }
+.cols-wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+.col { flex: 1 1 40%; }
+.center { text-align: center; }
+.spts { font-size: 0.78em; }
+.small { font-size: 0.92em; }
+.large { font-size: 1.1em; }
+table.tex-table { border-collapse: collapse; margin: 6px 0; font-size: 0.88em; }
+table.tex-table th, table.tex-table td { border: 1px solid #999; padding: 4px 8px; vertical-align: middle; text-align: center; }
+table.tex-table th { background: #f4f4f4; font-weight: 600; }
+.writing-line { height: 1px; background: #b88a4a; margin: 18px 0; }
+.practice-body { padding-top: 4px; padding-bottom: 4px; }
+.slide-counter { position: absolute; bottom: 8px; right: 14px; font-size: 0.78rem; color: var(--ink-soft); }
+.nav-bar { position: sticky; top: 0; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ddd; padding: 8px 16px; z-index: 100; font-size: 0.85rem; overflow-x: auto; white-space: nowrap; }
+.nav-bar a { color: var(--rose-fg); margin-right: 14px; text-decoration: none; font-weight: 500; white-space: nowrap; }
+.nav-bar a:hover { text-decoration: underline; }
+.deictic-svg { display: block; max-width: 360px; margin: 6px auto 4px; height: auto; }
+.alert-with-figure { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.alert-with-figure .alert-text { flex: 1 1 55%; min-width: 240px; }
+.alert-with-figure .alert-fig { flex: 0 1 320px; }
+@media (max-width: 600px) {
+  .frametitle { font-size: 1.05rem; }
+  .deck-head h1 { font-size: 1.2rem; }
+  .deck { padding: 12px 8px 32px; }
+  .slide { padding: 16px 14px; }
+}
+/* video popup modal */
+.kv-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.kv-overlay.open { display: flex; }
+.kv-box { background: #111; border-radius: 8px; padding: 14px; max-width: 480px; width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: relative; }
+.kv-box video { width: 100%; height: auto; display: block; background: #000; border-radius: 4px; }
+.kv-close { position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border-radius: 50%; background: white; color: #b34155; border: 2px solid #b34155; font-size: 1.3rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.kv-close:hover { background: #b34155; color: white; }
+.kv-label { color: white; text-align: center; font-size: 1.6rem; font-weight: 600; margin-top: 8px; }
+</style>
+</head>
+<body>
+<header class="deck-head"><h1>Genki I - Lesson 2 (Shopping / かいもの)</h1></header>
+<nav class="nav-bar">
+<a href="#s1">2.1 これ/それ/あれ</a>
+<a href="#s2">2.2 この/その/あの</a>
+<a href="#s3">2.3 ここ/そこ/あそこ</a>
+<a href="#s4">2.4 どれ/どの/どこ</a>
+<a href="#s5">2.5 だれ/だれの</a>
+<a href="#s6">2.6 〜も</a>
+<a href="#s7">2.7 A is not B</a>
+<a href="#s8">2.8 〜ね/〜よ</a>
+<a href="#s9">2.9 Numbers</a>
+<a href="#s10">2.10 Currency</a>
+<a href="#s11">2.11 Katakana Videos</a>
+<a href="#s12">2.12 Katakana</a>
+<a href="#s13">2.13 Expressions</a>
+<a href="#s14">2.14 Exercises A–E</a>
+<a href="#s15">2.15 Exercises F–J</a>
+<a href="#s16">2.16 Vocab</a>
+</nav>
+<main class="deck">
+
+<!-- ====== SLIDE 1: kore/sore/are ====== -->
+<section class='slide' id='s1'>
+<h2 class='frametitle'>Less. 2.1: Deictic Pronouns これ・それ・あれ : げ P60</h2>
+<div class='alertblock'><div class='block-title'>Deictic independent pronouns: これ・それ・あれ</div><div class='block-body'>
+<div class='alert-with-figure'>
+<div class='alert-text'>
+Japanese does not have the 2-way deictic system as in English (<em>this</em>/<em>that</em>, <em>here</em>/<em>there</em>). It has a 3-way system instead: <span class='c-red'>this</span> one / <span class='c-red'>that</span> one / <span class='c-red'>that</span> one <span class='c-red'>over there</span>.
+<ul class='itm small'>
+<li>Closer to the <strong>speaker</strong>: <span class='c-red'>これ</span> · <em>this one</em></li>
+<li>Closer to the <strong>addressee</strong>: <span class='c-red'>それ</span> · <em>that one</em></li>
+<li>Away from <strong>both</strong>: <span class='c-red'>あれ</span> · <em>that one over there</em></li>
+</ul>
+</div>
+<div class='alert-fig'>
+<svg class='deictic-svg' viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'>
+  <!-- Speaker label -->
+  <text x='55' y='14' text-anchor='middle' font-size='11' fill='#555'>わたし</text>
+  <text x='55' y='27' text-anchor='middle' font-size='9' fill='#888'>speaker</text>
+  <!-- Speaker figure (head + body) -->
+  <circle cx='55' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 55 61 L 55 95 M 55 72 L 40 84 M 55 72 L 70 84 M 55 95 L 45 115 M 55 95 L 65 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <!-- Addressee label -->
+  <text x='305' y='14' text-anchor='middle' font-size='11' fill='#555'>やまださん</text>
+  <text x='305' y='27' text-anchor='middle' font-size='9' fill='#888'>addressee</text>
+  <!-- Addressee figure -->
+  <circle cx='305' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 305 61 L 305 95 M 305 72 L 290 84 M 305 72 L 320 84 M 305 95 L 295 115 M 305 95 L 315 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <!-- Speaker's deictic これ -->
+  <rect x='78' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='108' y='59' text-anchor='middle' font-size='11' font-weight='600'>これ</text>
+  <text x='108' y='80' text-anchor='middle' font-size='9' fill='#555'>this one</text>
+  <!-- Addressee's deictic それ -->
+  <rect x='222' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='252' y='59' text-anchor='middle' font-size='11' font-weight='600'>それ</text>
+  <text x='252' y='80' text-anchor='middle' font-size='9' fill='#555'>that one</text>
+  <!-- Far deictic あれ -->
+  <rect x='110' y='145' width='140' height='24' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='180' y='162' text-anchor='middle' font-size='12' font-weight='600'>あれ</text>
+  <text x='180' y='184' text-anchor='middle' font-size='9' fill='#555'>that one over there</text>
+</svg>
+</div>
+</div>
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><span class='c-red'>これ</span>は わたしのほんです。<em>This (one) is my book.</em></li>
+<li><span class='c-red'>それ</span>は やまださんのほんですか。<em>Is that (one) Yamada-san's book?</em></li>
+<li><span class='c-red'>あれ</span>は たなかさんのほんです。<em>That (one over there) is Tanaka-san's book.</em></li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: point at three objects and describe with これ・それ・あれ.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>1 / 16</div>
+</section>
+
+<!-- ====== SLIDE 2: kono/sono/ano ====== -->
+<section class='slide' id='s2'>
+<h2 class='frametitle'>Less. 2.2: Deictic Determiners この〜・その〜・あの〜 : げ P61</h2>
+<div class='alertblock'><div class='block-title'>Deictic determiners: この〜・その〜・あの〜</div><div class='block-body'>
+<div class='alert-with-figure'>
+<div class='alert-text'>
+The 3-way deictic system: [<span class='c-red'>この</span> Noun] / [<em>this</em> Noun]; [<span class='c-red'>その</span> Noun] / [<em>that</em> Noun]; [<span class='c-red'>あの</span> Noun] / [<em>that</em> Noun <em>over there</em>].
+<ul class='itm small'>
+<li>Closer to speaker → modify with <span class='c-red'>この〜</span></li>
+<li>Closer to addressee → modify with <span class='c-red'>その〜</span></li>
+<li>Away from both → modify with <span class='c-red'>あの〜</span></li>
+</ul>
+</div>
+<div class='alert-fig'>
+<svg class='deictic-svg' viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'>
+  <text x='55' y='14' text-anchor='middle' font-size='11' fill='#555'>わたし</text>
+  <text x='55' y='27' text-anchor='middle' font-size='9' fill='#888'>speaker</text>
+  <circle cx='55' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 55 61 L 55 95 M 55 72 L 40 84 M 55 72 L 70 84 M 55 95 L 45 115 M 55 95 L 65 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <text x='305' y='14' text-anchor='middle' font-size='11' fill='#555'>やまださん</text>
+  <text x='305' y='27' text-anchor='middle' font-size='9' fill='#888'>addressee</text>
+  <circle cx='305' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 305 61 L 305 95 M 305 72 L 290 84 M 305 72 L 320 84 M 305 95 L 295 115 M 305 95 L 315 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <rect x='78' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='108' y='59' text-anchor='middle' font-size='11' font-weight='600'>この〜</text>
+  <text x='108' y='80' text-anchor='middle' font-size='9' fill='#555'>this 〜</text>
+  <rect x='222' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='252' y='59' text-anchor='middle' font-size='11' font-weight='600'>その〜</text>
+  <text x='252' y='80' text-anchor='middle' font-size='9' fill='#555'>that 〜</text>
+  <rect x='110' y='145' width='140' height='24' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='180' y='162' text-anchor='middle' font-size='12' font-weight='600'>あの〜</text>
+  <text x='180' y='184' text-anchor='middle' font-size='9' fill='#555'>that 〜 over there</text>
+</svg>
+</div>
+</div>
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>[<span class='c-red'>この</span>ほん]は わたしのほんです。<em>This book is my book.</em></li>
+<li>[<span class='c-red'>その</span>ほん]は やまださんのほんです。<em>That book is Yamada-san's book.</em></li>
+<li>[<span class='c-red'>あの</span>ほん]は たなかさんのほんです。<em>That book over there is Tanaka-san's book.</em></li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write three この/その/あの-N sentences about classroom objects.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>2 / 16</div>
+</section>
+
+<!-- ====== SLIDE 3: koko/soko/asoko ====== -->
+<section class='slide' id='s3'>
+<h2 class='frametitle'>Less. 2.3: Deictic Locatives ここ・そこ・あそこ : げ P62</h2>
+<div class='alertblock'><div class='block-title'>Deictic locatives: ここ・そこ・あそこ</div><div class='block-body'>
+<div class='alert-with-figure'>
+<div class='alert-text'>
+The 3-way deictic system: <span class='c-red'>ここ</span> · <em>here</em>; <span class='c-red'>そこ</span> · <em>there</em>; <span class='c-red'>あそこ</span> · <em>over there</em>.
+<ul class='itm small'>
+<li>Closer to speaker → <span class='c-red'>ここ</span> · <em>here</em></li>
+<li>Closer to addressee → <span class='c-red'>そこ</span> · <em>there</em></li>
+<li>Away from both → <span class='c-red'>あそこ</span> · <em>over there</em></li>
+</ul>
+</div>
+<div class='alert-fig'>
+<svg class='deictic-svg' viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'>
+  <text x='55' y='14' text-anchor='middle' font-size='11' fill='#555'>わたし</text>
+  <text x='55' y='27' text-anchor='middle' font-size='9' fill='#888'>speaker</text>
+  <circle cx='55' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 55 61 L 55 95 M 55 72 L 40 84 M 55 72 L 70 84 M 55 95 L 45 115 M 55 95 L 65 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <text x='305' y='14' text-anchor='middle' font-size='11' fill='#555'>やまださん</text>
+  <text x='305' y='27' text-anchor='middle' font-size='9' fill='#888'>addressee</text>
+  <circle cx='305' cy='52' r='9' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M 305 61 L 305 95 M 305 72 L 290 84 M 305 72 L 320 84 M 305 95 L 295 115 M 305 95 L 315 115' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <rect x='78' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='108' y='59' text-anchor='middle' font-size='11' font-weight='600'>ここ</text>
+  <text x='108' y='80' text-anchor='middle' font-size='9' fill='#555'>here</text>
+  <rect x='222' y='44' width='60' height='22' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='252' y='59' text-anchor='middle' font-size='11' font-weight='600'>そこ</text>
+  <text x='252' y='80' text-anchor='middle' font-size='9' fill='#555'>there</text>
+  <rect x='110' y='145' width='140' height='24' fill='#ffeb70' stroke='#c19400' stroke-width='1'/>
+  <text x='180' y='162' text-anchor='middle' font-size='12' font-weight='600'>あそこ</text>
+  <text x='180' y='184' text-anchor='middle' font-size='9' fill='#555'>over there</text>
+</svg>
+</div>
+</div>
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li><span class='c-red'>ここ</span>は <ruby>日本<rt>にほん</rt></ruby>です。<em>Here is Japan.</em></li>
+<li><span class='c-red'>そこ</span>は <ruby>トイレ<rt>といれ</rt></ruby>です。<em>There (close to you) is the restroom.</em></li>
+<li><span class='c-red'>あそこ</span>は <ruby>カナダ<rt>かなだ</rt></ruby>です。<em>Over there is Canada.</em></li>
+</ol></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: ask and answer "Where is X?" with three buildings on campus.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>3 / 16</div>
+</section>
+
+<!-- ====== SLIDE 4: dore/dono/doko ====== -->
+<section class='slide' id='s4'>
+<h2 class='frametitle'>Less. 2.1–3: Interrogative どれ・どの・どこ</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+The three sets of deictic expressions have an interrogative counterpart: <span class='c-red'>どれ</span>/<em>which one</em>; [<span class='c-red'>どの</span> NP]/[<em>which</em> NP]; and <span class='c-red'>どこ</span>/<em>where</em>.
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ul class='itm'>
+<li><span class='c-red'>どれ</span>が やまださんのくるま ですか。<em><span class='c-red'>Which</span> one is Yamada-san's car?</em></li>
+<li><span class='c-red'>どの</span>くるまが やまださんのくるま ですか。<em><span class='c-red'>Which car</span> is Yamada-san's car?</em></li>
+<li>やまださんのへやは <span class='c-red'>どこ</span>ですか。<em>Where is Yamada-san's room?</em></li>
+</ul></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+The suffix 〜<span class='c-red'>が</span> is a "focus" marker. It is used with interrogative phrases, while 〜は cannot mark interrogative phrases (cf. げ P63).
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write a どれ-, どの-, and どこ-question pair.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>4 / 16</div>
+</section>
+
+<!-- ====== SLIDE 5: dare ====== -->
+<section class='slide' id='s5'>
+<h2 class='frametitle'>Less. 2.4: だれ/who and だれの/whose : げ P62</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+<span class='c-red'>だれ</span> means <em>who</em>. By adding 〜の to it, we derive the possessive <em>whose 〜</em> = <span class='c-red'>だれの〜</span>, in the same way that わたし/"I" turns into わたしの〜/"my〜".
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ol class='enum'>
+<li>あのひとは <span class='c-red'>だれ</span> ですか。<em>Who is that person?</em></li>
+<li>あのくるまは <span class='c-red'>だれの</span>くるま ですか。<em>Whose car is that?</em></li>
+</ol></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+だれ and だれの〜 can appear in the subject position:
+<ul class='itm'>
+<li><span class='c-red'>だれが</span> にほんじん ですか。<em>Who is Japanese (here)?</em></li>
+<li><span class='c-red'>だれの</span>くるまが プリウスですか。<em>Whose car is a Prius?</em></li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write a だれの〜 question about a classmate's belongings.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>5 / 16</div>
+</section>
+
+<!-- ====== SLIDE 6: Noun mo ====== -->
+<section class='slide' id='s6'>
+<h2 class='frametitle'>Less. 2.5: Noun-も</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+Noun-<span class='c-red'>も</span> marks an expression that shares a property already mentioned in the context, like English "<em>too</em>".
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'>
+やまださんは にほんじん です。<em>Yamada-san is a Japanese national.</em><br>
+たなかさん<span class='c-red'>も</span> にほんじん です。<em>Tanaka-san is also a Japanese national.</em>
+</div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+〜も must be added directly to the part that shares the aforementioned property. This is unlike English "too," which can appear at the end of a sentence: <em>I am American too.</em> vs. <em>I, too, am American.</em>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: find a classmate who shares a property with you and report with も.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>6 / 16</div>
+</section>
+
+<!-- ====== SLIDE 7: A is not B ====== -->
+<section class='slide' id='s7'>
+<h2 class='frametitle'>Less. 2.6: A is not B : げ P63</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+<span class='c-red'>じゃありません</span> / <span class='c-red'>ではありません</span> / <span class='c-red'>じゃないです</span> are the negative counterparts of です: <em>A is not B</em>.
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ul class='itm'>
+<li>わたしは にほんじん <s>です</s>。 <em>I am Japanese.</em></li>
+<li>わたしは にほんじん <span class='c-red'>じゃありません</span>。 <em>I am not Japanese.</em></li>
+<li>わたしは にほんじん <span class='c-red'>ではありません</span>。 <em>I am not Japanese.</em></li>
+<li>わたしは にほんじん <span class='c-red'>じゃないです</span>。 <em>I am not Japanese.</em></li>
+</ul></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+ではありません sounds a little more formal than じゃありません, while じゃないです sounds less formal and more colloquial.
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: deny three things about yourself with じゃないです.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>7 / 16</div>
+</section>
+
+<!-- ====== SLIDE 8: ne/yo ====== -->
+<section class='slide' id='s8'>
+<h2 class='frametitle'>Less. 2.7: Conversational particles 〜ね and 〜よ : げ P64</h2>
+<div class='alertblock'><div class='block-title'>Grammatical Construction</div><div class='block-body'>
+<span class='c-red'>〜ね</span> and <span class='c-red'>〜よ</span> can be added at the end of a sentence to convey how it is used in conversation. 〜ね is like English "<em>... right?</em>", which seeks agreement; 〜よ is like "<em>I'm telling you ...</em>", which emphasizes the statement.
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example</div><div class='block-body'><ul class='itm'>
+<li>やまださんは にほんじん です<span class='c-red'>ね</span>。<em>Yamada-san is Japanese, right?</em></li>
+<li>やまださんは にほんじん です<span class='c-red'>よ</span>。<em>Yamada-san is Japanese (I'm telling you).</em></li>
+</ul></div></div>
+<div class='blockbox'><div class='block-title'>Note</div><div class='block-body'>
+〜ね and 〜よ are always placed at the end of a sentence.
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: write one ね-sentence and one よ-sentence.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>8 / 16</div>
+</section>
+
+<!-- ====== SLIDE 9: Numbers 100-10000 ====== -->
+<section class='slide' id='s9'>
+<h2 class='frametitle'>Numbers: 100, 1,000, 10,000 : げ P67</h2>
+<div class='alertblock'><div class='block-title'>Numbers: 100 — 1,000,000</div><div class='block-body'>
+<div class='center'>
+<table class='tex-table'>
+<tr><th colspan='2'>100–900</th><th colspan='2'>1,000–9,000</th><th colspan='2'>10,000–90,000</th></tr>
+<tr><td>100</td><td>ひゃく</td><td>1,000</td><td>せん</td><td>10,000</td><td>いちまん</td></tr>
+<tr><td>200</td><td>にひゃく</td><td>2,000</td><td>にせん</td><td>20,000</td><td>にまん</td></tr>
+<tr><td>300</td><td>さん<span class='c-red'>び</span>ゃく</td><td>3,000</td><td>さん<span class='c-red'>ぜ</span>ん</td><td>30,000</td><td>さんまん</td></tr>
+<tr><td>400</td><td>よんひゃく</td><td>4,000</td><td>よんせん</td><td>40,000</td><td>よんまん</td></tr>
+<tr><td>500</td><td>ごひゃく</td><td>5,000</td><td>ごせん</td><td>50,000</td><td>ごまん</td></tr>
+<tr><td>600</td><td>ろ<span class='c-blue'>っぴ</span>ゃく</td><td>6,000</td><td>ろくせん</td><td>60,000</td><td>ろくまん</td></tr>
+<tr><td>700</td><td>ななひゃく</td><td>7,000</td><td>ななせん</td><td>70,000</td><td>ななまん</td></tr>
+<tr><td>800</td><td>は<span class='c-blue'>っぴ</span>ゃく</td><td>8,000</td><td>は<span class='c-blue'>っ</span>せん</td><td>80,000</td><td>はちまん</td></tr>
+<tr><td>900</td><td>きゅうひゃく</td><td>9,000</td><td>きゅうせん</td><td>90,000</td><td>きゅうまん</td></tr>
+<tr><td colspan='6'>100,000 じゅうまん — 1,000,000 ひゃくまん</td></tr>
+</table>
+</div>
+<p class='small'>Highlighted cells show sound changes (sandhi).</p>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: read aloud: 345 · 1,500 · 8,000 · 12,300 · 60,500.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>9 / 16</div>
+</section>
+
+<!-- ====== SLIDE 10: Currency ====== -->
+<section class='slide' id='s10'>
+<h2 class='frametitle'>Japanese Currency えん/円/¥ : げ P66–68</h2>
+<div class='alertblock'><div class='block-title'>[#＋えん]</div><div class='block-body'>
+<table class='tex-table' style='margin:0 auto;'>
+<tr><td>¥1 / いちえん</td><td>¥2 / にえん</td><td>¥3 / さんえん</td></tr>
+<tr><td>¥4 / <span class='c-red'>よえん</span></td><td>¥5 / ごえん</td><td>¥6 / ろくえん</td></tr>
+<tr><td>¥7 / ななえん</td><td>¥8 / はちえん</td><td>¥9 / きゅうえん</td></tr>
+<tr><td colspan='3'>¥10 / じゅうえん · ¥100 / ひゃくえん · ¥1,000 / せんえん · ¥10,000 / いちまんえん</td></tr>
+</table>
+<p class='small'><span class='framebox'>NB</span> ４円 is often pronounced <span class='c-red'>よえん</span> instead of よんえん.</p>
+</div></div>
+<div class='exampleblock'><div class='block-title'>Example — いくら / how much</div><div class='block-body'>
+おちゃは <span class='c-red'>いくら</span> ですか。 <em>How much is the tea?</em>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: ask the price of three classroom items in yen.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>10 / 16</div>
+</section>
+
+<!-- ====== SLIDE 11: Katakana Videos ====== -->
+<section class='slide' id='s11'>
+<h2 class='frametitle'>カタカナ Videos</h2>
+<div class='alertblock'><div class='block-title'>Click any kana to play its stroke-order video</div><div class='block-body'><span class='small'>
+Miami University Japanese Program — GRAMELAC.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Katakana stroke-order videos</div><div class='block-body'>
+<style>
+table.kana-grid { border-collapse: collapse; margin: 6px auto; }
+table.kana-grid th, table.kana-grid td { border: 1px solid #888; width: 56px; height: 56px; text-align: center; vertical-align: middle; padding: 0; }
+table.kana-grid th { background: #f4f4f4; font-weight: 600; }
+table.kana-grid td.empty { background: #f9f9f9; }
+table.kana-grid a.kana { display: inline-block; padding: 6px 10px; font-size: 1.6rem; font-weight: 600; color: var(--rose-fg); text-decoration: none; border-radius: 4px; line-height: 1; }
+table.kana-grid a.kana:hover { background: var(--rose-bg); color: #7a0a25; }
+</style>
+<table class='kana-grid'>
+<tr><th></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+<tr><th>∅</th>
+  <td><a class='kana' href='movies/katakana/697_ak.mp4'>ア</a></td>
+  <td><a class='kana' href='movies/katakana/697_ik.mp4'>イ</a></td>
+  <td><a class='kana' href='movies/katakana/697_uk.mp4'>ウ</a></td>
+  <td><a class='kana' href='movies/katakana/697_ek.mp4'>エ</a></td>
+  <td><a class='kana' href='movies/katakana/697_ok.mp4'>オ</a></td></tr>
+<tr><th>k</th>
+  <td><a class='kana' href='movies/katakana/697_kak.mp4'>カ</a></td>
+  <td><a class='kana' href='movies/katakana/697_kik.mp4'>キ</a></td>
+  <td><a class='kana' href='movies/katakana/697_kuk.mp4'>ク</a></td>
+  <td><a class='kana' href='movies/katakana/697_kek.mp4'>ケ</a></td>
+  <td><a class='kana' href='movies/katakana/697_kok.mp4'>コ</a></td></tr>
+<tr><th>s</th>
+  <td><a class='kana' href='movies/katakana/697_sak.mp4'>サ</a></td>
+  <td><a class='kana' href='movies/katakana/697_shik.mp4'>シ</a></td>
+  <td><a class='kana' href='movies/katakana/697_suk.mp4'>ス</a></td>
+  <td><a class='kana' href='movies/katakana/697_sek.mp4'>セ</a></td>
+  <td><a class='kana' href='movies/katakana/697_sok.mp4'>ソ</a></td></tr>
+<tr><th>t</th>
+  <td><a class='kana' href='movies/katakana/697_tak.mp4'>タ</a></td>
+  <td><a class='kana' href='movies/katakana/697_chik.mp4'>チ</a></td>
+  <td><a class='kana' href='movies/katakana/697_tsuk.mp4'>ツ</a></td>
+  <td><a class='kana' href='movies/katakana/697_tek.mp4'>テ</a></td>
+  <td><a class='kana' href='movies/katakana/697_tok.mp4'>ト</a></td></tr>
+<tr><th>n</th>
+  <td><a class='kana' href='movies/katakana/697_nak.mp4'>ナ</a></td>
+  <td><a class='kana' href='movies/katakana/697_nik.mp4'>ニ</a></td>
+  <td><a class='kana' href='movies/katakana/697_nuk.mp4'>ヌ</a></td>
+  <td><a class='kana' href='movies/katakana/697_nek.mp4'>ネ</a></td>
+  <td><a class='kana' href='movies/katakana/697_nok.mp4'>ノ</a></td></tr>
+<tr><th>h</th>
+  <td><a class='kana' href='movies/katakana/697_hak.mp4'>ハ</a></td>
+  <td><a class='kana' href='movies/katakana/697_hik.mp4'>ヒ</a></td>
+  <td><a class='kana' href='movies/katakana/697_fuk.mp4'>フ</a></td>
+  <td><a class='kana' href='movies/katakana/697_hek.mp4'>ヘ</a></td>
+  <td><a class='kana' href='movies/katakana/697_hok.mp4'>ホ</a></td></tr>
+<tr><th>m</th>
+  <td><a class='kana' href='movies/katakana/697_mak.mp4'>マ</a></td>
+  <td><a class='kana' href='movies/katakana/697_mik.mp4'>ミ</a></td>
+  <td><a class='kana' href='movies/katakana/697_muk.mp4'>ム</a></td>
+  <td><a class='kana' href='movies/katakana/697_mek.mp4'>メ</a></td>
+  <td><a class='kana' href='movies/katakana/697_mok.mp4'>モ</a></td></tr>
+<tr><th>y</th>
+  <td><a class='kana' href='movies/katakana/697_yak.mp4'>ヤ</a></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/katakana/697_yuk.mp4'>ユ</a></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/katakana/697_yok.mp4'>ヨ</a></td></tr>
+<tr><th>r</th>
+  <td><a class='kana' href='movies/katakana/697_rak.mp4'>ラ</a></td>
+  <td><a class='kana' href='movies/katakana/697_rik.mp4'>リ</a></td>
+  <td><a class='kana' href='movies/katakana/697_ruk.mp4'>ル</a></td>
+  <td><a class='kana' href='movies/katakana/697_rek.mp4'>レ</a></td>
+  <td><a class='kana' href='movies/katakana/697_rok.mp4'>ロ</a></td></tr>
+<tr><th>w</th>
+  <td><a class='kana' href='movies/katakana/697_wak.mp4'>ワ</a></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td><a class='kana' href='movies/katakana/697_wok.mp4'>ヲ</a></td></tr>
+<tr><th>n</th>
+  <td><a class='kana' href='movies/katakana/697_nk.mp4'>ン</a></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td>
+  <td class='empty'></td></tr>
+</table>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: pick five katakana and trace each three times after the video.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>11 / 16</div>
+</section>
+
+<!-- ====== SLIDE 12: Katakana ====== -->
+<section class='slide' id='s12'>
+<h2 class='frametitle'>カタカナ: Long Vowels &amp; Foreign Sounds : げ P26</h2>
+<div class='alertblock'><div class='block-title'>1. Long vowels in katakana</div><div class='block-body'>
+The dash <strong>ー</strong> indicates a long vowel: ア / アー = a / ā; キャ / キャー = kya / kyā; バタ / バター = bata / batā; タキ / ターキー = taki / tākī.
+</div></div>
+<div class='alertblock'><div class='block-title'>2. Foreign sounds</div><div class='block-body'>
+Combinations of katakana letters write sounds not native to Japanese:
+<ul class='itm'>
+<li>ヒュ — ヒューイ /<em>Hyuui</em>/ (Heuy)</li>
+<li>フュ — フューチャー /<em>fyuuchaa</em>/ (future)</li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: transcribe three loanwords (e.g., coffee, computer, hamburger) in katakana.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>12 / 16</div>
+</section>
+
+<!-- ====== SLIDE 12: Useful Expressions Set 3 ====== -->
+<section class='slide' id='s13'>
+<h2 class='frametitle'>Useful Expressions: Set 3 : げ P81</h2>
+<div class='alertblock'><div class='block-title'>Classroom expressions</div><div class='block-body'>
+<ul class='multicols-2 itm'>
+<li><ruby>わかりましたか<rt>wakarimashita ka</rt></ruby>。<br>— Do you understand?</li>
+<li><ruby>わかりました<rt>wakarimashita</rt></ruby>。<br>— I understand.</li>
+<li><ruby>わかりません<rt>wakarimasen</rt></ruby>。<br>— I don't understand.</li>
+<li>X を <ruby>みてください<rt>mite kudasai</rt></ruby>。<br>— Please look at X.</li>
+<li><ruby>ちょっと<rt>chotto</rt></ruby> <ruby>まってください<rt>matte kudasai</rt></ruby>。<br>— Please wait a little.</li>
+<li><ruby>ゆっくり<rt>yukkuri</rt></ruby> <ruby>いってください<rt>itte kudasai</rt></ruby>。<br>— Please say it slowly.</li>
+<li><ruby>もういちど<rt>moo ichido</rt></ruby> <ruby>いってください<rt>itte kudasai</rt></ruby>。<br>— Please say it again.</li>
+<li><ruby>きいてください<rt>kiite kudasai</rt></ruby>。<br>— Please listen / Please ask.</li>
+</ul>
+</div></div>
+<div class='practiceblock'>
+<div class='block-title'>Your own: use one of these to interrupt me politely during class.</div>
+<div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
+</div>
+<div class='slide-counter'>13 / 16</div>
+</section>
+
+<!-- ====== SLIDE 13: Exercises A–E ====== -->
+<section class='slide' id='s14'>
+<h2 class='frametitle'>In-Class Exercises: A–E</h2>
+<div class='blockbox'><div class='block-title'>Exercise A — Reading Numbers Warm-up (TXB p.67 / WB p.25)</div><div class='block-body'><span class='small'>
+<strong>(1) Read aloud:</strong> 34 · 67 · 83 · 99 · 125 · 515 · 603 · 850 · 1,300 · 3,400 · 8,900 · 35,000 · 64,500 · 92,340<br>
+<strong>(2) Write in numerals:</strong> (a) よんひゃくななじゅう · (b) はっぴゃくごじゅうさん · (c) せんさんびゃく · (d) いちまんななせん · (e) さんぜんろっぴゃくじゅうに
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise B — これ・それ・あれ (What is this?) (TXB p.69 / WB p.26)</div><div class='block-body'><span class='small'>
+Items 1–6 are near You; items 7–12 are near Partner.
+<div class='framebox'>Friend: <ruby>それは<rt>sore wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。 &nbsp;&nbsp; You: <ruby>これは<rt>kore wa</rt></ruby> ___ <ruby>です<rt>desu</rt></ruby>。</div>
+Vocabulary cues: ノート, かさ, しんぶん, ほん, くつ, とけい, かばん, さいふ, ジーンズ, じてんしゃ, スマホ, ぼうし.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise C — Buildings (TXB p.70)</div><div class='block-body'><span class='small'>
+<div class='framebox'>Q: <ruby>あれは<rt>are wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。 &nbsp;&nbsp; A: あれは ___ です。</div>
+Cues: としょかん · ぎんこう · ゆうびんきょく · コンビニ · だいがく.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise D — このNはいくらですか (TXB p.70–72)</div><div class='block-body'><span class='small'>
+<div class='framebox'>
+Customer: <ruby>すみません<rt>sumimasen</rt></ruby>。<ruby>この<rt>kono</rt></ruby>___ <ruby>は<rt>wa</rt></ruby> <ruby>いくらですか<rt>ikura desu ka</rt></ruby>。<br>
+Vendor: ___ <ruby>えんです<rt>en desu</rt></ruby>。<br>
+Customer: <ruby>じゃあ<rt>jaa</rt></ruby>、<ruby>その<rt>sono</rt></ruby>___ <ruby>を<rt>o</rt></ruby> <ruby>ください<rt>kudasai</rt></ruby>。
+</div>
+Prices: ノート ¥450 · かさ ¥1,000 · しんぶん ¥160 · ほん ¥1,500 · くつ ¥3,500 · とけい ¥10,000 · かばん ¥20,000 · さいふ ¥8,000 · ジーンズ ¥9,000 · じてんしゃ ¥25,000 · スマホ ¥34,000 · ぼうし ¥2,800.
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise E — どこですか (Where is it?) (TXB p.72)</div><div class='block-body'><span class='small'>
+<div class='framebox'>
+A: <ruby>すみません<rt>sumimasen</rt></ruby>。___ <ruby>は<rt>wa</rt></ruby> <ruby>どこですか<rt>doko desu ka</rt></ruby>。<br>
+B: ___ <ruby>です<rt>desu</rt></ruby>。 &nbsp;&nbsp; A: <ruby>ありがとうございます<rt>arigatoo gozaimasu</rt></ruby>。
+</div>
+Cues: トイレ · としょかん · くつ · やさい · メニュー · えいごの ほん · ぎんこう.
+</span></div></div>
+<div class='slide-counter'>14 / 16</div>
+</section>
+
+<!-- ====== SLIDE 14: Exercises F–J ====== -->
+<section class='slide' id='s15'>
+<h2 class='frametitle'>In-Class Exercises: F–J</h2>
+<div class='blockbox'><div class='block-title'>Exercise F — だれの〜ですか (TXB p.73 / WB p.28)</div><div class='block-body'><span class='small'>
+Pass an item around and ask:
+<div class='framebox'>
+A: <ruby>これは<rt>kore wa</rt></ruby> <ruby>だれの<rt>dare no</rt></ruby> ___ <ruby>ですか<rt>desu ka</rt></ruby>。<br>
+B: <ruby>いいえ<rt>iie</rt></ruby>、<ruby>わたしの<rt>watashi no</rt></ruby> ___ <ruby>じゃないです<rt>ja nai desu</rt></ruby>。Cさんの ___ ですか。<br>
+C: <ruby>はい<rt>hai</rt></ruby>、<ruby>わたしの<rt>watashi no</rt></ruby> ___ <ruby>です<rt>desu</rt></ruby>。
+</div>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise G — Noun も (TXB p.73 / WB p.29)</div><div class='block-body'><span class='small'>
+Translate using も after the underlined phrase:
+<ol class='enum'>
+<li>Ms. Tanaka is Japanese. <u>Mr. Yoshida</u> is Japanese, too.</li>
+<li>Ms. Tanaka is 20 years old. <u>Mr. Yoshida</u> is 20, too.</li>
+<li>This umbrella is ¥2,000. <u>That umbrella</u> is ¥2,000, too.</li>
+<li>This is my bicycle. <u>That</u> is my bicycle, too.</li>
+<li>Takeshi's major is history. <u>My major</u> is history, too.</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise H — Negative (じゃないです) (TXB p.74 / WB p.29)</div><div class='block-body'><span class='small'>
+Answer in the negative:
+<ol class='enum'>
+<li>たけしさんは かいしゃいんですか。</li>
+<li>たけしさんは アメリカじんですか。</li>
+<li>たけしさんの せんこうは けいざいですか。</li>
+<li>これは たけしさんの かさですか。 (No, it's Yui's umbrella.)</li>
+<li>これは たけしさんの ほんですか。 (No, it's Ken's book.)</li>
+</ol>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise I — Role Plays (TXB p.76)</div><div class='block-body'><span class='small'>
+<strong>Flea market:</strong> vendor + customer. Use Dialogue I as model.<br>
+<strong>Restaurant:</strong> waiter + customer. Order from: ていしょく, パスタ, カレー, そば, うどん, サンドイッチ, アイスクリーム, ラーメン, ハンバーガー, コーヒー, コーラ, サラダ, こうちゃ, ジュース, ミルク.
+<div class='framebox'>
+A: <ruby>いらっしゃいませ<rt>irasshaimase</rt></ruby>。 &nbsp;&nbsp; B: ___ <ruby>を<rt>o</rt></ruby> <ruby>おねがいします<rt>onegaishimasu</rt></ruby>。
+</div>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise J — Find Someone Who... (TXB p.77)</div><div class='block-body'><span class='small'>
+Find a classmate whose property matches yours; report with 〜も:
+<ol class='enum'>
+<li>is the same age</li>
+<li>is in the same year at school</li>
+<li>whose major is the same as yours</li>
+<li>whose hometown (しゅっしん) is the same as yours</li>
+</ol>
+Report: <em><ruby>わたしの<rt>watashi no</rt></ruby> <ruby>しゅっしんは<rt>shusshin wa</rt></ruby> ソウル<ruby>です<rt>desu</rt></ruby>。 Bさんの しゅっしん<span class='c-red'>も</span> ソウルです。</em>
+</span></div></div>
+<div class='slide-counter'>15 / 16</div>
+</section>
+
+<!-- ====== SLIDE 15: Vocab ====== -->
+<section class='slide' id='s16'>
+<h2 class='frametitle'>Practice Vocabulary (Starter Set)</h2>
+<div class='alertblock'><div class='block-title'>Memorize for next class — a small set drawn from Lesson 2</div><div class='block-body'><span class='small'>
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>かな</th><th>romaji</th><th>English</th></tr>
+<tr><td colspan='3'><strong>Words that point</strong></td></tr>
+<tr><td>これ / それ / あれ / どれ</td><td>kore / sore / are / dore</td><td>this / that / that (over there) / which</td></tr>
+<tr><td>この / その / あの / どの</td><td>kono / sono / ano / dono</td><td>this〜 / that〜 / that〜 (over there) / which〜</td></tr>
+<tr><td>ここ / そこ / あそこ / どこ</td><td>koko / soko / asoko / doko</td><td>here / there / over there / where</td></tr>
+<tr><td>だれ</td><td>dare</td><td>who</td></tr>
+<tr><td colspan='3'><strong>Things</strong></td></tr>
+<tr><td>かさ / かばん / くつ / さいふ</td><td>kasa / kaban / kutsu / saifu</td><td>umbrella / bag / shoes / wallet</td></tr>
+<tr><td>とけい / ほん / ペン / ぼうし</td><td>tokee / hon / pen / booshi</td><td>watch · clock / book / pen / hat · cap</td></tr>
+<tr><td>しんぶん / ノート</td><td>shinbun / nooto</td><td>newspaper / notebook</td></tr>
+<tr><td>じてんしゃ / スマホ / Tシャツ / ジーンズ</td><td>jitensha / sumaho / tiishatsu / jiinzu</td><td>bicycle / smartphone / T-shirt / jeans</td></tr>
+<tr><td colspan='3'><strong>Places</strong></td></tr>
+<tr><td>ぎんこう / コンビニ / トイレ</td><td>ginkoo / konbini / toire</td><td>bank / convenience store / restroom</td></tr>
+<tr><td>としょかん / ゆうびんきょく</td><td>toshokan / yuubinkyoku</td><td>library / post office</td></tr>
+<tr><td colspan='3'><strong>Food</strong></td></tr>
+<tr><td>おいしい / さかな / にく</td><td>oishii / sakana / niku</td><td>delicious / fish / meat</td></tr>
+<tr><td>とんかつ / メニュー / やさい</td><td>tonkatsu / menyuu / yasai</td><td>pork cutlet / menu / vegetable</td></tr>
+<tr><td colspan='3'><strong>Money matters</strong></td></tr>
+<tr><td>いくら / 〜えん / たかい</td><td>ikura / … en / takai</td><td>how much / … yen / expensive · high</td></tr>
+<tr><td colspan='3'><strong>Expressions</strong></td></tr>
+<tr><td>いらっしゃいませ</td><td>irasshaimase</td><td>Welcome (to a store).</td></tr>
+<tr><td>(〜を) おねがいします</td><td>(… o) onegaishimasu</td><td>…, please.</td></tr>
+<tr><td>(〜を) ください</td><td>(… o) kudasai</td><td>Please give me ….</td></tr>
+<tr><td>じゃあ / どうぞ / どうも</td><td>jaa / doozo / doomo</td><td>then … / Please.; Here it is. / Thank you.</td></tr>
+</table>
+</span></div></div>
+<div class='practiceblock'>
+<div class='block-title'>Mini drill: translate each into Japanese.</div>
+<div class='block-body practice-body'><span class='small'>
+1. How much is this umbrella? — <div class='writing-line'></div>
+2. That book over there is Tanaka-san's book. — <div class='writing-line'></div>
+3. Excuse me, where is the restroom? — <div class='writing-line'></div>
+4. Then, please give me that watch. — <div class='writing-line'></div>
+5. This is not my wallet. — <div class='writing-line'></div>
+6. Whose bag is this? — <div class='writing-line'></div>
+7. Yamada-san is also Japanese. — <div class='writing-line'></div>
+8. It's ¥3,500. Expensive, isn't it? — <div class='writing-line'></div>
+</span></div>
+</div>
+<div class='slide-counter'>16 / 16</div>
+</section>
+
+</main>
+
+<!-- ====== Kana Video Modal ====== -->
+<div class='kv-overlay' id='kvOverlay'>
+  <div class='kv-box'>
+    <button class='kv-close' id='kvClose' aria-label='Close'>×</button>
+    <video id='kvVideo' controls autoplay playsinline></video>
+    <div class='kv-label' id='kvLabel'></div>
+  </div>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('kvOverlay');
+  var video = document.getElementById('kvVideo');
+  var label = document.getElementById('kvLabel');
+  var closeBtn = document.getElementById('kvClose');
+  function open(src, text){
+    video.src = src;
+    label.textContent = text || '';
+    overlay.classList.add('open');
+    try { video.play(); } catch(e){}
+  }
+  function close(){
+    overlay.classList.remove('open');
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+  document.querySelectorAll('a.kana').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      open(a.getAttribute('href'), a.textContent.trim());
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
