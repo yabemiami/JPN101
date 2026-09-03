@@ -87,6 +87,21 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
 .kv-close { position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border-radius: 50%; background: white; color: #b34155; border: 2px solid #b34155; font-size: 1.3rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
 .kv-close:hover { background: #b34155; color: white; }
 .kv-label { color: white; text-align: center; font-size: 1.6rem; font-weight: 600; margin-top: 8px; }
+/* exercise-session helpers */
+.gk-quote { margin: 0.5em 0; padding-left: 0.9em; border-left: 3px solid var(--green-bg); font-style: italic; }
+details.gk-key { margin-top: 8px; background: white; border: 1px dashed #bbb; border-radius: 5px; padding: 6px 10px; }
+details.gk-key > summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); font-size: 0.88em; list-style: none; }
+details.gk-key > summary::before { content: "▶ "; font-size: 0.8em; }
+details.gk-key[open] > summary::before { content: "▼ "; }
+details.gk-key > div { margin-top: 6px; font-size: 0.9em; line-height: 1.7; }
+.aim { font-size: 0.85em; color: var(--ink-soft); font-style: italic; margin: 0 0 6px; }
+.audio-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0 12px; }
+.audio-row audio { flex: 1 1 320px; max-width: 460px; height: 38px; }
+.audio-note { font-size: 0.82em; color: var(--ink-soft); white-space: nowrap; }
+.script-line { display: block; margin: 0.15em 0; }
+.script-line b { color: var(--blue-fg); font-weight: 600; }
+.tf-list li { margin: 0.35em 0; }
+.pairbox { font-size: 1.05em; letter-spacing: 0.03em; }
 </style>
 </head>
 <body>
@@ -105,7 +120,7 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
 <a href="#s11">1.11 Numbers</a>
 <a href="#s12">1.12 Time/Age</a>
 <a href="#s13">1.13 Exercises A–D</a>
-<a href="#s14">1.14 Exercises E–I</a>
+<a href="#s14">1.14 Exercises E–H</a>
 <a href="#s15">1.15 Vocab</a>
 </nav>
 <main class="deck">
@@ -572,91 +587,192 @@ With katakana, <strong>ー</strong> indicates a long vowel (two slots):
 
 <!-- ====== SLIDE 12: Exercises A–D ====== -->
 <section class='slide' id='s13'>
-<h2 class='frametitle'>In-Class Exercises: A–D</h2>
-<div class='blockbox'><div class='block-title'>Exercise A — Greeting Situations (TXB p.34)</div><div class='block-body'><span class='small'>
-Act out with a partner, using the right greeting:
-<ol class='enum multicols-2'>
-<li>1:00 p.m. — see neighbor Mr. Yamada.</li>
-<li>Morning class — greet teacher, then friends.</li>
-<li>Stepped on someone's foot on a train.</li>
-<li>Someone picked up your dropped book.</li>
-<li>8:00 p.m. — meet teacher at conbini.</li>
-<li>Watching TV with host family at bedtime.</li>
-<li>Leaving home.</li>
-<li>Just got home.</li>
-<li>About to eat.</li>
-<li>Finished eating.</li>
+<h2 class='frametitle'>In-Class Exercises: A–D (Lesson 1 Round-Up)</h2>
+
+
+<div class='blockbox'><div class='block-title'>Exercise A — Listening: だれの ことですか</div><div class='block-body'><span class='small'>
+<p class='aim'>Listen for three things only: year in school, major, and which university.</p>
+Listen <strong>twice</strong>. Do not write the Japanese; just mark <span class='c-red'>T</span> or <span class='c-red'>F</span>.
+<div class='audio-row'>
+<audio controls preload='none' src='audio/L1_ExA_listening.mp3'>
+Your browser cannot play audio. <a href='audio/L1_ExA_listening.mp3'>Download the recording</a>.
+</audio>
+<span class='audio-note'>リサ &amp; だいき ・ 0:37</span>
+</div>
+<ol class='enum multicols-2 tf-list'>
+<li>(&nbsp;&nbsp;&nbsp;) Lisa is a second-year student.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Daiki is a second-year student.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Daiki's major is Japanese.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Lisa's major is business.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Lisa is a student at Sakura University.</li>
 </ol>
+<details class='gk-key'><summary>Dialogue script &amp; answers</summary>
+<div>
+<span class='script-line'><b>リサ：</b>はじめまして。リサです。よろしく おねがいします。</span>
+<span class='script-line'><b>だいき：</b>はじめまして。だいきです。よろしく おねがいします。リサさんは なんねんせいですか。</span>
+<span class='script-line'><b>リサ：</b>さんねんせいです。だいきさんは。</span>
+<span class='script-line'><b>だいき：</b>わたしは にねんせいです。</span>
+<span class='script-line'><b>リサ：</b>せんこうは なんですか。</span>
+<span class='script-line'><b>だいき：</b>にほんごです。リサさんの せんこうは。</span>
+<span class='script-line'><b>リサ：</b>ビジネスです。</span>
+<span class='script-line'><b>だいき：</b>そうですか。リサさんは さくらだいがくの がくせいですか。</span>
+<span class='script-line'><b>リサ：</b>いいえ、にほんだいがくの がくせいです。</span>
+<div style='margin-top:6px'><strong>Answers:</strong> 1. <span class='c-red'>F</span> (3rd year) · 2. <span class='c-blue'>T</span> · 3. <span class='c-blue'>T</span> · 4. <span class='c-blue'>T</span> · 5. <span class='c-red'>F</span> (Nihon University)</div>
+</div>
+</details>
 </span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise B — Self-introduction (TXB p.34)</div><div class='block-body'>
-Walk around the classroom; introduce yourself to as many classmates as possible. Model:
-<div class='framebox'>A: <ruby>はじめまして<rt>hajimemashite</rt></ruby>。___ <ruby>です<rt>desu</rt></ruby>。<ruby>よろしく おねがいします<rt>yoroshiku onegaishimasu</rt></ruby>。<br>
-B: ___ です。よろしく おねがいします。</div>
-Extension: add (a) year — <ruby>〜ねんせい<rt>… nensee</rt></ruby>, (b) age — <ruby>〜さい<rt>… sai</rt></ruby>, (c) major — <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>〜です<rt>… desu</rt></ruby>.
-</div></div>
-<div class='blockbox'><div class='block-title'>Exercise C — Numbers Warm-up (TXB p.35 / WB p.15)</div><div class='block-body'><span class='small'>
-<strong>(1)</strong> Read aloud: 5 · 9 · 7 · 1 · 10 · 8 · 2 · 6 · 4 · 3<br>
-<strong>(2)</strong> Two-digit: 45 · 83 · 19 · 76 · 52 · 100 · 38 · 61 · 24 · 97<br>
-<strong>(3)</strong> Quick math (<ruby>たす<rt>tasu</rt></ruby> / <ruby>ひく<rt>hiku</rt></ruby> / <ruby>は<rt>wa</rt></ruby>): 5+3 · 9+1 · 3+4 · 6−6 · 10+9 · 8−7 · 40−25
+
+<div class='blockbox'><div class='block-title'>Exercise B — Kana pairs: one beat or two?</div><div class='block-body'><span class='small'>
+<p class='aim'>Three contrasts only: small <span class='c-red'>っ</span> (a silent beat), small <span class='c-red'>ゃゅょ</span> (one beat, not two), and <span class='c-red'>゛／゜</span>.</p>
+Circle the kana that matches the romaji, then <strong>read both options aloud</strong> so the class hears the difference.
+<ol class='enum multicols-2 pairbox'>
+<li>saka （ さか ・ さっか ）</li>
+<li>kitte （ きて ・ きって ）</li>
+<li>juu （ じゆう ・ じゅう ）</li>
+<li>kyaku （ きやく ・ きゃく ）</li>
+<li>panda （ ぱんだ ・ ばんだ ）</li>
+<li>byooin （ びよういん ・ びょういん ）</li>
+<li>zasshi （ ざし ・ ざっし ）</li>
+<li>happyaku （ はぴゃく ・ はっぴゃく ）</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. さか &nbsp;·&nbsp; 2. き<span class='c-red'>っ</span>て &nbsp;·&nbsp; 3. じ<span class='c-red'>ゅ</span>う &nbsp;·&nbsp; 4. き<span class='c-red'>ゃ</span>く &nbsp;·&nbsp; 5. <span class='c-red'>ぱ</span>んだ &nbsp;·&nbsp; 6. び<span class='c-red'>ょ</span>ういん &nbsp;·&nbsp; 7. ざ<span class='c-red'>っ</span>し &nbsp;·&nbsp; 8. は<span class='c-red'>っぴゃ</span>く
+<div style='margin-top:4px' class='fns'>さか is 2 beats, さっか is 3. じゆう is 3 beats, じゅう is 2. The size and the position of the small kana both count.</div>
+</div>
+</details>
 </span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise D — Xは Yです Pattern (TXB p.46 / WB p.16)</div><div class='block-body'><span class='small'>
-Produce a sentence from each row using <strong>Xは Yです</strong>.
+
+<div class='blockbox'><div class='block-title'>Exercise C — Numbers &amp; the clock</div><div class='block-body'><span class='small'>
+<strong>(1) Read aloud:</strong><br>
+4 · 7 · 9 · 17 · 40 · 76 · 98 · 100 · 108 · 116 · 154 · 199
+<div class='fns'>Watch 4 (<span class='c-red'>よん</span>), 7 (<span class='c-red'>なな</span>), 9 (<span class='c-red'>きゅう</span>), and 100+ (<span class='c-red'>ひゃく</span>＋…).</div>
+<strong>(2) Write in hiragana, then read aloud:</strong>
+<ol class='enum multicols-2'>
+<li>8:30 a.m.</li>
+<li>9:00 p.m.</li>
+<li>1:30 a.m.</li>
+<li>4:00 p.m.</li>
+<li>7:00 p.m.</li>
+<li>9:30 a.m.</li>
+</ol>
+<strong>(3) Ask three people:</strong> <ruby>でんわばんごうは<rt>denwa bangoo wa</rt></ruby> <ruby>なんばんですか<rt>nan-ban desu ka</rt></ruby>。 → ___-____ です。 → ___-____ ですね。 → はい、そうです。
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+<strong>(1)</strong> よん · なな · きゅう · じゅうなな · よんじゅう · ななじゅうろく · きゅうじゅうはち · ひゃく · ひゃくはち · <span class='c-red'>ひゃくじゅうろく</span> · ひゃくごじゅうよん · ひゃくきゅうじゅうきゅう<br>
+<strong>(2)</strong> 1. <span class='c-red'>ごぜん</span>はちじはん &nbsp;·&nbsp; 2. <span class='c-red'>ごご</span>くじ &nbsp;·&nbsp; 3. ごぜんいちじはん &nbsp;·&nbsp; 4. ごご<span class='c-red'>よ</span>じ &nbsp;·&nbsp; 5. ごご<span class='c-red'>しち</span>じ &nbsp;·&nbsp; 6. ごぜん<span class='c-red'>く</span>じはん
+<div style='margin-top:4px' class='fns'>ごぜん／ごご comes <strong>first</strong> in Japanese (not last as in English), and はん comes <strong>last</strong>. The three irregular hours are よじ, しちじ, くじ.</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise D — Xは Yです &amp; 〜か (TXB p.46 / WB p.16)</div><div class='block-body'><span class='small'>
 <table class='tex-table' style='margin:0 auto;'>
-<tr><th>Person</th><th>Nationality</th><th>Year</th><th>Age</th></tr>
-<tr><td>Mary Hart</td><td>American</td><td>2nd</td><td>19</td></tr>
-<tr><td>Takeshi Kimura</td><td>Japanese</td><td>4th</td><td>22</td></tr>
-<tr><td>Sora Kim</td><td>Korean</td><td>3rd</td><td>20</td></tr>
-<tr><td>Robert Smith</td><td>British</td><td>4th</td><td>22</td></tr>
-<tr><td>Prof. Yamashita</td><td>Japanese</td><td>—</td><td>47</td></tr>
+<tr><th>Person</th><th>Nationality</th><th>University</th><th>Year</th><th>Age</th><th>Major</th></tr>
+<tr><td>Mary Hart</td><td>American</td><td>Sakura</td><td>2nd</td><td>19</td><td>Japanese</td></tr>
+<tr><td>Takeshi Kimura</td><td>Japanese</td><td>Nihon</td><td>4th</td><td>22</td><td>business</td></tr>
+<tr><td>Sora Kim</td><td>Korean</td><td>Sakura</td><td>3rd</td><td>20</td><td>business</td></tr>
+<tr><td>Robert Smith</td><td>British</td><td>London</td><td>4th</td><td>22</td><td>Japanese</td></tr>
+<tr><td>Prof. Yamashita</td><td>Japanese</td><td>Sakura</td><td>—</td><td>47</td><td>(teaches Japanese)</td></tr>
 </table>
-Example: <em><ruby>メアリーさんは<rt>Mearii-san wa</rt></ruby> <ruby>アメリカじんです<rt>amerikajin desu</rt></ruby>。</em>
+<strong>(1)</strong> Say <span class='c-blue'>three</span> sentences about one row: <em>メアリーさんは アメリカじんです。にねんせいです。じゅうきゅうさいです。</em> <span class='fns'>(drop the topic after the first sentence)</span><br>
+<strong>(2)</strong> Partner asks a yes/no question with 〜か; answer <ruby>はい、そうです<rt>hai, soo desu</rt></ruby>。 or <ruby>いいえ<rt>iie</rt></ruby>、…。<br>
+<span class='framebox'>A: たけしさんは にほんだいがくの がくせいですか。 &nbsp; B: はい、そうです。</span><br>
+<strong>(3)</strong> Then ask with question words: なんねんせいですか。／なんさいですか。／せんこうは なんですか。／なにじんですか。
+<details class='gk-key'><summary>Sample answers</summary>
+<div>
+たけしさんは にほんじんです。よねんせいです。にじゅうにさいです。<br>
+ソラさんは かんこくじんです。さくらだいがくの がくせいです。せんこうは ビジネスです。<br>
+やましたせんせいは にほんごの せんせいです。よんじゅうななさいです。<br>
+ロバートさんは ロンドンだいがくの よねんせいです。<br>
+<div class='fns'>いいえ answer shape: いいえ、たけしさんは にほんだいがくの がくせいです。</div>
+</div>
+</details>
 </span></div></div>
 <div class='slide-counter'>13 / 15</div>
 </section>
 
-<!-- ====== SLIDE 13: Exercises E–I ====== -->
+<!-- ====== SLIDE 13: Exercises E–H ====== -->
 <section class='slide' id='s14'>
-<h2 class='frametitle'>In-Class Exercises: E–I</h2>
-<div class='blockbox'><div class='block-title'>Exercise E — Yes/No &amp; Wh-Questions with 〜<ruby>か<rt>ka</rt></ruby> (TXB p.47 / WB p.17)</div><div class='block-body'><span class='small'>
+<h2 class='frametitle'>In-Class Exercises: E–H</h2>
+
+<div class='blockbox'><div class='block-title'>Exercise E — Read aloud, then say it in English</div><div class='block-body'><span class='small'>
+<p class='aim'>Read each line out loud first, then give a natural English rendering. Cover the key.</p>
 <ol class='enum multicols-2'>
-<li><ruby>メアリーさん<rt>Mearii-san</rt></ruby> / <ruby>いちねんせい<rt>ichinensee</rt></ruby></li>
-<li><ruby>たけしさん<rt>Takeshi-san</rt></ruby> / <ruby>にほんじん<rt>nihonjin</rt></ruby></li>
-<li>たけしさん / <ruby>じゅうきゅうさい<rt>juukyuusai</rt></ruby></li>
-<li><ruby>ソラさん<rt>Sora-san</rt></ruby> / <ruby>アメリカじん<rt>amerikajin</rt></ruby></li>
-<li><ruby>ロバートさん<rt>Robaato-san</rt></ruby> / <ruby>よねんせい<rt>yonensee</rt></ruby></li>
-<li><ruby>やましたせんせい<rt>Yamashita-sensee</rt></ruby> / にほんじん</li>
+<li>せんこう</li>
+<li>りゅうがくせい</li>
+<li>そうですか。</li>
+<li>はい、そうです。</li>
+<li>わたしは さんねんせいです。</li>
+<li>ソラさんは なんさいですか。</li>
+<li>たけしさんの せんこうは なんですか。</li>
+<li>やましたせんせいは にほんごの せんせいです。</li>
+<li>メアリーさんは さくらだいがくの がくせいですか。</li>
+<li>いま ごご よじはんです。</li>
 </ol>
-Then ask freely: <em><ruby>なんねんせいですか<rt>nan-nensee desu ka</rt></ruby> / <ruby>なんさいですか<rt>nansai desu ka</rt></ruby> / <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。</em>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. (academic) major &nbsp;·&nbsp; 2. international student &nbsp;·&nbsp; 3. Is that so? / I see. &nbsp;·&nbsp; 4. Yes, that's right. &nbsp;·&nbsp; 5. I am a third-year student. &nbsp;·&nbsp; 6. How old is Sora? &nbsp;·&nbsp; 7. What is Takeshi's major? &nbsp;·&nbsp; 8. Professor Yamashita is a Japanese-language teacher. &nbsp;·&nbsp; 9. Is Mary a student at Sakura University? &nbsp;·&nbsp; 10. It is 4:30 p.m. now.
+<div style='margin-top:4px' class='fns'>3 vs 4: そうですか is a <em>reaction</em> ("I see"); そうです is a <em>confirmation</em> ("that's right"). One か changes everything.</div>
+</div>
+</details>
 </span></div></div>
+
 <div class='blockbox'><div class='block-title'>Exercise F — Noun の Noun (TXB p.50 / WB p.18)</div><div class='block-body'><span class='small'>
-Translate using の: (1) my teacher, (2) my phone number, (3) my name, (4) Takeshi's major, (5) Mary's friend, (6) student at the University of London, (7) teacher of the Japanese language, (8) high school teacher.
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise G — What time is it now? (TXB p.52)</div><div class='block-body'><span class='small'>
-Pair work:
-<div class='framebox'>
-A: <ruby>すみません<rt>sumimasen</rt></ruby>。<ruby>いま<rt>ima</rt></ruby> <ruby>なんじですか<rt>nan-ji desu ka</rt></ruby>。<br>
-B: <ruby>〜じ<rt>… ji</rt></ruby> (<ruby>はん<rt>han</rt></ruby>) <ruby>です<rt>desu</rt></ruby>。<br>
-A: <ruby>ありがとう ございます<rt>arigatoo gozaimasu</rt></ruby>。 &nbsp;&nbsp; B: <ruby>いいえ<rt>iie</rt></ruby>。
+Say each in Japanese, then build one full sentence with です from any three.
+<ol class='enum multicols-2'>
+<li>my major</li>
+<li>my phone number</li>
+<li>a teacher of the Japanese language</li>
+<li>a student at Nihon University</li>
+<li>Takeshi's friend</li>
+<li>a first-year student at Sakura University</li>
+<li>Mary's major</li>
+<li>a high school teacher</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. わたしの せんこう &nbsp;·&nbsp; 2. わたしの でんわばんごう &nbsp;·&nbsp; 3. にほんごの せんせい &nbsp;·&nbsp; 4. にほんだいがくの がくせい &nbsp;·&nbsp; 5. たけしさんの ともだち &nbsp;·&nbsp; 6. さくらだいがくの いちねんせい &nbsp;·&nbsp; 7. メアリーさんの せんこう &nbsp;·&nbsp; 8. こうこうの せんせい
+<div style='margin-top:4px' class='fns'>Order check: the <strong>modifier comes first</strong> in Japanese, the reverse of English "teacher <em>of</em> Japanese". Sentence: わたしは にほんだいがくの がくせいです。</div>
 </div>
-Cue times: 3:00 · 9:00 · 11:00 · 7:30 · 2:30 · 4:30 · 12:00 · 6:30.<br>
-World times: London 6 p.m. · Stockholm 7 p.m. · New York 1 p.m. · Sydney 4 a.m. · Bangkok 1 a.m. · Tokyo 3 a.m. — Q: <ruby>ロンドンは<rt>Rondon wa</rt></ruby> いま なんじですか。 A: <ruby>ごご<rt>gogo</rt></ruby> <ruby>ろくじです<rt>roku-ji desu</rt></ruby>。
+</details>
 </span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise H — Telephone Numbers (TXB p.51 / WB p.19)</div><div class='block-body'><span class='small'>
-<div class='framebox'>
-A: <ruby>でんわばんごうは<rt>denwa bangoo wa</rt></ruby> <ruby>なんばんですか<rt>nan-ban desu ka</rt></ruby>。<br>
-B: ___-____ です。 &nbsp;&nbsp; A: ___-____ <ruby>ですね<rt>desu ne</rt></ruby>。 &nbsp;&nbsp; B: <ruby>はい<rt>hai</rt></ruby>、<ruby>そうです<rt>soo desu</rt></ruby>。
+
+<div class='blockbox'><div class='block-title'>Exercise G — Both halves of the greeting</div><div class='block-body'><span class='small'>
+<p class='aim'>In pairs, act out each scene. Speaker A <em>and</em> speaker B: the reply is half the answer.</p>
+<ol class='enum multicols-2'>
+<li>Sitting down to eat → A: ______ &nbsp;/&nbsp; Finishing → A: ______</li>
+<li>You leave the house → A: ______ &nbsp;/&nbsp; Family: ______</li>
+<li>You come home → A: ______ &nbsp;/&nbsp; Family: ______</li>
+<li>You stepped on someone's foot → A: ______ &nbsp;/&nbsp; The other person: ______</li>
+<li>8:00 p.m., you meet your teacher at the conbini → ______</li>
+<li>Meeting a classmate for the first time → A: ______ &nbsp;/&nbsp; B: ______</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. いただきます。／ ごちそうさま（でした）。<br>
+2. いってきます。／ <span class='c-red'>いってらっしゃい。</span><br>
+3. ただいま。／ <span class='c-red'>おかえり（なさい）。</span><br>
+4. すみません。／ <span class='c-red'>いいえ。</span><br>
+5. こんばんは。<br>
+6. はじめまして。〜です。よろしく おねがいします。／ 〜です。よろしく おねがいします。
+<div style='margin-top:4px' class='fns'>Learn the two lines together as one set, not as separate words.</div>
 </div>
+</details>
 </span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise I — Group Round-up Interview (TXB p.54)</div><div class='block-body'><span class='small'>
-Interview five classmates: (1) name, (2) hometown, (3) occupation/school, (4) age, (5) major.
-<ul class='itm'>
-<li>Q: <ruby>おなまえは<rt>onamae wa</rt></ruby>？</li>
-<li>Q: <ruby>ごしゅっしんは<rt>goshusshin wa</rt></ruby>？</li>
-<li>Q: <ruby>おしごとは<rt>oshigoto wa</rt></ruby>？</li>
+
+<div class='blockbox'><div class='block-title'>Exercise H — Round-up interview &amp; report</div><div class='block-body'><span class='small'>
+Interview <strong>three</strong> classmates, then report <strong>one</strong> of them to the class in the third person.
+<ul class='multicols-2 itm'>
+<li>Q: <ruby>おなまえは<rt>onamae wa</rt></ruby>。</li>
 <li>Q: <ruby>なんねんせいですか<rt>nan-nensee desu ka</rt></ruby>。</li>
 <li>Q: <ruby>なんさいですか<rt>nansai desu ka</rt></ruby>。</li>
 <li>Q: <ruby>せんこうは<rt>senkoo wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。</li>
+<li>Q: <ruby>でんわばんごうは なんばんですか<rt>denwa bangoo wa nan-ban desu ka</rt></ruby>。</li>
+<li>Q: <ruby>いま なんじですか<rt>ima nan-ji desu ka</rt></ruby>。</li>
 </ul>
+Report model: <span class='framebox'>〜さんは にねんせいです。じゅうきゅうさいです。せんこうは にほんごです。</span>
+<div class='fns'>Answering: drop the topic once it is established. Say にねんせいです。 not わたしは にねんせいです、わたしは じゅうきゅうさいです…</div>
 </span></div></div>
 <div class='slide-counter'>14 / 15</div>
 </section>
