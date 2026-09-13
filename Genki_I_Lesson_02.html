@@ -79,6 +79,23 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
   .deck { padding: 12px 8px 32px; }
   .slide { padding: 16px 14px; }
 }
+/* exercise-session helpers */
+.fns { font-size: 0.86em; }
+.gk-quote { margin: 0.5em 0; padding-left: 0.9em; border-left: 3px solid var(--green-bg); font-style: italic; }
+details.gk-key { margin-top: 8px; background: white; border: 1px dashed #bbb; border-radius: 5px; padding: 6px 10px; }
+details.gk-key > summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); font-size: 0.88em; list-style: none; }
+details.gk-key > summary::before { content: "\25B6  "; font-size: 0.8em; }
+details.gk-key[open] > summary::before { content: "\25BC  "; }
+details.gk-key > div { margin-top: 6px; font-size: 0.9em; line-height: 1.7; }
+.aim { font-size: 0.85em; color: var(--ink-soft); font-style: italic; margin: 0 0 6px; }
+.audio-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0 12px; }
+.audio-row audio { flex: 1 1 320px; max-width: 460px; height: 38px; }
+.audio-note { font-size: 0.82em; color: var(--ink-soft); }
+.script-line { display: block; margin: 0.15em 0; }
+.script-line b { color: var(--blue-fg); font-weight: 600; }
+.tf-list li { margin: 0.35em 0; }
+.pairbox { font-size: 1.05em; letter-spacing: 0.03em; }
+.scene-svg { display: block; max-width: 470px; margin: 8px auto 4px; height: auto; }
 /* video popup modal */
 .kv-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
 .kv-overlay.open { display: flex; }
@@ -105,8 +122,8 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
 <a href="#s11">2.11 Katakana Videos</a>
 <a href="#s12">2.12 Katakana</a>
 <a href="#s13">2.13 Expressions</a>
-<a href="#s14">2.14 Exercises A–E</a>
-<a href="#s15">2.15 Exercises F–J</a>
+<a href="#s14">2.14 Exercises A–D</a>
+<a href="#s15">2.15 Exercises E–H</a>
 <a href="#s16">2.16 Vocab</a>
 </nav>
 <main class="deck">
@@ -517,13 +534,29 @@ table.kana-grid a.kana:hover { background: var(--rose-bg); color: #7a0a25; }
 <div class='alertblock'><div class='block-title'>1. Long vowels in katakana</div><div class='block-body'>
 The dash <strong>ー</strong> indicates a long vowel: ア / アー = a / ā; キャ / キャー = kya / kyā; バタ / バター = bata / batā; タキ / ターキー = taki / tākī.
 </div></div>
-<div class='alertblock'><div class='block-title'>2. Foreign sounds</div><div class='block-body'>
-Combinations of katakana letters write sounds not native to Japanese:
-<ul class='itm'>
-<li>ヒュ — ヒューイ /<em>Hyuui</em>/ (Heuy)</li>
-<li>フュ — フューチャー /<em>fyuuchaa</em>/ (future)</li>
-</ul>
-</div></div>
+<div class='alertblock'><div class='block-title'>2. Extra combinations for foreign sounds (katakana only, never in hiragana)</div><div class='block-body'><span class='small'>
+Small <span class='c-red'>ェ・ィ・ォ・ュ</span> are attached to a base kana to spell sounds Japanese did not originally have:
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>sound</th><th>kana</th><th>examples</th></tr>
+<tr><td>[wi] [we] [wo]</td><td><span class='c-red'>ウィ ・ ウェ ・ ウォ</span></td><td style='text-align:left'>ウィスコンシン Wisconsin ・ ウェイン Wayne ・ ウォーター water</td></tr>
+<tr><td>[she] [je] [che]</td><td><span class='c-red'>シェ ・ ジェ ・ チェ</span></td><td style='text-align:left'>シェフ chef ・ ジェームス James ・ チェック check</td></tr>
+<tr><td>[ti] [di] [dyu]</td><td><span class='c-red'>ティ ・ ディ ・ デュ</span></td><td style='text-align:left'>パーティー party ・ ディズニー Disney ・ デュエット duet</td></tr>
+<tr><td>[fa] [fi] [fe] [fo]</td><td><span class='c-red'>ファ ・ フィ ・ フェ ・ フォ</span></td><td style='text-align:left'>ファッション fashion ・ フィリピン Philippines ・ カフェ cafe ・ フォーク fork</td></tr>
+<tr><td>[v]</td><td><span class='c-red'>ヴ</span> (ヴァ/ヴィ/ヴェ/ヴォ)</td><td style='text-align:left'>ヴィーナス／ビーナス Venus</td></tr>
+</table>
+<span class='fns'>Reminders (same as hiragana): <span class='c-red'>゛</span> = voiced (ガ ga, ギ gi) ・ <span class='c-red'>゜</span> = [p] (パ pa) ・ small <span class='c-red'>ャ ュ ョ</span> = キャ kya, シュ shu, ミョ myo ・ small <span class='c-red'>ッ</span> = double consonant (ホットドッグ <em>hot dog</em>).</span>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>3. Turning English into katakana: rules of thumb</div><div class='block-body'><span class='small'>
+<ol class='enum'>
+<li>English <strong>-er / -or / -ar</strong> → a long <span class='c-red'>[aa]</span>, written with ー: カーター Carter ・ ハート heart.</li>
+<li>English <strong>[v]</strong> → <span class='c-red'>[b]</span> (or ヴ): カバー cover ・ バイオリン violin ・ ビーナス／ヴィーナス Venus.</li>
+<li>English <strong>[l] and [r]</strong> → one <span class='c-red'>ラ-row</span> sound: ライト right / light ・ リーダー reader / leader.</li>
+<li>English <strong>th</strong> → <span class='c-red'>[s]</span> (<em>think</em>) or <span class='c-red'>[z]</span> (<em>that</em>): サンクスギビング Thanksgiving ・ マザーグース Mother Goose.</li>
+<li>A lone consonant gets a vowel: add <span class='c-red'>[u]</span> after k, g, m, f, v, l, s, z, th, p, b (ミルク milk ・ ジャズ jazz); add <span class='c-red'>[o]</span> after t, d (コスト cost ・ ベッド bed).</li>
+<li>The vowels in <em>bus / cut</em> and <em>bath / gas</em> → <span class='c-red'>[a]</span>: バス bus / bath ・ カット cut ・ ガス gas.</li>
+<li><span class='c-red'>Note:</span> these are only basic rules of thumb. Many loanwords are exceptions, so confirm each new word as you learn it.</li>
+</ol>
+</span></div></div>
 <div class='practiceblock'>
 <div class='block-title'>Your own: transcribe three loanwords (e.g., coffee, computer, hamburger) in katakana.</div>
 <div class='block-body practice-body'><div class='writing-line'></div><div class='writing-line'></div></div>
@@ -553,87 +586,220 @@ Combinations of katakana letters write sounds not native to Japanese:
 <div class='slide-counter'>13 / 16</div>
 </section>
 
-<!-- ====== SLIDE 13: Exercises A–E ====== -->
+<!-- ====== SLIDE 14: Exercises A-D (Listening + Translation) ====== -->
 <section class='slide' id='s14'>
-<h2 class='frametitle'>In-Class Exercises: A–E</h2>
-<div class='blockbox'><div class='block-title'>Exercise A — Reading Numbers Warm-up (TXB p.67 / WB p.25)</div><div class='block-body'><span class='small'>
-<strong>(1) Read aloud:</strong> 34 · 67 · 83 · 99 · 125 · 515 · 603 · 850 · 1,300 · 3,400 · 8,900 · 35,000 · 64,500 · 92,340<br>
-<strong>(2) Write in numerals:</strong> (a) よんひゃくななじゅう · (b) はっぴゃくごじゅうさん · (c) せんさんびゃく · (d) いちまんななせん · (e) さんぜんろっぴゃくじゅうに
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise B — これ・それ・あれ (What is this?) (TXB p.69 / WB p.26)</div><div class='block-body'><span class='small'>
-Items 1–6 are near You; items 7–12 are near Partner.
-<div class='framebox'>Friend: <ruby>それは<rt>sore wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。 &nbsp;&nbsp; You: <ruby>これは<rt>kore wa</rt></ruby> ___ <ruby>です<rt>desu</rt></ruby>。</div>
-Vocabulary cues: ノート, かさ, しんぶん, ほん, くつ, とけい, かばん, さいふ, ジーンズ, じてんしゃ, スマホ, ぼうし.
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise C — Buildings (TXB p.70)</div><div class='block-body'><span class='small'>
-<div class='framebox'>Q: <ruby>あれは<rt>are wa</rt></ruby> <ruby>なんですか<rt>nan desu ka</rt></ruby>。 &nbsp;&nbsp; A: あれは ___ です。</div>
-Cues: としょかん · ぎんこう · ゆうびんきょく · コンビニ · だいがく.
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise D — このNはいくらですか (TXB p.70–72)</div><div class='block-body'><span class='small'>
-<div class='framebox'>
-Customer: <ruby>すみません<rt>sumimasen</rt></ruby>。<ruby>この<rt>kono</rt></ruby>___ <ruby>は<rt>wa</rt></ruby> <ruby>いくらですか<rt>ikura desu ka</rt></ruby>。<br>
-Vendor: ___ <ruby>えんです<rt>en desu</rt></ruby>。<br>
-Customer: <ruby>じゃあ<rt>jaa</rt></ruby>、<ruby>その<rt>sono</rt></ruby>___ <ruby>を<rt>o</rt></ruby> <ruby>ください<rt>kudasai</rt></ruby>。
+<h2 class='frametitle'>In-Class Exercises: A–D (Listening &amp; Translation)</h2>
+
+<div class='blockbox'><div class='block-title'>Exercise A : Listening, True / False (TX p.56 / WB p.31C)</div><div class='block-body'><span class='small'>
+<p class='aim'>Listen for two things only: the price of each item, and what the customer finally buys.</p>
+The instructor plays the recording (or reads the script) <strong>twice</strong>. Do not write the Japanese; just mark <span class='c-red'>T</span> or <span class='c-red'>F</span>.
+<div class='audio-row'>
+<audio controls preload='none' src='item/L2_ExA_listening.mp3'>
+Your browser cannot play audio. <a href='item/L2_ExA_listening.mp3'>Download the recording</a>.
+</audio>
+<span class='audio-note'>みせ (a shop) ・ メアリー &amp; てんいん</span>
 </div>
-Prices: ノート ¥450 · かさ ¥1,000 · しんぶん ¥160 · ほん ¥1,500 · くつ ¥3,500 · とけい ¥10,000 · かばん ¥20,000 · さいふ ¥8,000 · ジーンズ ¥9,000 · じてんしゃ ¥25,000 · スマホ ¥34,000 · ぼうし ¥2,800.
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise E — どこですか (Where is it?) (TXB p.72)</div><div class='block-body'><span class='small'>
-<div class='framebox'>
-A: <ruby>すみません<rt>sumimasen</rt></ruby>。___ <ruby>は<rt>wa</rt></ruby> <ruby>どこですか<rt>doko desu ka</rt></ruby>。<br>
-B: ___ <ruby>です<rt>desu</rt></ruby>。 &nbsp;&nbsp; A: <ruby>ありがとうございます<rt>arigatoo gozaimasu</rt></ruby>。
+<ol class='enum multicols-2 tf-list'>
+<li>(&nbsp;&nbsp;&nbsp;) The umbrella is ¥1,000.</li>
+<li>(&nbsp;&nbsp;&nbsp;) The bag is ¥4,000.</li>
+<li>(&nbsp;&nbsp;&nbsp;) The watch is also ¥4,000.</li>
+<li>(&nbsp;&nbsp;&nbsp;) The watch is more expensive than the bag.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Mary buys the watch in the end.</li>
+<li>(&nbsp;&nbsp;&nbsp;) Mary is the store clerk.</li>
+</ol>
+<details class='gk-key'><summary>Dialogue script &amp; answers</summary>
+<div>
+<span class='script-line'><b>メアリー：</b>すみません。この かさは いくらですか。</span>
+<span class='script-line'><b>てんいん：</b>その かさは せんえんです。</span>
+<span class='script-line'><b>メアリー：</b>じゃあ、あの かばんは いくらですか。</span>
+<span class='script-line'><b>てんいん：</b>あれは よんせんえんです。</span>
+<span class='script-line'><b>メアリー：</b>この とけいも よんせんえんですか。</span>
+<span class='script-line'><b>てんいん：</b>いいえ、その とけいは ごせんえんです。</span>
+<span class='script-line'><b>メアリー：</b>そうですか。じゃあ、かさを ください。</span>
+<span class='script-line'><b>てんいん：</b>はい、どうぞ。</span>
+<div style='margin-top:6px'><strong>Answers:</strong> 1. <span class='c-blue'>T</span> &nbsp;·&nbsp; 2. <span class='c-blue'>T</span> &nbsp;·&nbsp; 3. <span class='c-red'>F</span> (the watch is ¥5,000) &nbsp;·&nbsp; 4. <span class='c-blue'>T</span> (¥5,000 &gt; ¥4,000) &nbsp;·&nbsp; 5. <span class='c-red'>F</span> (she buys the umbrella) &nbsp;·&nbsp; 6. <span class='c-red'>F</span> (she is the customer)</div>
+<div class='fns' style='margin-top:4px'>Notice the deixis flips by speaker: the customer says <span class='c-blue'>あの</span>かばん / <span class='c-blue'>その</span>かさ for items near the clerk, and the clerk answers with <span class='c-red'>その</span> / <span class='c-red'>あれ</span> from their own position.</div>
 </div>
-Cues: トイレ · としょかん · くつ · やさい · メニュー · えいごの ほん · ぎんこう.
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise B : Translate with 〜も (WB p.29)</div><div class='block-body'><span class='small'>
+Translate into Japanese. Attach <span class='c-red'>も</span> directly to the phrase that shares the property (not at the end, as in English).
+<ol class='enum'>
+<li>Ms. Tanaka is Japanese. Mr. Yoshida is Japanese, too.</li>
+<li>Ms. Tanaka is twenty years old. Mr. Yoshida is twenty years old, too.</li>
+<li>This umbrella is ¥2,000. That umbrella (near you) is ¥2,000, too.</li>
+<li>This is my bicycle. That one (near you) is my bicycle, too.</li>
+<li>Takeshi's major is history. My major is history, too.</li>
+<li class='fns'>(extra) Sora is a Sakura University student. Mary is a Sakura University student, too.</li>
+<li class='fns'>(extra) This watch is ¥10,000. That watch over there is ¥10,000, too.</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. たなかさんは にほんじんです。よしださん<span class='c-red'>も</span> にほんじんです。<br>
+2. たなかさんは はたちです。よしださん<span class='c-red'>も</span> はたちです。<span class='fns'> (20 years old = はたち; にじゅっさい is also accepted)</span><br>
+3. この かさは にせんえんです。その かさ<span class='c-red'>も</span> にせんえんです。<br>
+4. これは わたしの じてんしゃです。それ<span class='c-red'>も</span> わたしの じてんしゃです。<br>
+5. たけしさんの せんこうは れきしです。わたしの せんこう<span class='c-red'>も</span> れきしです。<br>
+6. ソラさんは さくらだいがくの がくせいです。メアリーさん<span class='c-red'>も</span> さくらだいがくの がくせいです。<br>
+7. この とけいは いちまんえんです。あの とけい<span class='c-red'>も</span> いちまんえんです。
+<div class='fns' style='margin-top:4px'>Common slip: writing ...です<s>も</s> or よしださんは<s>も</s>. も <em>replaces</em> は / が; it never stacks on top of them.</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise C : Translate だれの NP (TX p.73)</div><div class='block-body'><span class='small'>
+Pattern: <span class='framebox'>これ／それ／あれ は だれ／name-の NP です（か）。</span> Names to use: メアリー ・ キム ・ ロバート.
+<ol class='enum'>
+<li>Whose umbrella is this?</li>
+<li>Is that one (near you) Mary's bag?</li>
+<li>This is Kim's wallet.</li>
+<li>Whose shoes are those over there?</li>
+<li>That one (near you) is Robert's book.</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. これは <span class='c-red'>だれの</span> かさですか。<br>
+2. それは メアリーさん<span class='c-red'>の</span> かばんですか。<br>
+3. これは キムさん<span class='c-red'>の</span> さいふです。<br>
+4. あれは <span class='c-red'>だれの</span> くつですか。<br>
+5. それは ロバートさん<span class='c-red'>の</span> ほんです。
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise D : Translate "here / there / over there is [place]"</div><div class='block-body'><span class='small'>
+Use <span class='c-red'>ここ</span> (here) ・ <span class='c-red'>そこ</span> (there, by you) ・ <span class='c-red'>あそこ</span> (over there). Place names: マイアミだいがく ・ オハイオ ・ ロンドン ・ ソウル ・ アリゾナ.
+<ol class='enum multicols-2'>
+<li>Here is Miami University.</li>
+<li>There (by you) is Ohio.</li>
+<li>Over there is London.</li>
+<li>Here is Seoul.</li>
+<li>Over there is Arizona.</li>
+<li>Where is the restroom? (over there.)</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. <span class='c-red'>ここ</span>は マイアミだいがくです。<br>
+2. <span class='c-red'>そこ</span>は オハイオです。<br>
+3. <span class='c-red'>あそこ</span>は ロンドンです。<br>
+4. <span class='c-red'>ここ</span>は ソウルです。<br>
+5. <span class='c-red'>あそこ</span>は アリゾナです。<br>
+6. トイレは <span class='c-blue'>どこ</span>ですか。 … <span class='c-red'>あそこ</span>です。
+<div class='fns' style='margin-top:4px'>ここ／そこ／あそこ are the <em>place</em> words (here / there). Do not confuse them with これ／それ／あれ (the <em>thing</em> words).</div>
+</div>
+</details>
 </span></div></div>
 <div class='slide-counter'>14 / 16</div>
 </section>
 
-<!-- ====== SLIDE 14: Exercises F–J ====== -->
+<!-- ====== SLIDE 15: Exercises E-H (Deictics + Chart + Review) ====== -->
 <section class='slide' id='s15'>
-<h2 class='frametitle'>In-Class Exercises: F–J</h2>
-<div class='blockbox'><div class='block-title'>Exercise F — だれの〜ですか (TXB p.73 / WB p.28)</div><div class='block-body'><span class='small'>
-Pass an item around and ask:
+<h2 class='frametitle'>In-Class Exercises: E–H (Deictics, Chart &amp; Review)</h2>
+
+<div class='blockbox'><div class='block-title'>Exercise E : Fill in これ/それ/あれ/どれ ・ この/その/あの/どの (WB p.21–23)</div><div class='block-body'><span class='small'>
+<p class='aim'>The customer (you) is on the left; the clerk is on the right. Remember: the word depends on <strong>who is speaking</strong>, so the same item can be それ for the customer but これ for the clerk.</p>
+<svg class='scene-svg' viewBox='0 0 480 300' xmlns='http://www.w3.org/2000/svg'>
+  <!-- counter -->
+  <rect x='140' y='190' width='270' height='9' fill='#ececec' stroke='#ccc' stroke-width='1'/>
+  <!-- customer (bottom-left) -->
+  <text x='46' y='198' text-anchor='middle' font-size='11' fill='#555'>わたし</text>
+  <text x='46' y='209' text-anchor='middle' font-size='9' fill='#888'>customer</text>
+  <circle cx='46' cy='227' r='11' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M46 238 L46 268 M46 246 L31 258 M46 246 L61 258 M46 268 L37 288 M46 268 L55 288' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <!-- clerk (top-right) -->
+  <text x='440' y='36' text-anchor='middle' font-size='11' fill='#555'>てんいん</text>
+  <text x='440' y='47' text-anchor='middle' font-size='9' fill='#888'>clerk</text>
+  <circle cx='440' cy='63' r='11' fill='#fff' stroke='#333' stroke-width='1.3'/>
+  <path d='M440 74 L440 104 M440 82 L425 94 M440 82 L455 94 M440 104 L431 124 M440 104 L449 124' fill='none' stroke='#333' stroke-width='1.3' stroke-linecap='round'/>
+  <!-- far item: are / ano -->
+  <rect x='95' y='24' width='160' height='54' rx='6' fill='#fffdf5' stroke='#c19400' stroke-width='1.2' stroke-dasharray='4 3'/>
+  <text x='175' y='42' text-anchor='middle' font-size='10' fill='#b35900' font-weight='600'>あれ ／ あの (far from both)</text>
+  <text x='175' y='65' text-anchor='middle' font-size='12' fill='#333'>かばん ¥10,000</text>
+  <!-- near-clerk items: sore / sono -->
+  <rect x='268' y='92' width='172' height='90' rx='6' fill='#fffdf5' stroke='#c19400' stroke-width='1.2' stroke-dasharray='4 3'/>
+  <text x='354' y='109' text-anchor='middle' font-size='10' fill='#b35900' font-weight='600'>それ ／ その (by the clerk)</text>
+  <text x='354' y='131' text-anchor='middle' font-size='12' fill='#333'>かさ  ¥12,600</text>
+  <text x='354' y='151' text-anchor='middle' font-size='12' fill='#333'>かばん ¥4,200</text>
+  <text x='354' y='171' text-anchor='middle' font-size='12' fill='#333'>さいふ ¥315</text>
+  <!-- near-customer item: kore / kono -->
+  <rect x='92' y='214' width='166' height='58' rx='6' fill='#fffdf5' stroke='#c19400' stroke-width='1.2' stroke-dasharray='4 3'/>
+  <text x='175' y='232' text-anchor='middle' font-size='10' fill='#b35900' font-weight='600'>これ ／ この (by me / customer)</text>
+  <text x='175' y='256' text-anchor='middle' font-size='12' fill='#333'>ほん・ペン ¥2,100</text>
+</svg>
+<strong>(1) Pronoun form</strong> (blank + は), exactly the quiz shape. Fill each blank; the item is the ¥12,600 umbrella by the clerk.
 <div class='framebox'>
-A: <ruby>これは<rt>kore wa</rt></ruby> <ruby>だれの<rt>dare no</rt></ruby> ___ <ruby>ですか<rt>desu ka</rt></ruby>。<br>
-B: <ruby>いいえ<rt>iie</rt></ruby>、<ruby>わたしの<rt>watashi no</rt></ruby> ___ <ruby>じゃないです<rt>ja nai desu</rt></ruby>。Cさんの ___ ですか。<br>
-C: <ruby>はい<rt>hai</rt></ruby>、<ruby>わたしの<rt>watashi no</rt></ruby> ___ <ruby>です<rt>desu</rt></ruby>。
+Customer: すみません、＿＿＿は いくらですか。<br>
+Clerk: ＿＿＿は 12,600えんです。
 </div>
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise G — Noun も (TXB p.73 / WB p.29)</div><div class='block-body'><span class='small'>
-Translate using も after the underlined phrase:
+<strong>(2) Determiner + noun</strong> form. Fill both blanks in each exchange from the two viewpoints.
 <ol class='enum'>
-<li>Ms. Tanaka is Japanese. <u>Mr. Yoshida</u> is Japanese, too.</li>
-<li>Ms. Tanaka is 20 years old. <u>Mr. Yoshida</u> is 20, too.</li>
-<li>This umbrella is ¥2,000. <u>That umbrella</u> is ¥2,000, too.</li>
-<li>This is my bicycle. <u>That</u> is my bicycle, too.</li>
-<li>Takeshi's major is history. <u>My major</u> is history, too.</li>
+<li>(umbrella ¥12,600) C: ＿＿ かさは いくらですか。 / SC: ＿＿ かさは 12,600えんです。</li>
+<li>(book set ¥2,100) C: ＿＿ ほんは いくらですか。 / SC: ＿＿ ほんは 2,100えんです。</li>
+<li>(far bag ¥10,000) C: ＿＿ かばんは いくらですか。 / SC: ＿＿ かばんは 10,000えんです。</li>
 </ol>
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise H — Negative (じゃないです) (TXB p.74 / WB p.29)</div><div class='block-body'><span class='small'>
-Answer in the negative:
-<ol class='enum'>
-<li>たけしさんは かいしゃいんですか。</li>
-<li>たけしさんは アメリカじんですか。</li>
-<li>たけしさんの せんこうは けいざいですか。</li>
-<li>これは たけしさんの かさですか。 (No, it's Yui's umbrella.)</li>
-<li>これは たけしさんの ほんですか。 (No, it's Ken's book.)</li>
-</ol>
-</span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise I — Role Plays (TXB p.76)</div><div class='block-body'><span class='small'>
-<strong>Flea market:</strong> vendor + customer. Use Dialogue I as model.<br>
-<strong>Restaurant:</strong> waiter + customer. Order from: ていしょく, パスタ, カレー, そば, うどん, サンドイッチ, アイスクリーム, ラーメン, ハンバーガー, コーヒー, コーラ, サラダ, こうちゃ, ジュース, ミルク.
-<div class='framebox'>
-A: <ruby>いらっしゃいませ<rt>irasshaimase</rt></ruby>。 &nbsp;&nbsp; B: ___ <ruby>を<rt>o</rt></ruby> <ruby>おねがいします<rt>onegaishimasu</rt></ruby>。
+<strong>(3) Which?</strong> C: ＿＿ かばんが 4,200えんですか。 / SC: その かばんです。
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+<strong>(1)</strong> Customer: <span class='c-red'>それ</span>は… (the umbrella is by the clerk, so それ for the customer) ／ Clerk: <span class='c-red'>これ</span>は… (it is by me).<br>
+<strong>(2)</strong> 1. C: <span class='c-red'>その</span> かさ ／ SC: <span class='c-red'>この</span> かさ &nbsp;·&nbsp; 2. C: <span class='c-red'>この</span> ほん ／ SC: <span class='c-red'>その</span> ほん &nbsp;·&nbsp; 3. C: <span class='c-red'>あの</span> かばん ／ SC: <span class='c-red'>あの</span> かばん (far from both, so あの for each).<br>
+<strong>(3)</strong> <span class='c-blue'>どの</span> かばんが 4,200えんですか。 (which uses が, not は, with a question word).
+<div class='fns' style='margin-top:4px'>これ/それ/あれ/どれ stand alone (pronouns). この/その/あの/どの must be followed by a noun.</div>
 </div>
+</details>
 </span></div></div>
-<div class='blockbox'><div class='block-title'>Exercise J — Find Someone Who... (TXB p.77)</div><div class='block-body'><span class='small'>
-Find a classmate whose property matches yours; report with 〜も:
+
+<div class='blockbox'><div class='block-title'>Exercise F : Chart Q&amp;A in full sentences (if "no," use a negative)</div><div class='block-body'><span class='small'>
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th></th><th>Mary Hart</th><th>Takeshi Kimura</th><th>Sora Kim</th><th>Robert Smith</th><th>Prof. Yamashita</th></tr>
+<tr><td>Nationality</td><td>American</td><td>Japanese</td><td>Korean</td><td>British</td><td>Japanese</td></tr>
+<tr><td>School</td><td>U. of Arizona</td><td>Sakura</td><td>Seoul</td><td>U. of London</td><td>Sakura</td></tr>
+<tr><td>Major</td><td>Japanese</td><td>history</td><td>computer</td><td>business</td><td>(Japanese teacher)</td></tr>
+<tr><td>Year</td><td>2nd</td><td>4th</td><td>3rd</td><td>4th</td><td>—</td></tr>
+</table>
+Answer each with a full Japanese sentence. If the answer is "no," give the correction with a negative sentence.
 <ol class='enum'>
-<li>is the same age</li>
-<li>is in the same year at school</li>
-<li>whose major is the same as yours</li>
-<li>whose hometown (しゅっしん) is the same as yours</li>
+<li>キムさんは にほんじんですか。 (use negation)</li>
+<li>たけしさんは なんねんせいですか。</li>
+<li>メアリーさんの せんこうは なんですか。</li>
+<li>ロバートさんは さくらだいがくの がくせいですか。 (use negation)</li>
+<li>やましたせんせいは なにじんですか。</li>
+<li>だれが イギリスじんですか。</li>
 </ol>
-Report: <em><ruby>わたしの<rt>watashi no</rt></ruby> <ruby>しゅっしんは<rt>shusshin wa</rt></ruby> ソウル<ruby>です<rt>desu</rt></ruby>。 Bさんの しゅっしん<span class='c-red'>も</span> ソウルです。</em>
+<details class='gk-key'><summary>Sample answers</summary>
+<div>
+1. いいえ、キムさんは にほんじん<span class='c-red'>じゃないです</span>。かんこくじんです。<br>
+2. たけしさんは <span class='c-blue'>よ</span>ねんせいです。<br>
+3. メアリーさんの せんこうは にほんごです。<br>
+4. いいえ、ロバートさんは さくらだいがくの がくせい<span class='c-red'>じゃないです</span>。ロンドンだいがくの がくせいです。<br>
+5. やましたせんせいは にほんじんです。<br>
+6. ロバートさん<span class='c-blue'>が</span> イギリスじんです。 <span class='fns'>(answer to a だれが question keeps が)</span>
+<div class='fns' style='margin-top:4px'>Negative shapes are interchangeable: じゃないです ／ じゃありません ／ ではありません. The quiz accepts any one.</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise G : Spoken practice (pairs)</div><div class='block-body'><span class='small'>
+Do these out loud with a partner.
+<ul class='itm'>
+<li><strong>Shop / flea market:</strong> <span class='framebox'>A: いらっしゃいませ。 &nbsp; B: この ＿＿は いくらですか。 &nbsp; A: ＿＿えんです。 &nbsp; B: じゃあ、それを ください。</span></li>
+<li><strong>Restaurant order:</strong> <span class='framebox'>A: いらっしゃいませ。 &nbsp; B: ＿＿を おねがいします。</span> Order from: ラーメン, カレー, うどん, サラダ, コーヒー, ジュース.</li>
+<li><strong>〜ね / 〜よ:</strong> confirm one fact from the chart with 〜<span class='c-red'>ね</span> (seeking agreement), then correct a partner's mistake with 〜<span class='c-red'>よ</span> (telling them). e.g. たけしさんは よねんせいです<span class='c-red'>ね</span>。／ いいえ、キムさんは かんこくじんです<span class='c-red'>よ</span>。</li>
+<li><strong>どこ:</strong> ask where three campus places are. <span class='framebox'>A: すみません、＿＿は どこですか。 &nbsp; B: あそこです。</span></li>
+</ul>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise H : Numbers, currency &amp; katakana warm-up</div><div class='block-body'><span class='small'>
+<strong>(1) Read the numbers aloud:</strong> 34 · 99 · 315 · 850 · 2,100 · 4,200 · 10,000 · 12,600 · 35,000 · 92,340
+<div class='fns'>Watch the sound changes: 300 さん<span class='c-red'>び</span>ゃく · 600 ろ<span class='c-red'>っぴ</span>ゃく · 800 は<span class='c-red'>っぴ</span>ゃく · 3,000 さん<span class='c-red'>ぜ</span>ん · 8,000 は<span class='c-red'>っ</span>せん.</div>
+<strong>(2) Say the prices in yen:</strong> ¥4 · ¥315 · ¥2,100 · ¥12,600 (remember ¥4 is often <span class='c-red'>よえん</span>).<br>
+<strong>(3) Write in katakana:</strong> coffee · computer · hamburger · T-shirt · jeans.
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+<strong>(2)</strong> よえん · さんびゃくじゅうごえん · にせんひゃくえん · いちまんにせんろっぴゃくえん<br>
+<strong>(3)</strong> コーヒー · コンピューター · ハンバーガー · Tシャツ · ジーンズ
+</div>
+</details>
 </span></div></div>
 <div class='slide-counter'>15 / 16</div>
 </section>
