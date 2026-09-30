@@ -125,11 +125,27 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
   .deck { padding: 12px 8px 32px; }
   .slide { padding: 16px 14px; }
 }
+
+/* exercise-session helpers (quiz prep) */
+.gk-quote { margin: 0.5em 0; padding-left: 0.9em; border-left: 3px solid var(--green-bg); font-style: italic; }
+details.gk-key { margin-top: 8px; background: white; border: 1px dashed #bbb; border-radius: 5px; padding: 6px 10px; }
+details.gk-key > summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); font-size: 0.88em; list-style: none; }
+details.gk-key > summary::before { content: "\25B6  "; font-size: 0.8em; }
+details.gk-key[open] > summary::before { content: "\25BC  "; }
+details.gk-key > div { margin-top: 6px; font-size: 0.9em; line-height: 1.7; }
+.aim { font-size: 0.85em; color: var(--ink-soft); font-style: italic; margin: 0 0 6px; }
+.audio-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0 12px; }
+.audio-row audio { flex: 1 1 320px; max-width: 460px; height: 38px; }
+.audio-note { font-size: 0.82em; color: var(--ink-soft); }
+.script-line { display: block; margin: 0.15em 0; }
+.script-line b { color: var(--blue-fg); font-weight: 600; }
+.tf-list li { margin: 0.35em 0; }
+.blank { display: inline-block; min-width: 4.5em; border-bottom: 1px solid #999; text-align: center; }
 </style>
 </head>
 <body>
 <header class="deck-head"><h1>Genki I - Lesson 3 (Making a Date)</h1></header>
-<nav class="nav-bar"><a href="#s1">Slide 3.1</a><a href="#s2">Slide 3.2</a><a href="#s3">Slide 3.3</a><a href="#s4">Slide 3.4</a><a href="#s5">Slide 3.5</a><a href="#s6">Slide 3.6</a><a href="#s7">Slide 3.7</a><a href="#s8">Slide 3.8</a><a href="#s9">Slide 3.9</a><a href="#s10">Slide 3.10</a><a href="#s11">Slide 3.11</a><a href="#s12">Slide 3.12</a><a href="#s13">Slide 3.13</a><a href="#s14">Slide 3.14</a><a href="#s15">Slide 3.15</a><a href="#s16">Slide 3.16</a><a href="#s17">Slide 3.17</a><a href="#s18">Slide 3.18</a><a href="#s19">Slide 3.19</a></nav>
+<nav class="nav-bar"><a href="#s1">Slide 3.1</a><a href="#s2">Slide 3.2</a><a href="#s3">Slide 3.3</a><a href="#s4">Slide 3.4</a><a href="#s5">Slide 3.5</a><a href="#s6">Slide 3.6</a><a href="#s7">Slide 3.7</a><a href="#s8">Slide 3.8</a><a href="#s9">Slide 3.9</a><a href="#s10">Slide 3.10</a><a href="#s11">Slide 3.11</a><a href="#s12">Slide 3.12</a><a href="#s13">Slide 3.13</a><a href="#s14">Slide 3.14</a><a href="#s15">Slide 3.15</a><a href="#s16">Slide 3.16</a><a href="#s17">Slide 3.17</a><a href="#s18">Slide 3.18</a><a href="#s19">Slide 3.19</a><a href="#s20">Ex A–C</a><a href="#s21">Ex D–F</a></nav>
 <main class="deck">
 <section class='slide' id='s1'>
 <h2 class='frametitle'>Verbs 1: Dictionary Forms: <span class='c-red'>る</span>-Verbs \& <span class='c-red'>う</span>-Verbs</h2>
@@ -162,7 +178,7 @@ Verbs in Modern Japanese are grouped as <span class='c-red'>る</span>-verbs or 
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>1 / 19</div>
+<div class='slide-counter'>1 / 21</div>
 </section>
 <section class='slide' id='s2'>
 <h2 class='frametitle'>Verbs 2: Verb Stems: [<span class='c-red'>る</span>-Verb]-る \& [<span class='c-blue'>う</span>-Verb]-/u/+/i/</h2>
@@ -198,7 +214,7 @@ Verbs in Modern Japanese are grouped as <span class='c-red'>る</span>-verbs or 
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>2 / 19</div>
+<div class='slide-counter'>2 / 21</div>
 </section>
 <section class='slide' id='s3'>
 <h2 class='frametitle'>Verb 2: Polite-Present: aff. 〜ます and neg. 〜ません</h2>
@@ -227,7 +243,7 @@ Polite Form affirmative 〜ます and negative 〜ません are interpreted as p
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>3 / 19</div>
+<div class='slide-counter'>3 / 21</div>
 </section>
 <section class='slide' id='s4'>
 <h2 class='frametitle'>Lesson 3 Verbs</h2>
@@ -253,7 +269,7 @@ Polite Form affirmative 〜ます and negative 〜ません are interpreted as p
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>4 / 19</div>
+<div class='slide-counter'>4 / 21</div>
 </section>
 <section class='slide' id='s5'>
 <h2 class='frametitle'>Case Particles 1: [Noun]+<span class='framebox'><span class='c-red'>を</span></span>, accusative, direct object</h2>
@@ -277,7 +293,7 @@ I do not eat Sushi.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>5 / 19</div>
+<div class='slide-counter'>5 / 21</div>
 </section>
 <section class='slide' id='s6'>
 <h2 class='frametitle'>Case Particles 2: [Noun<sub>LOC</sub>]+<span class='framebox'><span class='c-red'>で</span></span>, location of an event</h2>
@@ -300,7 +316,7 @@ I don't read Manga at a library.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>6 / 19</div>
+<div class='slide-counter'>6 / 21</div>
 </section>
 <section class='slide' id='s7'>
 <h2 class='frametitle'>Case Particles 3.1: [Noun]+<span class='framebox'><span class='c-red'>に</span></span>, direction/goal of an movement</h2>
@@ -321,7 +337,7 @@ Yamada-san doesn't go back to Japan.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>7 / 19</div>
+<div class='slide-counter'>7 / 21</div>
 </section>
 <section class='slide' id='s8'>
 <h2 class='frametitle'>Case Particles 3.2: [Noun]+<span class='framebox'><span class='c-red'>に</span></span>, time of an event</h2>
@@ -346,7 +362,7 @@ What time do you go to bed?</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>8 / 19</div>
+<div class='slide-counter'>8 / 21</div>
 </section>
 <section class='slide' id='s9'>
 <h2 class='frametitle'>Time Reference 1: without 〜に</h2>
@@ -365,7 +381,7 @@ What time do you go to bed?</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>9 / 19</div>
+<div class='slide-counter'>9 / 21</div>
 </section>
 <section class='slide' id='s10'>
 <h2 class='frametitle'>Time Reference 2: usually without 〜に</h2>
@@ -396,7 +412,7 @@ Where do you go on the weekend?</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>10 / 19</div>
+<div class='slide-counter'>10 / 21</div>
 </section>
 <section class='slide' id='s11'>
 <h2 class='frametitle'>Case Particles 4: [Noun]+<span class='framebox'><span class='c-red'>へ</span></span>, direction/goal of an movement</h2>
@@ -419,7 +435,7 @@ Yamada-san don't go back to Japan.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>11 / 19</div>
+<div class='slide-counter'>11 / 21</div>
 </section>
 <section class='slide' id='s12'>
 <h2 class='frametitle'>Idiomatic 〜ませんか: Invitation, ``why don't you/we ...?''</h2>
@@ -441,7 +457,7 @@ Yamada-san don't go back to Japan.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>12 / 19</div>
+<div class='slide-counter'>12 / 21</div>
 </section>
 <section class='slide' id='s13'>
 <h2 class='frametitle'>Japanese, a free-word-order Language</h2>
@@ -462,7 +478,7 @@ Yamada-san don't go back to Japan.</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>13 / 19</div>
+<div class='slide-counter'>13 / 21</div>
 </section>
 <section class='slide' id='s14'>
 <h2 class='frametitle'>Frequency Adverbs</h2>
@@ -491,7 +507,7 @@ Frequency adverbs can be added to a sentence, usually after the subject to indic
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>14 / 19</div>
+<div class='slide-counter'>14 / 21</div>
 </section>
 <section class='slide' id='s15'>
 <h2 class='frametitle'>The Topic Particle: 〜は</h2>
@@ -517,7 +533,7 @@ Frequency adverbs can be added to a sentence, usually after the subject to indic
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>15 / 19</div>
+<div class='slide-counter'>15 / 21</div>
 </section>
 <section class='slide' id='s16'>
 <h2 class='frametitle'>How to use くる/いく in Japanese (come/go)</h2>
@@ -539,7 +555,7 @@ Tel B: Yes, I am <span class='c-blue'>coming</span>.
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>16 / 19</div>
+<div class='slide-counter'>16 / 21</div>
 </section>
 <section class='slide' id='s17'>
 <h2 class='frametitle'>Idiomatic ちょっと</h2>
@@ -559,7 +575,7 @@ Tomorrow is a little (inconvenient).</li>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>17 / 19</div>
+<div class='slide-counter'>17 / 21</div>
 </section>
 <section class='slide' id='s18'>
 <h2 class='frametitle'>Slide 18</h2>
@@ -583,7 +599,7 @@ Thus, one is required to know when and how a given kanji is read in a given cont
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>18 / 19</div>
+<div class='slide-counter'>18 / 21</div>
 </section>
 <section class='slide' id='s19'>
 <h2 class='frametitle'>3.19: Kanji / <ruby>漢字<rt>かんじ</rt></ruby> (<ruby>新<rt>あたら</rt></ruby>しい漢字)</h2>
@@ -609,7 +625,136 @@ Thus, one is required to know when and how a given kanji is read in a given cont
 </ul>
 </div>
 </div>
-<div class='slide-counter'>19 / 19</div>
+<div class='slide-counter'>19 / 21</div>
+</section>
+<!-- ====== SLIDE 20: Exercises A-C (Listening, Verb chart, Invitations) ====== -->
+<section class='slide' id='s20'>
+<h2 class='frametitle'>In-Class Exercises: A–C (Listening ・ Verbs ・ Invitations)</h2>
+
+<div class='blockbox'><div class='block-title'>Exercise A : Listening, True / False (WB p.40 D / TX p.82)</div><div class='block-body'><span class='small'>
+<p class='aim'>Listen for three things: what Takeshi invites Mary to, whether she accepts, and the time he mentions.</p>
+The instructor plays the recording (or reads the script) <strong>twice</strong>. Circle <span class='c-red'>T</span> or <span class='c-red'>F</span>; answer #3 in English.
+<div class='audio-row'>
+<audio controls preload='none' src='item/L3_ExA_listening.mp3'>
+Your browser cannot play audio. <a href='item/L3_ExA_listening.mp3'>Download the recording</a>.
+</audio>
+<span class='audio-note'>たけし &amp; メアリー ・ きっさてん</span>
+</div>
+<ol class='enum tf-list'>
+<li>Takeshi invites Mary to have <em>tea</em> at a café. &nbsp; ( T / F )</li>
+<li>Mary accepts Takeshi's invitation. &nbsp; ( T / F )</li>
+<li>What time does Takeshi say it is? &nbsp; ______________ (in English)</li>
+<li>Mary says she will study tonight. &nbsp; ( T / F )</li>
+<li>Mary will go to school tomorrow. &nbsp; ( T / F )</li>
+</ol>
+<details class='gk-key'><summary>Dialogue script &amp; answers</summary>
+<div>
+<span class='script-line'><b>たけし：</b>メアリーさん、きっさてんで コーヒーを のみませんか。</span>
+<span class='script-line'><b>メアリー：</b>うーん、ちょっと……。わたし、うちに かえります。</span>
+<span class='script-line'><b>たけし：</b>えっ、うちに かえりますか。いま、はちじですよ。はやいですよ。</span>
+<span class='script-line'><b>メアリー：</b>でも……こんばん、べんきょうします。にほんごの ほんを よみます。</span>
+<span class='script-line'><b>たけし：</b>そうですか……。じゃあ、あした、がっこうで ひるごはんを たべませんか。</span>
+<span class='script-line'><b>メアリー：</b>いいえ。わたし、あした、がっこうに いきません。すみません。さようなら。</span>
+<div style='margin-top:6px'><strong>Answers:</strong> 1. <span class='c-red'>F</span> (coffee コーヒー, not tea) &nbsp;·&nbsp; 2. <span class='c-red'>F</span> (she declines: ちょっと……) &nbsp;·&nbsp; 3. <span class='c-blue'>8:00 / eight o'clock</span> (はちじ) &nbsp;·&nbsp; 4. <span class='c-blue'>T</span> &nbsp;·&nbsp; 5. <span class='c-red'>F</span> (がっこうに いきません)</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise B : Verb chart, dictionary → polite ます / ません (see Slides 3.3–3.4)</div><div class='block-body'><span class='small'>
+Fill in the missing polite forms. The first row is done for you.
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>Gloss</th><th>Dictionary</th><th>Present Affirmative (〜ます)</th><th>Present Negative (〜ません)</th></tr>
+<tr><td>eat</td><td>たべる</td><td>たべます</td><td>たべません</td></tr>
+<tr><td>drink</td><td>のむ</td><td>＿＿＿＿</td><td>＿＿＿＿</td></tr>
+<tr><td>go</td><td>いく</td><td>＿＿＿＿</td><td>＿＿＿＿</td></tr>
+<tr><td>return</td><td>＿＿＿＿</td><td>かえります</td><td>＿＿＿＿</td></tr>
+<tr><td>do</td><td>する</td><td>します</td><td>＿＿＿＿</td></tr>
+<tr><td>read</td><td>よむ</td><td>＿＿＿＿</td><td>＿＿＿＿</td></tr>
+<tr><td>see</td><td>みる</td><td>＿＿＿＿</td><td>＿＿＿＿</td></tr>
+<tr><td>come</td><td>くる</td><td>＿＿＿＿</td><td>＿＿＿＿</td></tr>
+</table>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+drink: のむ → <span class='c-red'>のみます</span> / <span class='c-red'>のみません</span> &nbsp;·&nbsp; go: いく → <span class='c-red'>いきます</span> / <span class='c-red'>いきません</span> &nbsp;·&nbsp; return: <span class='c-red'>かえる</span> → かえります / <span class='c-red'>かえりません</span> &nbsp;·&nbsp; do: する → します / <span class='c-red'>しません</span> &nbsp;·&nbsp; read: よむ → <span class='c-red'>よみます</span> / <span class='c-red'>よみません</span> &nbsp;·&nbsp; see: みる → <span class='c-red'>みます</span> / <span class='c-red'>みません</span> &nbsp;·&nbsp; come: くる → <span class='c-red'>きます</span> / <span class='c-red'>きません</span>
+<div class='fns' style='margin-top:4px'>う-verbs change the last /u/ to /i/ + ます (のむ→のみます). る-verbs just drop る (たべる→たべます). くる and する are irregular (きます, します).</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise C : Invitation expressions, fill in the blanks (see Slides 3.12 &amp; 3.17)</div><div class='block-body'><span class='small'>
+Use 〜ませんか ・ ちょっと ・ どうですか ・ いいですね, plus the right particle.
+<ol class='enum'>
+<li>コーヒー（　　）（　　　　　　　）。 <span class='fns'>Why don't we drink coffee?</span></li>
+<li>すみません、コーヒー（　　）（　　　　　）……。 <span class='fns'>Sorry, coffee is a little…</span></li>
+<li>おちゃ（　　）（　　　　　　　）。 <span class='fns'>How about tea?</span></li>
+<li>（　　　　　　　）。 <span class='fns'>Sounds good!</span></li>
+<li>しゅうまつ、えいが（　　）（　　　　　　　）。 <span class='fns'>Won't you see a movie this weekend?</span></li>
+<li>どようび（　　）（　　　　　）……。 <span class='fns'>Saturday is a little…</span></li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. コーヒー<span class='c-red'>を</span> <span class='c-red'>のみませんか</span>。 &nbsp;·&nbsp; 2. コーヒー<span class='c-red'>は</span> <span class='c-red'>ちょっと</span>……。 &nbsp;·&nbsp; 3. おちゃ<span class='c-red'>は</span> <span class='c-red'>どうですか</span>。 &nbsp;·&nbsp; 4. <span class='c-red'>いいですね</span>。 &nbsp;·&nbsp; 5. えいが<span class='c-red'>を</span> <span class='c-red'>みませんか</span>。 &nbsp;·&nbsp; 6. どようび<span class='c-red'>は</span> <span class='c-red'>ちょっと</span>……。
+<div class='fns' style='margin-top:4px'>Declining softly: [topic]<span class='c-red'>は</span> ちょっと…… lets you refuse without saying "no". An invitation must be present-<em>negative</em> (〜ませんか), not 〜ますか.</div>
+</div>
+</details>
+</span></div></div>
+<div class='slide-counter'>20 / 21</div>
+</section>
+
+<!-- ====== SLIDE 21: Exercises D-F (Translation, Particles, Free production) ====== -->
+<section class='slide' id='s21'>
+<h2 class='frametitle'>In-Class Exercises: D–F (Translation ・ Particles ・ About You)</h2>
+
+<div class='blockbox'><div class='block-title'>Exercise D : Translate into Japanese, NO KANJI (WB p.34 II / p.35 III / p.37)</div><div class='block-body'><span class='small'>
+Write in hiragana only. Watch the particles を ・ で ・ に and word order (verb last).
+<ol class='enum'>
+<li>I drink coffee at a café.</li>
+<li>I do not eat meat.</li>
+<li>On Sunday I go to Osaka.</li>
+<li>I read a book at the library every day.</li>
+<li>What time do you go to bed?</li>
+<li>I do not go to a coffee shop very often.</li>
+<li>Won't you eat lunch together tomorrow?</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. わたしは きっさてん<span class='c-red'>で</span> コーヒー<span class='c-red'>を</span> のみます。<br>
+2. わたしは にく<span class='c-red'>を</span> たべません。 <span class='fns'>(topic: にく<span class='c-red'>は</span> たべません also fine)</span><br>
+3. にちようび<span class='c-red'>に</span> おおさか<span class='c-red'>に</span> いきます。<br>
+4. まいにち としょかん<span class='c-red'>で</span> ほん<span class='c-red'>を</span> よみます。<br>
+5. なんじ<span class='c-red'>に</span> ねますか。<br>
+6. わたしは <span class='c-blue'>あまり</span> きっさてん<span class='c-red'>に</span> いき<span class='c-red'>ません</span>。<br>
+7. あした、いっしょに ひるごはん<span class='c-red'>を</span> たべ<span class='c-red'>ませんか</span>。
+<div class='fns' style='margin-top:4px'>まいにち and あまり are adverbs, so they take no particle. あまり／ぜんぜん require a negative verb.</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='blockbox'><div class='block-title'>Exercise E : Choose the particle, を / で / に / は (see Slides 3.5–3.15)</div><div class='block-body'><span class='small'>
+Fill each（　）with one particle.
+<ol class='enum multicols-2'>
+<li>うち（　）ごはん（　）たべます。</li>
+<li>にちようび（　）おおさか（　）いきます。</li>
+<li>としょかん（　）ほん（　）よみます。</li>
+<li>にく（　）たべません。</li>
+<li>なんじ（　）ねますか。</li>
+<li>やまださんは にほん（　）かえりません。</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary>
+<div>
+1. うち<span class='c-red'>で</span> ごはん<span class='c-red'>を</span> &nbsp;·&nbsp; 2. にちようび<span class='c-red'>に</span> おおさか<span class='c-red'>に</span> &nbsp;·&nbsp; 3. としょかん<span class='c-red'>で</span> ほん<span class='c-red'>を</span> &nbsp;·&nbsp; 4. にく<span class='c-red'>は</span>（〜を replaced by topic は） &nbsp;·&nbsp; 5. なんじ<span class='c-red'>に</span> &nbsp;·&nbsp; 6. にほん<span class='c-red'>に</span>
+<div class='fns' style='margin-top:4px'>で = place of an action ・ を = direct object ・ に = destination or clock time ・ は can replace を to mark a topic.</div>
+</div>
+</details>
+</span></div></div>
+
+<div class='practiceblock'><div class='block-title'>Exercise F : Two things about you, each with a verb + a frequency adverb</div><div class='block-body practice-body'><span class='small'>
+Write <strong>two</strong> sentences about yourself. Use a <strong>different verb</strong> and a <strong>different frequency adverb</strong> in each (do not repeat). Adverbs: まいにち ・ よく ・ ときどき ・ あまり ・ ぜんぜん. Remember: あまり and ぜんぜん need a <span class='c-red'>negative</span> verb.
+<div class='fns' style='margin:2px 0 6px'>Model: わたしは <span class='c-blue'>まいにち</span> コーヒーを のみます。／ わたしは <span class='c-blue'>あまり</span> テレビを み<span class='c-red'>ません</span>。</div>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</span></div></div>
+<div class='slide-counter'>21 / 21</div>
 </section>
 </main>
 </body>
