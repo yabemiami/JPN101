@@ -1,0 +1,427 @@
+<title>Adjective Picture Match</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+/* Layout: one-column classroom app; sticky mode bar; card grids that stay readable when projected and collapse on phones */
+:root{
+  --bg:#f7f1f2; --surface:#ffffff; --sunk:#efe5e8; --ink:#2a1c21; --muted:#7b6168; --line:#e4d3d8;
+  --accent:#b34155; --accent-ink:#ffffff; --accent-soft:#f7d8de;
+  --i:#2a59a8; --i-soft:#dde6f4; --na:#2f7d3e; --na-soft:#d8eedc;
+  --good:#2f7d3e; --good-soft:#dff1e2; --bad:#c23a3a; --bad-soft:#f8dddd;
+  --back-a:#b34155; --back-b:#a1394c;
+  --kana:"Klee One","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  --ui:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1c1518; --surface:#271d21; --sunk:#211a1d; --ink:#f3e8eb; --muted:#b39aa1; --line:#3e2f35;
+  --accent:#e0778a; --accent-ink:#2a1016; --accent-soft:#4a2630;
+  --i:#8fb0ea; --i-soft:#24324a; --na:#82c992; --na-soft:#1f3a26;
+  --good:#82c992; --good-soft:#1f3a26; --bad:#f08a8a; --bad-soft:#4a2424;
+  --back-a:#8e3245; --back-b:#7a2a3b; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#1c1518; --surface:#271d21; --sunk:#211a1d; --ink:#f3e8eb; --muted:#b39aa1; --line:#3e2f35;
+  --accent:#e0778a; --accent-ink:#2a1016; --accent-soft:#4a2630;
+  --i:#8fb0ea; --i-soft:#24324a; --na:#82c992; --na-soft:#1f3a26;
+  --good:#82c992; --good-soft:#1f3a26; --bad:#f08a8a; --bad-soft:#4a2424;
+  --back-a:#8e3245; --back-b:#7a2a3b; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+header.top{padding-block:22px 6px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1{font-family:var(--kana);font-weight:600;font-size:clamp(24px,4vw,34px);margin:2px 0 0;text-wrap:balance;line-height:1.2}
+h1 .jp{color:var(--accent)}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);margin-top:14px}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-block:10px}
+.tabs{display:flex;gap:4px;background:var(--sunk);padding:4px;border-radius:999px}
+.tab{border:0;background:none;padding:7px 16px;border-radius:999px;font-weight:700;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips .lbl{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin-right:2px}
+.chip{border:1.5px solid var(--line);background:var(--surface);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.spacer{flex:1}
+
+main{padding-block:20px 48px}
+.view-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.view-head h2{margin:0;font-size:19px}
+.view-head p{margin:0;color:var(--muted);font-size:14px;max-width:62ch}
+
+/* picture scenes */
+.scene{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:.05em;line-height:1;position:relative}
+.scene span{display:inline-block}
+.scene .tag{font-family:var(--kana);font-weight:600;font-size:1em;background:var(--surface);border:1.5px solid var(--ink);border-radius:.3em;padding:.15em .4em;line-height:1.1;white-space:nowrap;align-self:center}
+.scene .tag.price{border-color:var(--accent);color:var(--accent)}
+.scene .tag.kanji{font-size:1.25em;letter-spacing:.15em}
+
+.kana{font-family:var(--kana);font-weight:600}
+.na-part{color:var(--muted);font-weight:400}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;letter-spacing:.04em}
+.badge.i{background:var(--i-soft);color:var(--i)}
+.badge.na{background:var(--na-soft);color:var(--na)}
+
+/* study */
+.study-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-rows:auto auto 1fr;gap:8px;min-width:0}
+.scard .scene{font-size:22px;min-height:92px;align-items:center;background:var(--sunk);border-radius:10px;padding:8px}
+.scard .row{display:flex;align-items:center;gap:8px}
+.scard .kana{font-size:26px;flex:1;line-height:1.2}
+.meta{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+.meta .en{color:var(--ink);font-size:14px}
+.meta .opp{font-family:var(--kana);font-size:14px}
+.meta .note{color:var(--bad);font-size:12.5px}
+.romaji{color:var(--muted);font-size:12.5px;font-family:var(--ui);font-weight:500}
+
+/* memory */
+.status{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.stat{font-size:14px;color:var(--muted)}
+.stat b{color:var(--ink);font-size:17px}
+.teams{display:flex;gap:6px}
+.team{border:2px solid var(--line);border-radius:999px;padding:3px 12px;font-weight:700;font-size:14px;background:var(--surface)}
+.team.on{border-color:var(--accent);background:var(--accent-soft)}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:8px 18px;font-weight:700}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+@media (max-width:520px){.mgrid{grid-template-columns:repeat(3,1fr);gap:8px}}
+.mcard{border:0;background:none;padding:0;aspect-ratio:3/4;perspective:900px;container-type:inline-size;max-width:100%}
+.mcard .in{position:relative;width:100%;height:100%;transition:transform .42s ease;transform-style:preserve-3d}
+.mcard.up .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;display:grid;place-items:center;padding:6px;overflow:hidden}
+.face.down{background:repeating-linear-gradient(45deg,var(--back-a) 0 10px,var(--back-b) 10px 20px);color:#fff;font-family:var(--kana);font-size:38cqi;font-weight:600;box-shadow:inset 0 0 0 5px rgba(255,255,255,.18)}
+.face.show{transform:rotateY(180deg);background:var(--surface);border:2px solid var(--line)}
+.face.show .scene{font-size:10.5cqi}
+.face.show .kana{font-size:17cqi;text-align:center;line-height:1.15}
+.face.show .romaji{display:block;font-size:9cqi;text-align:center}
+.mcard.match .face.show{border-color:var(--good);background:var(--good-soft)}
+.mcard.miss .face.show{border-color:var(--bad)}
+.mcard .pairno{position:absolute;top:5px;right:7px;font-size:10cqi;font-weight:700;color:var(--good)}
+.mcard:disabled{cursor:default}
+.done{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.done h3{margin:0;font-size:18px}
+.done p{margin:2px 0 0;color:var(--muted)}
+
+/* quiz */
+.qwrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.progress{height:6px;background:var(--sunk);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:16px;min-height:170px;display:grid;place-items:center;padding:18px;text-align:center}
+.prompt .scene{font-size:34px}
+.prompt .kana{font-size:clamp(38px,8vw,56px)}
+.prompt .ask{font-size:13px;color:var(--muted);margin-top:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px;min-height:92px;display:grid;place-items:center;container-type:inline-size}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .kana{font-size:clamp(22px,5vw,30px)}
+.opt .scene{font-size:clamp(17px,4vw,22px)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.feedback .verdict{font-weight:700}
+.feedback .verdict.ok{color:var(--good)} .feedback .verdict.no{color:var(--bad)}
+.feedback .info{flex:1;min-width:200px;font-size:14px}
+.feedback .info .kana{font-size:20px}
+.dir{display:flex;gap:6px;flex-wrap:wrap}
+.missed{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.missed span{background:var(--bad-soft);border-radius:999px;padding:3px 12px;font-family:var(--kana);font-weight:600}
+
+@media (prefers-reduced-motion: reduce){.mcard .in,.progress i{transition:none}}
+</style>
+
+<header class="top wrap">
+  <div class="eyebrow">JN101 · Genki I Lesson 5 · 形容詞</div>
+  <h1><span class="jp">けいようし</span> Adjective Picture Match</h1>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="study" id="tab-study">Study</button>
+      <button class="tab" role="tab" data-view="memory" id="tab-memory">Memory</button>
+      <button class="tab" role="tab" data-view="quiz" id="tab-quiz">Quiz</button>
+    </div>
+    <div class="chips" id="deckChips"><span class="lbl">Words</span></div>
+    <div class="spacer"></div>
+    <div class="chips">
+      <button class="chip" id="tgEn" aria-pressed="true">English</button>
+      <button class="chip" id="tgRo" aria-pressed="false">Romaji</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="v-study" hidden>
+    <div class="view-head">
+      <h2>Look and remember</h2>
+      <p><span class="badge i">い</span> and <span class="badge na">な</span> mark the adjective type; learn each word with its opposite.</p>
+    </div>
+    <div class="study-grid" id="studyGrid"></div>
+  </section>
+
+  <section id="v-memory" hidden>
+    <div class="view-head">
+      <h2>Memory: match the picture to the word</h2>
+      <p>Turn over two cards. A picture and its adjective make a pair. Say the word aloud when you find one.</p>
+    </div>
+    <div class="status">
+      <span class="stat">Pairs <b id="mPairs">0/0</b></span>
+      <span class="stat">Turns <b id="mMoves">0</b></span>
+      <span class="stat">Time <b id="mTime">0:00</b></span>
+      <span class="stat" id="mBestWrap">Best <b id="mBest">–</b></span>
+      <div class="teams" id="teamBox" hidden>
+        <span class="team" id="team0">Team A <b id="ts0">0</b></span>
+        <span class="team" id="team1">Team B <b id="ts1">0</b></span>
+      </div>
+      <div class="spacer"></div>
+      <div class="chips" id="sizeChips"><span class="lbl">Pairs</span></div>
+      <button class="chip" id="tgTeams" aria-pressed="false">Two teams</button>
+      <button class="btn" id="mNew">New game</button>
+    </div>
+    <div class="mgrid" id="mGrid"></div>
+    <div class="done" id="mDone" hidden></div>
+  </section>
+
+  <section id="v-quiz" hidden>
+    <div class="qwrap" id="qWrap"></div>
+  </section>
+</main>
+
+<script>
+const WORDS=[
+ {id:'takai',k:'たかい',r:'takai',en:'expensive; high',t:'i',opp:'yasui',s:[['⌚',3]],tag:['¥98,000','price']},
+ {id:'yasui',k:'やすい',r:'yasui',en:'inexpensive, cheap',t:'i',opp:'takai',s:[['⌚',3]],tag:['¥500','price']},
+ {id:'genki',k:'げんきな',r:'genki na',en:'healthy, energetic',t:'na',s:[['👴',2.8],['🏋️',2]]},
+ {id:'atarashii',k:'あたらしい',r:'atarashii',en:'new',t:'i',opp:'furui',s:[['📘',3],['✨',1.7]]},
+ {id:'furui',k:'ふるい',r:'furui',en:'old (things, not people)',t:'i',opp:'atarashii',s:[['📜',3],['🕸️',1.7]]},
+ {id:'atsui',k:'あつい',r:'atsui',en:'hot (weather)',t:'i',opp:'samui',s:[['🥵',3],['☀️',1.8]]},
+ {id:'samui',k:'さむい',r:'samui',en:'cold (weather)',t:'i',opp:'atsui',s:[['🥶',3],['❄️',1.8]]},
+ {id:'ookii',k:'おおきい',r:'ookii',en:'large',t:'i',opp:'chiisai',s:[['🧍',1.5],['🧳',3.4]]},
+ {id:'chiisai',k:'ちいさい',r:'chiisai',en:'small',t:'i',opp:'ookii',s:[['🧍',3],['👛',1.1]]},
+ {id:'tanoshii',k:'たのしい',r:'tanoshii',en:'fun',t:'i',s:[['🥳',3],['🎉',1.9]]},
+ {id:'omoshiroi',k:'おもしろい',r:'omoshiroi',en:'interesting; funny',t:'i',opp:'tsumaranai',s:[['😂',3],['📺',2.1]]},
+ {id:'tsumaranai',k:'つまらない',r:'tsumaranai',en:'boring',t:'i',opp:'omoshiroi',s:[['🥱',3],['📺',2.1]]},
+ {id:'muzukashii',k:'むずかしい',r:'muzukashii',en:'difficult',t:'i',opp:'yasashii',s:[['😵‍💫',2.6]],tag:['憂鬱 薔薇','kanji']},
+ {id:'yasashii',k:'やさしい',r:'yasashii',en:'easy (a problem); kind (a person)',t:'i',opp:'muzukashii',s:[['😄',2.6]],tag:['山 川','kanji']},
+ {id:'kowai',k:'こわい',r:'kowai',en:'frightening',t:'i',s:[['😱',3],['👻',2.1]]},
+ {id:'ii',k:'いい',r:'ii',en:'good',t:'i',note:'Irregular: the negative is よくない.',s:[['📝',2.4],['💯',2.6]]},
+ {id:'kakkoii',k:'かっこいい',r:'kakkoii',en:'good-looking',t:'i',note:'Irregular like いい: かっこよくない.',s:[['😎',3],['😍',1.7]]},
+ {id:'isogashii',k:'いそがしい',r:'isogashii',en:'busy (people, days)',t:'i',opp:'hima',s:[['😫',2.6],['📚',1.7],['📞',1.7]]},
+ {id:'hima',k:'ひまな',r:'hima na',en:'not busy, having a lot of free time',t:'na',opp:'isogashii',s:[['😶',2.6],['🛋️',2.1]]},
+ {id:'kiree',k:'きれいな',r:'kiree na',en:'beautiful; clean',t:'na',note:'Ends in い, but it is a な-adjective.',s:[['🖼️',2],['💐',2.6],['✨',1.5]]},
+ {id:'shizuka',k:'しずかな',r:'shizuka na',en:'quiet',t:'na',opp:'nigiyaka',s:[['🏘️',3],['🤫',1.7]]},
+ {id:'nigiyaka',k:'にぎやかな',r:'nigiyaka na',en:'lively',t:'na',opp:'shizuka',s:[['🏙️',2.4],['👨‍👩‍👧‍👦',2.1],['🚗',1.6]]},
+];
+const BY=Object.fromEntries(WORDS.map(w=>[w.id,w]));
+const DECKS=[
+ {id:'all',label:'All 22',f:()=>true},
+ {id:'i',label:'い-adj',f:w=>w.t==='i'},
+ {id:'na',label:'な-adj',f:w=>w.t==='na'},
+ {id:'opp',label:'Opposite pairs',f:w=>!!w.opp},
+];
+const S={view:'study',deck:'all',en:true,ro:false,size:8,teams:false};
+try{const p=JSON.parse(localStorage.getItem('adjmatch-prefs')||'{}');Object.assign(S,{deck:p.deck||S.deck,en:p.en??S.en,ro:p.ro??S.ro,size:p.size||S.size});}catch(e){}
+function savePrefs(){try{localStorage.setItem('adjmatch-prefs',JSON.stringify({deck:S.deck,en:S.en,ro:S.ro,size:S.size}))}catch(e){}}
+const $=id=>document.getElementById(id);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const pool=()=>WORDS.filter(DECKS.find(d=>d.id===S.deck).f);
+
+function sceneHTML(w){
+  let h=w.s.map(([e,z])=>`<span style="font-size:${z}em">${e}</span>`).join('');
+  if(w.tag)h+=`<span class="tag ${w.tag[1]}">${w.tag[0]}</span>`;
+  return `<div class="scene" role="img" aria-label="picture">${h}</div>`;
+}
+function kanaHTML(w){
+  return w.t==='na'?`<span class="kana">${w.k.slice(0,-1)}<span class="na-part">な</span></span>`:`<span class="kana">${w.k}</span>`;
+}
+
+/* ---------- chrome ---------- */
+function buildChrome(){
+  const dc=$('deckChips');
+  DECKS.forEach(d=>{const b=document.createElement('button');b.className='chip';b.id='deck-'+d.id;b.textContent=d.label;
+    b.onclick=()=>{S.deck=d.id;savePrefs();syncChrome();renderView(true)};dc.appendChild(b)});
+  const sc=$('sizeChips');
+  [6,8,11].forEach(n=>{const b=document.createElement('button');b.className='chip';b.id='size-'+n;b.textContent=n;
+    b.onclick=()=>{S.size=n;savePrefs();syncChrome();newMemory()};sc.appendChild(b)});
+  $('tgEn').onclick=()=>{S.en=!S.en;savePrefs();syncChrome();renderView(false)};
+  $('tgRo').onclick=()=>{S.ro=!S.ro;savePrefs();syncChrome();renderView(false)};
+  $('tgTeams').onclick=()=>{S.teams=!S.teams;syncChrome();newMemory()};
+  $('mNew').onclick=newMemory;
+  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{location.hash=t.dataset.view});
+  window.addEventListener('hashchange',route);
+}
+function syncChrome(){
+  DECKS.forEach(d=>$('deck-'+d.id).setAttribute('aria-pressed',S.deck===d.id));
+  [6,8,11].forEach(n=>$('size-'+n).setAttribute('aria-pressed',S.size===n));
+  $('tgEn').setAttribute('aria-pressed',S.en);$('tgRo').setAttribute('aria-pressed',S.ro);
+  $('tgTeams').setAttribute('aria-pressed',S.teams);
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.view===S.view));
+}
+function route(){
+  const h=location.hash.slice(1);S.view=['study','memory','quiz'].includes(h)?h:'study';
+  ['study','memory','quiz'].forEach(v=>$('v-'+v).hidden=v!==S.view);
+  syncChrome();renderView(true);
+}
+function renderView(fresh){
+  if(S.view==='study')renderStudy();
+  if(S.view==='memory'){fresh||!M.cards.length?newMemory():drawMemory()}
+  if(S.view==='quiz'){fresh||!Q.items.length?newQuiz():drawQuiz()}
+}
+
+/* ---------- study ---------- */
+function renderStudy(){
+  $('studyGrid').innerHTML=pool().map(w=>{
+    const o=w.opp?BY[w.opp]:null;
+    return `<article class="scard">
+      ${sceneHTML(w)}
+      <div class="row">${kanaHTML(w)}</div>
+      <div class="meta">
+        <span><span class="badge ${w.t}">${w.t==='i'?'い-adjective':'な-adjective'}</span>${S.ro?` <span class="romaji">${w.r}</span>`:''}</span>
+        ${S.en?`<span class="en">${w.en}</span>`:''}
+        ${o?`<span>Opposite: <span class="opp">${o.k}</span></span>`:''}
+        ${w.note?`<span class="note">${w.note}</span>`:''}
+      </div></article>`}).join('');
+}
+
+/* ---------- memory ---------- */
+const M={cards:[],open:[],lock:false,moves:0,found:0,total:0,t0:0,timer:null,turn:0,score:[0,0]};
+function bestKey(){return 'adjmatch-best-'+S.deck+'-'+M.total}
+function newMemory(){
+  clearInterval(M.timer);
+  const words=shuffle(pool()).slice(0,S.size);
+  M.total=words.length;M.found=0;M.moves=0;M.open=[];M.lock=false;M.t0=0;M.turn=0;M.score=[0,0];
+  M.cards=shuffle(words.flatMap(w=>[{w,kind:'pic',up:false,match:0},{w,kind:'word',up:false,match:0}]));
+  $('mTime').textContent='0:00';$('mDone').hidden=true;
+  drawMemory();
+}
+function fmt(ms){const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function drawMemory(){
+  const g=$('mGrid');
+  g.innerHTML=M.cards.map((c,i)=>{
+    const face=c.kind==='pic'?sceneHTML(c.w):`<div>${kanaHTML(c.w)}${S.ro?`<span class="romaji">${c.w.r}</span>`:''}</div>`;
+    return `<button class="mcard${c.up?' up':''}${c.match?' match':''}" data-i="${i}" aria-label="${c.up?(c.kind==='pic'?'picture card':c.w.k):'face-down card'}"${c.match?' disabled':''}>
+      <div class="in"><div class="face down">形</div><div class="face show">${c.match?`<span class="pairno">${c.match}</span>`:''}${face}</div></div></button>`}).join('');
+  g.querySelectorAll('.mcard').forEach(b=>b.onclick=()=>flip(+b.dataset.i));
+  updateStatus();
+}
+function updateStatus(){
+  $('mPairs').textContent=M.found+'/'+M.total;$('mMoves').textContent=M.moves;
+  $('teamBox').hidden=!S.teams;$('mBestWrap').hidden=S.teams;
+  $('ts0').textContent=M.score[0];$('ts1').textContent=M.score[1];
+  $('team0').classList.toggle('on',M.turn===0);$('team1').classList.toggle('on',M.turn===1);
+  let b=null;try{b=localStorage.getItem(bestKey())}catch(e){}
+  $('mBest').textContent=b?b+' turns':'–';
+}
+function flip(i){
+  const c=M.cards[i];if(M.lock||c.up||c.match)return;
+  if(!M.t0){M.t0=Date.now();M.timer=setInterval(()=>$('mTime').textContent=fmt(Date.now()-M.t0),500)}
+  c.up=true;M.open.push(i);
+  const el=$('mGrid').children[i];el.classList.add('up');
+  el.querySelector('.face.show').innerHTML=c.kind==='pic'?sceneHTML(c.w):`<div>${kanaHTML(c.w)}${S.ro?`<span class="romaji">${c.w.r}</span>`:''}</div>`;
+  if(M.open.length<2)return;
+  M.moves++;
+  const [a,b]=M.open.map(j=>M.cards[j]);
+  if(a.w.id===b.w.id){
+    M.found++;a.match=b.match=M.found;M.open=[];
+    if(S.teams)M.score[M.turn]++;
+    setTimeout(()=>{drawMemory();if(M.found===M.total)finishMemory()},380);
+  }else{
+    M.lock=true;
+    M.open.forEach(j=>$('mGrid').children[j].classList.add('miss'));
+    setTimeout(()=>{M.open.forEach(j=>M.cards[j].up=false);M.open=[];M.lock=false;if(S.teams)M.turn=1-M.turn;drawMemory()},1100);
+  }
+  updateStatus();
+}
+function finishMemory(){
+  clearInterval(M.timer);
+  const time=fmt(Date.now()-M.t0);let msg;
+  if(S.teams){
+    const [a,b]=M.score;msg=a===b?`A tie, ${a} to ${b}.`:`Team ${a>b?'A':'B'} wins, ${Math.max(a,b)} to ${Math.min(a,b)}.`;
+  }else{
+    let best=null;try{best=+localStorage.getItem(bestKey())||null}catch(e){}
+    const nb=!best||M.moves<best;if(nb){try{localStorage.setItem(bestKey(),M.moves)}catch(e){}}
+    msg=`${M.total} pairs in ${M.moves} turns (${time}).${nb?' New best for this set.':''}`;
+  }
+  const d=$('mDone');d.hidden=false;
+  d.innerHTML=`<div><h3>よくできました！</h3><p>${msg} Now say every pair aloud, then try the Quiz.</p></div><div class="chips"><button class="btn ghost" id="toQuiz">Go to Quiz</button><button class="btn" id="again">Play again</button></div>`;
+  $('again').onclick=newMemory;$('toQuiz').onclick=()=>location.hash='quiz';
+  updateStatus();
+}
+
+/* ---------- quiz ---------- */
+const Q={items:[],idx:0,score:0,streak:0,missed:[],answered:null,dir:'pic',auto:false};
+function newQuiz(list){
+  const src=list&&list.length?list:pool();
+  Q.items=shuffle(src).slice(0,Math.min(10,src.length)).map(w=>{
+    let distract=WORDS.filter(x=>x.id!==w.id);
+    // the opposite is the most useful wrong answer, so include it when it exists
+    let picks=[];if(w.opp)picks.push(BY[w.opp]);
+    picks=picks.concat(shuffle(distract.filter(x=>x.id!==w.opp)).slice(0,3-picks.length));
+    return {w,opts:shuffle([w,...picks])};
+  });
+  Q.idx=0;Q.score=0;Q.streak=0;Q.missed=[];Q.answered=null;drawQuiz();
+}
+function drawQuiz(){
+  const W=$('qWrap');
+  if(Q.idx>=Q.items.length){
+    const n=Q.items.length;
+    W.innerHTML=`<div class="prompt"><div><div class="kana" style="font-size:44px">${Q.score} / ${n}</div>
+      <div class="ask">${Q.score===n?'Perfect. すばらしい！':Q.score>=n*.7?'Good work. Review the ones you missed, then go again.':'Go back to Study for a few minutes, then try again.'}</div>
+      ${Q.missed.length?`<div class="missed">${Q.missed.map(w=>`<span>${w.k}</span>`).join('')}</div>`:''}</div></div>
+      <div class="chips" style="justify-content:center">${Q.missed.length?'<button class="btn ghost" id="qMiss">Retry missed words</button>':''}<button class="btn" id="qAgain">New quiz</button></div>`;
+    $('qAgain').onclick=()=>newQuiz();if($('qMiss'))$('qMiss').onclick=()=>newQuiz(Q.missed.slice());
+    return;
+  }
+  const it=Q.items[Q.idx],w=it.w,pic=Q.dir==='pic';
+  W.innerHTML=`
+   <div class="qtop">
+     <div class="dir"><button class="chip" id="dPic" aria-pressed="${pic}">Picture → word</button><button class="chip" id="dWord" aria-pressed="${!pic}">Word → picture</button></div>
+     <span class="stat">Question <b>${Q.idx+1}</b>/${Q.items.length} · Score <b>${Q.score}</b> · Streak <b>${Q.streak}</b></span>
+   </div>
+   <div class="progress"><i style="width:${Q.idx/Q.items.length*100}%"></i></div>
+   <div class="prompt"><div>${pic?sceneHTML(w):kanaHTML(w)+(S.ro?`<div class="romaji">${w.r}</div>`:'')}
+     <div class="ask">${pic?'Which adjective fits this picture?':'Which picture shows this adjective?'}</div></div></div>
+   <div class="opts">${it.opts.map((o,i)=>`<button class="opt" data-o="${i}" id="opt${i}">${pic?kanaHTML(o):sceneHTML(o)}</button>`).join('')}</div>
+   <div id="qFb"></div>`;
+  $('dPic').onclick=()=>{Q.dir='pic';drawQuiz()};$('dWord').onclick=()=>{Q.dir='word';drawQuiz()};
+  W.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
+  if(Q.answered!==null)showAnswer();
+}
+function answer(i){
+  if(Q.answered!==null)return;
+  const it=Q.items[Q.idx];Q.answered=i;
+  if(it.opts[i].id===it.w.id){Q.score++;Q.streak++}else{Q.streak=0;Q.missed.push(it.w)}
+  drawQuiz();
+}
+function showAnswer(){
+  const it=Q.items[Q.idx],w=it.w,ok=it.opts[Q.answered].id===w.id;
+  it.opts.forEach((o,i)=>{const b=$('opt'+i);b.disabled=true;if(o.id===w.id)b.classList.add('right');else if(i===Q.answered)b.classList.add('wrong')});
+  const wrongW=it.opts[Q.answered];
+  const o=w.opp?BY[w.opp]:null;
+  $('qFb').innerHTML=`<div class="feedback">
+    <span class="verdict ${ok?'ok':'no'}">${ok?'せいかい！':'ざんねん'}</span>
+    <div class="info">${kanaHTML(w)} <span class="badge ${w.t}">${w.t==='i'?'い':'な'}</span> ${S.ro?`<span class="romaji">${w.r}</span> `:''}${S.en?`· ${w.en}`:''}
+      ${!ok?`<div class="romaji">You chose ${wrongW.k}${S.en?` (${wrongW.en})`:''}${wrongW.id===w.opp?', the opposite':''}.</div>`:''}
+      ${o?`<div class="romaji">Opposite: <span class="kana">${o.k}</span></div>`:''}
+      ${w.note?`<div class="romaji" style="color:var(--bad)">${w.note}</div>`:''}</div>
+    <button class="btn" id="qNext">${Q.idx+1<Q.items.length?'Next':'See score'}</button></div>`;
+  $('qNext').onclick=()=>{Q.idx++;Q.answered=null;drawQuiz()};
+  $('qNext').focus();
+}
+document.addEventListener('keydown',e=>{
+  if(S.view!=='quiz'||Q.idx>=Q.items.length)return;
+  if(Q.answered===null&&/^[1-4]$/.test(e.key))answer(+e.key-1);
+  else if(Q.answered!==null&&e.key==='Enter'&&document.activeElement?.id!=='qNext'){Q.idx++;Q.answered=null;drawQuiz()}
+});
+
+buildChrome();route();
+</script>
