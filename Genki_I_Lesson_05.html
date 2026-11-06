@@ -125,11 +125,25 @@ table.tex-table th { background: #f4f4f4; font-weight: 600; }
   .deck { padding: 12px 8px 32px; }
   .slide { padding: 16px 14px; }
 }
+
+/* exercise-session helpers (quiz prep) */
+details.gk-key { margin-top: 8px; background: white; border: 1px dashed #bbb; border-radius: 5px; padding: 6px 10px; }
+details.gk-key > summary { cursor: pointer; font-weight: 600; color: var(--ink-soft); font-size: 0.88em; list-style: none; }
+details.gk-key > summary::before { content: "\25B6  "; font-size: 0.8em; }
+details.gk-key[open] > summary::before { content: "\25BC  "; }
+details.gk-key > div { margin-top: 6px; font-size: 0.9em; line-height: 1.8; }
+.aim { font-size: 0.85em; color: var(--ink-soft); font-style: italic; margin: 0 0 6px; }
+.audio-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 12px; }
+.audio-row audio { flex:1 1 320px; max-width:460px; height:38px; }
+.audio-note { font-size:0.82em; color:var(--ink-soft); }
+.script-line { display:block; margin:0.15em 0; }
+.script-line b { color:var(--blue-fg,#2a4f7c); font-weight:600; }
+.tf-list li { margin:0.4em 0; }
 </style>
 </head>
 <body>
 <header class="deck-head"><h1>Genki I - Lesson 5 (A Trip to Okinawa)</h1></header>
-<nav class="nav-bar"><a href="#s1">Slide 5.1</a><a href="#s2">Slide 5.2</a><a href="#s3">Slide 5.3</a><a href="#s4">Slide 5.4</a><a href="#s5">Slide 5.5</a><a href="#s6">Slide 5.6</a><a href="#s7">Slide 5.7</a><a href="#s8">Slide 5.8</a><a href="#s9">Slide 5.9</a></nav>
+<nav class="nav-bar"><a href="#s1">Slide 5.1</a><a href="#s2">Slide 5.2</a><a href="#s3">Slide 5.3</a><a href="#s4">Slide 5.4</a><a href="#s5">Slide 5.5</a><a href="#s6">Slide 5.6</a><a href="#s7">Slide 5.7</a><a href="#s8">Slide 5.8</a><a href="#s5ex1">Ex A–B</a><a href="#s5ex2">Ex C–D</a><a href="#s5ex3">Ex E–G</a><a href="#s9">Slide 5.9</a></nav>
 <main class="deck">
 <section class='slide' id='s1'>
 <h2 class='frametitle'>Japanese Adjectives: い & な Adjectives</h2>
@@ -152,7 +166,7 @@ Japanese adjectives are divided into two types based on their conjugations: <spa
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>1 / 9</div>
+<div class='slide-counter'>1 / 12</div>
 </section>
 <section class='slide' id='s2'>
 <h2 class='frametitle'>Adjectives 2: い & な Adjectives and conjugations</h2>
@@ -205,7 +219,7 @@ When they are used as a predicate of a sentence, the <span class='c-red'>い</sp
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>2 / 9</div>
+<div class='slide-counter'>2 / 12</div>
 </section>
 <section class='slide' id='s3'>
 <h2 class='frametitle'>Degree Adverbs with Adjectives</h2>
@@ -225,7 +239,7 @@ When they are used as a predicate of a sentence, the <span class='c-red'>い</sp
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>3 / 9</div>
+<div class='slide-counter'>3 / 12</div>
 </section>
 <section class='slide' id='s4'>
 <h2 class='frametitle'>Like & Dislike with すき(な) & きらい(な)</h2>
@@ -257,7 +271,7 @@ Like and Dislike expressions in Japanese are formed with the すき(な)/きら�
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>4 / 9</div>
+<div class='slide-counter'>4 / 12</div>
 </section>
 <section class='slide' id='s5'>
 <h2 class='frametitle'>すき(な) & きらい(な) are な-Adjectives</h2>
@@ -290,7 +304,7 @@ They are な-adjectives:<br>
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>5 / 9</div>
+<div class='slide-counter'>5 / 12</div>
 </section>
 <section class='slide' id='s6'>
 <h2 class='frametitle'>Let us/Shall we: 〜ましょう/〜ましょうか</h2>
@@ -309,7 +323,7 @@ Verb<sub>STEM</sub>-ま<s>す</s> ⇒ Verb<sub>STEM</sub>-ましょう(か)</div
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>6 / 9</div>
+<div class='slide-counter'>6 / 12</div>
 </section>
 <section class='slide' id='s7'>
 <h2 class='frametitle'>Counters</h2>
@@ -325,7 +339,7 @@ Nouns in Japanese must have a <span class='c-red'>counter expression</span> to b
 <span class='small'></li>
 <li>よんまい パジャンを <ruby>食<rt>た</rt></ruby>べました。I ate four Korean Scallion Pancakes.</span></li>
 </ol></div></div>
-<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>いち<span class='c-red'>まい</span>/に<span class='c-red'>まい</span>/さん<span class='c-red'>まい</span>/よん<span class='c-red'>まい</span>/ご<span class='c-red'>まい</span>/ろく<span class='c-red'>まい</span>/なな<span class='c-red'>まい</span>-しち<span class='c-red'>まい</span>/はち<span class='c-red'>まい</span>/きゅう<span class='c-red'>まい</span>/じゅう<span class='c-red'>まい</span>/ひゃく<span class='c-red'>まい</span>/せん<span class='c-red'>まい</span>/いちまん<span class='c-red'>まい</span></div></div>
+<div class='blockbox'><div class='block-title'>Note:</div><div class='block-body'>いち<span class='c-red'>まい</span>/に<span class='c-red'>まい</span>/さん<span class='c-red'>まい</span>/よん<span class='c-red'>まい</span>/ご<span class='c-red'>まい</span>/ろく<span class='c-red'>まい</span>/なな<span class='c-red'>まい</span>-しち<span class='c-red'>まい</span>/はち<span class='c-red'>まい</span>/きゅう<span class='c-red'>まい</span>/じゅう<span class='c-red'>まい</span>/ひゃく<span class='c-red'>まい</span>/せん<span class='c-red'>まい</span>/いちまん<span class='c-red'>まい</span>/<span class='c-red'>なん</span><span class='c-red'>まい</span> <span class='fns'>(「how many flat objects?」)</span></div></div>
 <div class='practiceblock'>
 <div class='block-title'>Your own sentence: Compose your own sentence based on the example sentences.</div>
 <div class='block-body practice-body'>
@@ -333,7 +347,7 @@ Nouns in Japanese must have a <span class='c-red'>counter expression</span> to b
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>7 / 9</div>
+<div class='slide-counter'>7 / 12</div>
 </section>
 <section class='slide' id='s8'>
 <h2 class='frametitle'>Some Adjectives</h2>
@@ -351,7 +365,154 @@ Nouns in Japanese must have a <span class='c-red'>counter expression</span> to b
 <div class='writing-line'></div>
 </div>
 </div>
-<div class='slide-counter'>8 / 9</div>
+<div class='slide-counter'>8 / 12</div>
+</section>
+<!-- ====== L5 Exercises A-B ====== -->
+<section class='slide' id='s5ex1'>
+<h2 class='frametitle'>In-Class Exercises: A–B (Listening ・ Adjective Chart)</h2>
+<div class='blockbox'><div class='block-title'>Exercise A : Listening, True / False (model: Quiz §1 ・ WB p.58 B&amp;C)</div><div class='block-body'><span class='small'>
+<p class='aim'>Mary talks about her past trip. Listen for where she went, with whom, and what it was like.</p>
+Circle <span class='c-red'>T</span> or <span class='c-red'>F</span>; answer <strong>3, 5, 7 in English</strong> (read aloud twice).
+<p class='audio-note'>Your instructor reads the dialogue aloud twice. 【たけし &amp; メアリー ・ おきなわ】</p>
+<ol class='enum tf-list'>
+<li>Mary went to Okinawa alone. &nbsp; ( T / F )</li>
+<li>The sea was beautiful. &nbsp; ( T / F )</li>
+<li>What was the weather like? &nbsp; ______________ (English)</li>
+<li>Mary ate delicious fish. &nbsp; ( T / F )</li>
+<li>What did Mary do at the sea? &nbsp; ______________ (English)</li>
+<li>The hotel was old. &nbsp; ( T / F )</li>
+<li>Was the hotel expensive? &nbsp; ______________ (English)</li>
+</ol>
+<details class='gk-key'><summary>Dialogue script &amp; answers</summary><div>
+<span class='script-line'><b>たけし：</b>メアリーさん、しゅうまつは なにを しましたか。</span>
+<span class='script-line'><b>メアリー：</b>ともだちと おきなわに 行きました。</span>
+<span class='script-line'><b>たけし：</b>いいですね。おきなわは どうでしたか。</span>
+<span class='script-line'><b>メアリー：</b>うみが とても きれいでした。でも、ちょっと あつかったです。</span>
+<span class='script-line'><b>たけし：</b>なにを しましたか。</span>
+<span class='script-line'><b>メアリー：</b>うみで およぎました。そして、おいしい さかなを たべました。</span>
+<span class='script-line'><b>たけし：</b>ホテルは どうでしたか。</span>
+<span class='script-line'><b>メアリー：</b>ホテルは あたらしかったです。でも、たかくなかったです。</span>
+<div style='margin-top:6px'><strong>Answers:</strong> 1.<span class='c-red'>F</span> (with a friend) ・ 2.<span class='c-blue'>T</span> ・ 3.<span class='c-blue'>a little hot</span> (あつかった) ・ 4.<span class='c-blue'>T</span> ・ 5.<span class='c-blue'>She swam (in the sea)</span> ・ 6.<span class='c-red'>F</span> (it was new — あたらしかった) ・ 7.<span class='c-blue'>No, it was not expensive</span></div>
+</div></details>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise B : Adjective conjugation chart, polite forms (model: Quiz §3 ・ Slide 5.2)</div><div class='block-body'><span class='small'>
+Fill in the long/polite forms. おおきい is done as a model.
+<table class='tex-table' style='margin:0 auto;'>
+<tr><th>Gloss</th><th>Dict.</th><th>Pres. Aff.</th><th>Pres. Neg.</th><th>Past Aff.</th><th>Past Neg.</th></tr>
+<tr><td>good</td><td>いい</td><td>＿＿</td><td>＿＿</td><td>＿＿</td><td>＿＿</td></tr>
+<tr><td>small</td><td>ちいさい</td><td>＿＿</td><td>＿＿</td><td>＿＿</td><td>＿＿</td></tr>
+<tr><td>big</td><td>おおきい</td><td>おおきいです</td><td>おおきくないです</td><td>おおきかったです</td><td>おおきくなかったです</td></tr>
+<tr><td>quiet</td><td>しずか</td><td>＿＿</td><td>＿＿</td><td>＿＿</td><td>＿＿</td></tr>
+<tr><td>is/am/are</td><td>（だ）</td><td>＿＿</td><td>＿＿</td><td>＿＿</td><td>＿＿</td></tr>
+</table>
+<details class='gk-key'><summary>Answer key</summary><div>
+good いい → <span class='c-red'>いいです</span> / <span class='c-red'>よくないです</span> / <span class='c-red'>よかったです</span> / <span class='c-red'>よくなかったです</span> <span class='fns'>(irregular: stem becomes よく)</span><br>
+small ちいさい → <span class='c-red'>ちいさいです</span> / <span class='c-red'>ちいさくないです</span> / <span class='c-red'>ちいさかったです</span> / <span class='c-red'>ちいさくなかったです</span><br>
+quiet しずか（な） → <span class='c-blue'>しずかです</span> / <span class='c-blue'>しずかじゃないです</span> / <span class='c-blue'>しずかでした</span> / <span class='c-blue'>しずかじゃなかったです</span><br>
+is/am/are です → <span class='c-blue'>です</span> / <span class='c-blue'>じゃないです</span> / <span class='c-blue'>でした</span> / <span class='c-blue'>じゃなかったです</span>
+<div class='fns' style='margin-top:4px'><span class='c-red'>い</span>-adj drop い: 〜くないです / 〜かったです. <span class='c-blue'>な</span>-adj &amp; です use じゃないです / でした. Never *おおきいでした.</div>
+</div></details>
+</span></div></div>
+<div class='slide-counter'>9 / 12</div>
+</section>
+<!-- ====== L5 Exercises C-D ====== -->
+<section class='slide' id='s5ex2'>
+<h2 class='frametitle'>In-Class Exercises: C–D (すき/きらい ・ Adjective Sentences)</h2>
+<div class='blockbox'><div class='block-title'>Exercise C : すき / きらい (model: Quiz §3.1 ・ Slides 5.4–5.5)</div><div class='block-body'><span class='small'>
+Translate (do a <em>like</em> version and a <em>dislike</em> version where marked).
+<ol class='enum'>
+<li>I (dis)like sushi.</li>
+<li>I (dis)like sushi very much.</li>
+<li>I don't (dis)like sushi very much.</li>
+<li>My favorite food is sushi.</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary><div>
+1. わたしは すし<span class='c-blue'>が</span> <span class='c-red'>すきです</span> / <span class='c-red'>きらいです</span>。<br>
+2. わたしは すしが <span class='c-red'>だいすきです</span> / <span class='c-red'>だいきらいです</span>。<br>
+3. わたしは すしが <span class='c-red'>あまり すきじゃないです</span> / <span class='c-red'>きらいじゃないです</span>。<br>
+4. わたしの <span class='c-blue'>すきな</span> たべものは すしです。
+<div class='fns' style='margin-top:4px'>Pattern: [Xは Y<span class='c-blue'>が</span> すきです]. あまり needs a <span class='c-red'>negative</span>. Favorite = すき<span class='c-blue'>な</span>+Noun.</div>
+</div></details>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise D : Adjective sentences, present &amp; past (model: Quiz §5 ・ Slides 5.1–5.3)</div><div class='block-body'><span class='small'>
+Translate into Japanese.
+<ol class='enum'>
+<li>This watch is expensive.</li>
+<li>This coffee is not delicious.</li>
+<li>Professor Yamashita is energetic.</li>
+<li>The weather is not good.</li>
+<li>I met a kind person. <span class='fns'>(adj + noun)</span></li>
+<li>I read an interesting book last week.</li>
+<li>I was busy yesterday.</li>
+<li>Takeshi's room was not clean.</li>
+<li>The trip was not fun.</li>
+<li>The hotel was not expensive.</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary><div>
+1. この とけいは <span class='c-red'>たかいです</span>。<br>
+2. この コーヒーは <span class='c-red'>おいしくないです</span>。<br>
+3. やましたせんせいは <span class='c-blue'>げんきです</span>。<br>
+4. てんきは <span class='c-red'>よくないです</span>。 <span class='fns'>(いい→よく)</span><br>
+5. <span class='c-red'>やさしい</span> 人に あいました。<br>
+6. せんしゅう <span class='c-red'>おもしろい</span> 本を よみました。<br>
+7. きのう <span class='c-red'>いそがしかったです</span>。<br>
+8. たけしさんの へやは <span class='c-blue'>きれいじゃなかったです</span>。<br>
+9. りょこうは <span class='c-red'>たのしくなかったです</span>。<br>
+10. ホテルは <span class='c-red'>たかくなかったです</span>。
+<div class='fns' style='margin-top:4px'>きれい and げんき are <span class='c-blue'>な</span>-adjectives (きれいじゃなかったです), not *きれいくなかった.</div>
+</div></details>
+</span></div></div>
+<div class='slide-counter'>10 / 12</div>
+</section>
+<!-- ====== L5 Exercises E-G ====== -->
+<section class='slide' id='s5ex3'>
+<h2 class='frametitle'>In-Class Exercises: E–G (ましょう ・ Past Trip ・ Kanji)</h2>
+<div class='blockbox'><div class='block-title'>Exercise E : 〜ましょう / ましょうか (model: Quiz §5 ・ Slide 5.6)</div><div class='block-body'><span class='small'>
+Translate.
+<ol class='enum'>
+<li>Let's wait for the bus.</li>
+<li>Let's go out together.</li>
+<li>Let's take pictures here.</li>
+<li>Shall we watch this movie tonight?</li>
+<li>This homework is difficult. Shall we ask our teacher?</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary><div>
+1. バスを <span class='c-red'>まちましょう</span>。<br>
+2. いっしょに <span class='c-red'>でかけましょう</span>。<br>
+3. ここで しゃしんを <span class='c-red'>とりましょう</span>。<br>
+4. こんばん この えいがを <span class='c-red'>見ましょうか</span>。<br>
+5. この しゅくだいは むずかしいです。せんせいに <span class='c-red'>ききましょうか</span>。
+<div class='fns' style='margin-top:4px'>〜ましょう = Let's 〜 ・ 〜ましょうか = Shall we 〜? (built on the 〜ます stem).</div>
+</div></details>
+</span></div></div>
+<div class='practiceblock'><div class='block-title'>Exercise F : Talk about a past trip (model: Quiz §4)</div><div class='block-body practice-body'><span class='small'>
+Write about a past trip. You must include: <strong>行きました</strong>, <strong>another verb</strong>, an <strong>adjective</strong>, and a <strong>with-whom</strong> (or alone = ひとりで) expression.
+<div class='fns' style='margin:2px 0 6px'>Model: なつやすみに かぞくと きょうとに <ruby>行<rt>い</rt></ruby>きました。おてらを <ruby>見<rt>み</rt></ruby>ました。とても きれいでした。</div>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+<div class='writing-line'></div>
+</span></div></div>
+<div class='blockbox'><div class='block-title'>Exercise G : Kanji ↔ かな conversion (model: Quiz §2 ・ Slide 5.9)</div><div class='block-body'><span class='small'>
+かな → 漢字（送り仮名も）, and 漢字 → かな.
+<ol class='enum multicols-2'>
+<li>山川さん → ＿＿</li>
+<li>げんき → ＿＿</li>
+<li>私 → ＿＿</li>
+<li>いま → ＿＿</li>
+<li>てんき → ＿＿</li>
+<li>おとこ の ひと → ＿＿</li>
+<li>おんな の ひと → ＿＿</li>
+<li>田中さん → ＿＿</li>
+<li>みる → ＿＿</li>
+<li>行く → ＿＿</li>
+<li>のむ → ＿＿</li>
+<li>たべる → ＿＿</li>
+</ol>
+<details class='gk-key'><summary>Answer key</summary><div>
+山川=<span class='c-red'>やまかわ</span> ・ げんき=<span class='c-red'>元気</span> ・ 私=<span class='c-red'>わたし</span> ・ いま=<span class='c-red'>今</span> ・ てんき=<span class='c-red'>天気</span> ・ おとこのひと=<span class='c-red'>男の人</span> ・ おんなのひと=<span class='c-red'>女の人</span> ・ 田中=<span class='c-red'>たなか</span> ・ みる=<span class='c-red'>見る</span> ・ 行く=<span class='c-red'>いく</span> ・ のむ=<span class='c-red'>飲む</span> ・ たべる=<span class='c-red'>食べる</span>
+</div></details>
+</span></div></div>
+<div class='slide-counter'>11 / 12</div>
 </section>
 <section class='slide' id='s9'>
 <h2 class='frametitle'>5.9: Kanji / 漢字 (新しい漢字)</h2>
@@ -376,7 +537,7 @@ Nouns in Japanese must have a <span class='c-red'>counter expression</span> to b
 </ul>
 </div>
 </div>
-<div class='slide-counter'>9 / 9</div>
+<div class='slide-counter'>12 / 12</div>
 </section>
 </main>
 </body>
