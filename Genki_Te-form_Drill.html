@@ -92,7 +92,20 @@ kbd{font-family:var(--ui);font-size:.75rem;border:1px solid var(--line);border-b
 .fg{position:relative;display:inline-block;line-height:1.15}
 .fg>.fr{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:-.05em;font-size:.45em;line-height:1;font-weight:500;color:var(--soft);white-space:nowrap;pointer-events:none;user-select:none}
 .foot{font-size:.8rem;color:var(--soft)}
-@media (max-width:520px){.choices{grid-template-columns:1fr}.label{min-width:0;width:100%}}
+.kb{display:grid;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--bg)}
+.kb-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;direction:ltr}
+.kb-grid.small{grid-template-columns:repeat(10,minmax(0,1fr))}
+#kbGrid{direction:rtl} /* traditional order: あ column on the right */
+.kb button{font-family:var(--jp);font-size:1.05rem;min-height:38px;padding:0;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--ink);cursor:pointer}
+.kb button:hover{border-color:var(--accent)}
+.kb button:active{background:var(--accent-soft)}
+.kb button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.kb .gap{visibility:hidden}
+.kb .act{font-family:var(--ui);font-size:.8rem;font-weight:600;color:var(--accent)}
+.kb-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.kb-tabs button{font-family:var(--ui);font-size:.8rem;font-weight:600;padding:3px 12px;min-height:0;border-radius:999px}
+.kb-tabs button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+@media (max-width:520px){.kb button{font-size:.95rem;min-height:34px}.kb{padding:8px}.kb-grid{gap:3px}.choices{grid-template-columns:1fr}.label{min-width:0;width:100%}}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
 </head>
@@ -123,6 +136,7 @@ kbd{font-family:var(--ui);font-size:.75rem;border:1px solid var(--line);border-b
         <option value="all">All selected words</option>
       </select>
       <label class="tog"><input type="checkbox" id="showType"><span>Show word type</span></label>
+      <label class="tog"><input type="checkbox" id="showKb" checked><span>Kana keyboard</span></label>
     </div>
     <div class="row">
       <button class="btn" id="start" type="button">Start drill</button>
@@ -221,6 +235,41 @@ function toKana(s){
 }
 const norm = s => { s=s.trim().replace(/[\s。．.、,]/g,""); return /[a-z]/i.test(s) ? toKana(s) : s; };
 
+/* ---------- clickable kana keyboard ---------- */
+const KB_BASIC=[ // columns a ka sa ta na ha ma ya ra wa, rows a i u e o
+ "あかさたなはまやらわ","いきしちにひみ り ","うくすつぬふむゆる ","えけせてねへめ れ ","おこそとのほもよろを"];
+const KB_EXTRA=[
+ "がざだばぱゃっー  ","ぎじぢびぴゅ    ","ぐずづぶぷょ    ","げぜでべぺ     ","ごぞどぼぽ     "];
+let kbTab="basic";
+function kbRows(rows){ return rows.map(r=>[...r.padEnd(10," ")].slice(0,10).map(c=>c===" "?'<button class="gap" tabindex="-1" aria-hidden="true"></button>':`<button type="button" data-k="${c}">${c}</button>`).join("")).join(""); }
+function kbHTML(){
+  return `<div class="kb" role="group" aria-label="Hiragana keyboard">
+    <div class="kb-tabs"><button type="button" data-tab="basic" aria-pressed="${kbTab==="basic"}">あ か さ…</button>
+    <button type="button" data-tab="extra" aria-pressed="${kbTab==="extra"}">が ぱ っ ゃ…</button></div>
+    <div class="kb-grid" id="kbGrid">${kbRows(kbTab==="basic"?KB_BASIC:KB_EXTRA)}</div>
+    <div class="kb-grid"><button type="button" data-k="ん">ん</button><button type="button" data-k="っ">っ</button><button type="button" data-k="て">て</button><button type="button" data-k="で">で</button>
+    <button type="button" class="act" data-act="dak" style="grid-column:span 2">゛ ゜</button>
+    <button type="button" class="act" data-act="bs" style="grid-column:span 2">⌫ Delete</button>
+    <button type="button" class="act" data-act="clr" style="grid-column:span 2">Clear</button></div></div>`;
+}
+const DAK={"か":"が","き":"ぎ","く":"ぐ","け":"げ","こ":"ご","さ":"ざ","し":"じ","す":"ず","せ":"ぜ","そ":"ぞ","た":"だ","ち":"ぢ","つ":"づ","て":"で","と":"ど","は":"ば","ひ":"び","ふ":"ぶ","へ":"べ","ほ":"ぼ","ば":"ぱ","び":"ぴ","ぶ":"ぷ","べ":"ぺ","ぼ":"ぽ","ぱ":"は","ぴ":"ひ","ぷ":"ふ","ぺ":"へ","ぽ":"ほ","が":"か","ぎ":"き","ぐ":"く","げ":"け","ご":"こ","ざ":"さ","じ":"し","ず":"す","ぜ":"せ","ぞ":"そ","だ":"た","ぢ":"ち","づ":"つ","で":"て","ど":"と","や":"ゃ","ゆ":"ゅ","よ":"よ","ゃ":"や","ゅ":"ゆ","ょ":"よ","つ":"づ"};
+DAK["よ"]="ょ"; DAK["っ"]="つ";
+function wireKb(inp){
+  const kb=document.querySelector(".kb"); if(!kb) return;
+  kb.addEventListener("mousedown",e=>{ if(e.target.closest("button")) e.preventDefault(); });
+  kb.addEventListener("click",e=>{
+    const b=e.target.closest("button"); if(!b || answered) return;
+    if(b.dataset.tab){ kbTab=b.dataset.tab; kb.querySelectorAll("[data-tab]").forEach(t=>t.setAttribute("aria-pressed",t.dataset.tab===kbTab)); $("kbGrid").innerHTML=kbRows(kbTab==="basic"?KB_BASIC:KB_EXTRA); return; }
+    let v=inp.value, a=inp.selectionStart ?? v.length, z=inp.selectionEnd ?? v.length;
+    if(b.dataset.k){ v=v.slice(0,a)+b.dataset.k+v.slice(z); a+=b.dataset.k.length; }
+    else if(b.dataset.act==="bs"){ if(a!==z){ v=v.slice(0,a)+v.slice(z); } else if(a>0){ v=v.slice(0,a-1)+v.slice(a); a--; } }
+    else if(b.dataset.act==="clr"){ v=""; a=0; }
+    else if(b.dataset.act==="dak" && a>0){ const c=v[a-1]; if(DAK[c]) v=v.slice(0,a-1)+DAK[c]+v.slice(a); }
+    inp.value=v; inp.setSelectionRange(a,a); inp.dispatchEvent(new Event("input"));
+    if(matchMedia("(pointer:fine)").matches) inp.focus();
+  });
+}
+
 /* ---------- state + UI ---------- */
 const $ = id => document.getElementById(id);
 function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
@@ -247,8 +296,9 @@ function buildSettings(){
   if(saved?.mode) $("mode").value=saved.mode;
   if(saved?.len) $("len").value=saved.len;
   if(saved?.showType) $("showType").checked=true;
+  if(saved && saved.showKb===false) $("showKb").checked=false;
   document.querySelectorAll(".ls,.ty").forEach(el=>el.addEventListener("change",updateCount));
-  ["mode","len","showType"].forEach(id=>$(id).addEventListener("change",save));
+  ["mode","len","showType","showKb"].forEach(id=>$(id).addEventListener("change",save));
 }
 function pool(){
   const ls=[...document.querySelectorAll(".ls:checked")].map(e=>+e.value);
@@ -257,7 +307,7 @@ function pool(){
 }
 function save(){
   store.set({lessons:[...document.querySelectorAll(".ls:checked")].map(e=>+e.value),
-    types:[...document.querySelectorAll(".ty:checked")].map(e=>e.value),mode:$("mode").value,len:$("len").value,showType:$("showType").checked});
+    types:[...document.querySelectorAll(".ty:checked")].map(e=>e.value),mode:$("mode").value,len:$("len").value,showType:$("showType").checked,showKb:$("showKb").checked});
 }
 function updateCount(){ const n=pool().length; $("count").textContent = n ? `${n} words available` : "Select at least one lesson and word type"; $("start").disabled=!n; save(); }
 
@@ -274,7 +324,7 @@ function show(){
   let body;
   if(mode==="type"){
     body=`<div class="answer-row"><input id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="te-form (kana or romaji)" aria-label="Your te-form answer">
-      <button class="btn" id="check" type="button">Check</button></div><div class="live" id="live"></div>`;
+      <button class="btn" id="check" type="button">Check</button></div><div class="live" id="live"></div>${$("showKb").checked?kbHTML():""}`;
   } else {
     const opts=shuffle([read(te(q.w,q.t)),...distractors(q.w,q.t)]);
     body=`<div class="choices">${opts.map((o,i)=>`<button class="choice" type="button" data-v="${o}"><span class="k">${i+1}</span>${o}</button>`).join("")}</div>`;
@@ -288,6 +338,7 @@ function show(){
     const inp=$("ans"); inp.focus();
     inp.addEventListener("input",()=>{ const v=inp.value; $("live").textContent = /[a-z]/i.test(v) ? "→ "+norm(v) : ""; });
     $("check").addEventListener("click",()=>grade(inp.value));
+    wireKb(inp);
   } else {
     document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>grade(b.dataset.v,b)));
   }
