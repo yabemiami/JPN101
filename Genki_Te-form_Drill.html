@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Genki Te-form Drill</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+html{color-scheme:light} body{margin:0} [hidden]{display:none!important}
+
+/* Layout: a single drill desk. Settings strip on top, one large flashcard, a quiet score rail. Ink-indigo on cool paper. */
+:root{
+  --bg:#f3f4f7; --paper:#ffffff; --ink:#1b1f2e; --soft:#5b6278; --line:#dde0ea;
+  --accent:#2f3f8f; --accent-soft:#e6e9f6; --good:#1f7a4d; --good-bg:#e3f3ea; --bad:#b4233c; --bad-bg:#fbe6ea;
+  --chip-u:#2f3f8f; --chip-ru:#7a3f8f; --chip-irr:#8f5a1f; --chip-i:#1f6f7a; --chip-na:#6f7a1f;
+  --jp:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans CJK JP",sans-serif;
+  --ui:"Inter","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12141c; --paper:#1b1e29; --ink:#e8eaf2; --soft:#a1a7bd; --line:#2e3242;
+  --accent:#9fb0ff; --accent-soft:#252b48; --good:#6fd3a0; --good-bg:#17322a; --bad:#ff8a9e; --bad-bg:#3a1d26;
+  --chip-u:#9fb0ff; --chip-ru:#d4a3e6; --chip-irr:#e6b47a; --chip-i:#7fd2dc; --chip-na:#cdd67f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12141c; --paper:#1b1e29; --ink:#e8eaf2; --soft:#a1a7bd; --line:#2e3242;
+  --accent:#9fb0ff; --accent-soft:#252b48; --good:#6fd3a0; --good-bg:#17322a; --bad:#ff8a9e; --bad-bg:#3a1d26;
+  --chip-u:#9fb0ff; --chip-ru:#d4a3e6; --chip-irr:#e6b47a; --chip-i:#7fd2dc; --chip-na:#cdd67f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:860px;margin:0 auto;display:grid;gap:18px}
+header h1{font-family:var(--jp);font-weight:900;font-size:1.7rem;margin:0;letter-spacing:.01em;text-wrap:balance}
+header h1 span{color:var(--accent)}
+header p{margin:4px 0 0;color:var(--soft);max-width:62ch}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);min-width:84px}
+.book{display:grid;gap:6px}
+.book-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.book-head b{font-family:var(--jp);font-size:.95rem}
+.lessons{display:flex;flex-wrap:wrap;gap:6px}
+.tog{position:relative}
+.tog input{position:absolute;opacity:0;pointer-events:none}
+.tog span{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:4px 11px;
+  font-size:.86rem;cursor:pointer;user-select:none;background:var(--paper);color:var(--ink);font-variant-numeric:tabular-nums}
+.tog input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tog input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.tog small{opacity:.7;font-size:.72rem}
+.link{background:none;border:none;color:var(--accent);font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;padding:2px 4px;border-radius:4px}
+.link:focus-visible,.btn:focus-visible,.choice:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font:inherit;border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:var(--paper);color:var(--ink)}
+.btn{font:inherit;font-weight:600;border-radius:10px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);padding:9px 18px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.count{color:var(--soft);font-size:.88rem;font-variant-numeric:tabular-nums}
+/* card */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;display:grid;gap:16px}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;font-size:.85rem;color:var(--soft);font-variant-numeric:tabular-nums}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.word{text-align:center;display:grid;gap:6px;padding:8px 0 2px}
+.dict{font-family:var(--jp);font-weight:700;font-size:clamp(2rem,7vw,3rem);line-height:1.9}
+.gloss{color:var(--soft)}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.04em;border:1.5px solid currentColor;border-radius:999px;padding:1px 9px;margin:0 auto}
+.chip.u{color:var(--chip-u)}.chip.ru{color:var(--chip-ru)}.chip.irr{color:var(--chip-irr)}.chip.i{color:var(--chip-i)}.chip.na{color:var(--chip-na)}
+.prompt{text-align:center;font-weight:600}
+.answer-row{display:flex;gap:8px;flex-wrap:wrap}
+.answer-row input{flex:1 1 220px;min-width:0;font-family:var(--jp);font-size:1.3rem;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.answer-row input:focus{outline:none;border-color:var(--accent)}
+.live{font-family:var(--jp);color:var(--soft);font-size:.95rem;min-height:1.4em}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.choice{font-family:var(--jp);font-size:1.25rem;padding:12px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);cursor:pointer;text-align:center}
+.choice .k{font-family:var(--ui);font-size:.72rem;color:var(--soft);margin-right:6px}
+.choice:hover{border-color:var(--accent)}
+.choice.ok{border-color:var(--good);background:var(--good-bg)}
+.choice.no{border-color:var(--bad);background:var(--bad-bg)}
+.fb{border-radius:12px;padding:12px 14px;display:grid;gap:4px}
+.fb.ok{background:var(--good-bg);color:var(--ink)}
+.fb.no{background:var(--bad-bg);color:var(--ink)}
+.fb .v{font-weight:700}
+.fb.ok .v{color:var(--good)}.fb.no .v{color:var(--bad)}
+.fb .ans{font-family:var(--jp);font-size:1.5rem;font-weight:700;line-height:2}
+.fb .rule{font-size:.9rem;color:var(--soft)}
+.hint{font-size:.8rem;color:var(--soft);text-align:center}
+kbd{font-family:var(--ui);font-size:.75rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--bg)}
+/* results */
+.score{font-family:var(--jp);font-weight:900;font-size:3rem;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.missed{display:grid;gap:6px;max-height:340px;overflow:auto}
+.miss{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:6px 2px;font-family:var(--jp);flex-wrap:wrap}
+.miss em{font-style:normal;color:var(--soft);font-family:var(--ui);font-size:.85rem}
+.fg{position:relative;display:inline-block;line-height:1.15}
+.fg>.fr{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:-.05em;font-size:.45em;line-height:1;font-weight:500;color:var(--soft);white-space:nowrap;pointer-events:none;user-select:none}
+.foot{font-size:.8rem;color:var(--soft)}
+@media (max-width:520px){.choices{grid-template-columns:1fr}.label{min-width:0;width:100%}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><span>て</span>-form Drill</h1>
+    <p>Pick the Genki lessons and word types you want, then change each word into its te-form. Type in hiragana or romaji (taberu → たべて), or switch to multiple choice.</p>
+  </header>
+
+  <section class="panel" aria-label="Drill settings">
+    <div class="book" id="book1"></div>
+    <div class="book" id="book2"></div>
+    <div class="row">
+      <span class="label">Word types</span>
+      <span id="types" class="lessons"></span>
+    </div>
+    <div class="row">
+      <span class="label">Mode</span>
+      <select id="mode" aria-label="Answer mode">
+        <option value="type">Type the answer</option>
+        <option value="choice">Multiple choice</option>
+      </select>
+      <select id="len" aria-label="Number of questions">
+        <option value="10">10 questions</option>
+        <option value="20" selected>20 questions</option>
+        <option value="40">40 questions</option>
+        <option value="all">All selected words</option>
+      </select>
+      <label class="tog"><input type="checkbox" id="showType"><span>Show word type</span></label>
+    </div>
+    <div class="row">
+      <button class="btn" id="start" type="button">Start drill</button>
+      <span class="count" id="count"></span>
+    </div>
+  </section>
+
+  <section class="card" id="card" aria-live="polite"></section>
+
+  <p class="foot">Word lists are a selection of the verbs and adjectives introduced in each lesson of Genki I &amp; II (3rd ed.). Adjectives use the te-form for linking: い-adjectives → ～くて, な-adjectives → ～で.</p>
+</div>
+
+<script>
+/* ---------- data: [word with 漢字[よみ], English, type] ---------- */
+const L = {
+3:[["行[い]く","go","u"],["帰[かえ]る","go back","u"],["聞[き]く","listen","u"],["飲[の]む","drink","u"],["話[はな]す","speak","u"],["読[よ]む","read","u"],["起[お]きる","get up","ru"],["食[た]べる","eat","ru"],["寝[ね]る","sleep","ru"],["見[み]る","see","ru"],["来[く]る","come","irr"],["する","do","irr"],["勉強[べんきょう]する","study","irr"],["いい","good","i"],["早[はや]い","early","i"]],
+4:[["ある","there is (thing)","u"],["いる","there is (person)","ru"],["会[あ]う","meet","u"],["買[か]う","buy","u"],["書[か]く","write","u"],["撮[と]る","take (a photo)","u"],["待[ま]つ","wait","u"],["分[わ]かる","understand","u"]],
+5:[["泳[およ]ぐ","swim","u"],["乗[の]る","ride","u"],["やる","do","u"],["出[で]かける","go out","ru"],["新[あたら]しい","new","i"],["暑[あつ]い","hot (weather)","i"],["熱[あつ]い","hot (objects)","i"],["忙[いそが]しい","busy","i"],["大[おお]きい","big","i"],["おいしい","delicious","i"],["おもしろい","interesting","i"],["かっこいい","good-looking","i"],["こわい","scary","i"],["楽[たの]しい","fun","i"],["小[ちい]さい","small","i"],["つまらない","boring","i"],["古[ふる]い","old (things)","i"],["難[むずか]しい","difficult","i"],["やさしい","easy; kind","i"],["安[やす]い","cheap","i"],["高[たか]い","expensive","i"],["寒[さむ]い","cold (weather)","i"],["好[す]き","like","na"],["大好[だいす]き","love","na"],["きらい","dislike","na"],["きれい","beautiful; clean","na"],["元気[げんき]","healthy; energetic","na"],["静[しず]か","quiet","na"],["にぎやか","lively","na"],["ひま","free (time)","na"]],
+6:[["遊[あそ]ぶ","play","u"],["急[いそ]ぐ","hurry","u"],["返[かえ]す","return (a thing)","u"],["消[け]す","turn off","u"],["死[し]ぬ","die","u"],["座[すわ]る","sit down","u"],["立[た]つ","stand up","u"],["吸[す]う","smoke","u"],["使[つか]う","use","u"],["手伝[てつだ]う","help","u"],["入[はい]る","enter","u"],["持[も]つ","carry; hold","u"],["休[やす]む","rest; be absent","u"],["開[あ]ける","open","ru"],["教[おし]える","teach","ru"],["降[お]りる","get off","ru"],["借[か]りる","borrow","ru"],["閉[し]める","close","ru"],["つける","turn on","ru"],["電話[でんわ]する","call","irr"],["連[つ]れてくる","bring (a person)","irr"],["持[も]ってくる","bring (a thing)","irr"],["大変[たいへん]","tough","na"]],
+7:[["歌[うた]う","sing","u"],["かぶる","put on (a hat)","u"],["知[し]る","get to know","u"],["住[す]む","live","u"],["はく","put on (pants, shoes)","u"],["太[ふと]る","gain weight","u"],["着[き]る","put on (a shirt)","ru"],["やせる","lose weight","ru"],["結婚[けっこん]する","get married","irr"],["長[なが]い","long","i"],["短[みじか]い","short","i"],["速[はや]い","fast","i"],["かわいい","cute","i"],["頭[あたま]がいい","smart","i"],["親切[しんせつ]","kind","na"],["便利[べんり]","convenient","na"]],
+8:[["洗[あら]う","wash","u"],["言[い]う","say","u"],["要[い]る","need","u"],["思[おも]う","think","u"],["切[き]る","cut","u"],["作[つく]る","make","u"],["持[も]っていく","take (a thing)","u"],["捨[す]てる","throw away","ru"],["始[はじ]める","begin (something)","ru"],["運転[うんてん]する","drive","irr"],["洗濯[せんたく]する","do laundry","irr"],["掃除[そうじ]する","clean","irr"],["料理[りょうり]する","cook","irr"],["上手[じょうず]","good at","na"],["下手[へた]","poor at","na"],["有名[ゆうめい]","famous","na"]],
+9:[["踊[おど]る","dance","u"],["終[お]わる","end","u"],["始[はじ]まる","begin","u"],["弾[ひ]く","play (an instrument)","u"],["もらう","receive","u"],["覚[おぼ]える","memorize","ru"],["出[で]る","attend; exit","ru"],["運動[うんどう]する","exercise","irr"],["散歩[さんぽ]する","take a walk","irr"],["青[あお]い","blue","i"],["赤[あか]い","red","i"],["黒[くろ]い","black","i"],["白[しろ]い","white","i"],["さびしい","lonely","i"],["若[わか]い","young","i"],["意地悪[いじわる]","mean-spirited","na"]],
+10:[["頑張[がんば]る","do one's best","u"],["泊[と]まる","stay (at a hotel)","u"],["なる","become","u"],["決[き]める","decide","ru"],["予約[よやく]する","reserve","irr"],["暖[あたた]かい","warm","i"],["遅[おそ]い","slow; late","i"],["涼[すず]しい","cool","i"],["冷[つめ]たい","cold (objects)","i"],["眠[ねむ]い","sleepy","i"],["簡単[かんたん]","easy","na"]],
+11:[["習[なら]う","learn","u"],["登[のぼ]る","climb","u"],["戻[もど]る","return","u"],["生[う]まれる","be born","ru"],["疲[つか]れる","get tired","ru"],["やめる","quit","ru"],["遅刻[ちこく]する","be late","irr"],["留学[りゅうがく]する","study abroad","irr"],["旅行[りょこう]する","travel","irr"]],
+12:[["降[ふ]る","fall (rain, snow)","u"],["落[お]ちる","fall; fail (a test)","ru"],["心配[しんぱい]する","worry","irr"],["甘[あま]い","sweet","i"],["痛[いた]い","painful","i"],["多[おお]い","many","i"],["狭[せま]い","narrow","i"],["悪[わる]い","bad","i"],["大丈夫[だいじょうぶ]","all right","na"]],
+13:[["編[あ]む","knit","u"],["送[おく]る","send","u"],["磨[みが]く","brush; polish","u"],["振[ふ]る","dump (someone)","u"],["けんかする","fight","irr"],["うれしい","glad","i"],["悲[かな]しい","sad","i"],["すばらしい","wonderful","i"]],
+14:[["似合[にあ]う","look good on","u"],["あきらめる","give up","ru"],["考[かんが]える","think about","ru"],["足[た]りる","be enough","ru"],["招待[しょうたい]する","invite","irr"],["相談[そうだん]する","consult","irr"],["欲[ほ]しい","want","i"]],
+15:[["選[えら]ぶ","choose","u"],["誘[さそ]う","invite","u"],["調[しら]べる","look up","ru"],["案内[あんない]する","show around","irr"],["準備[じゅんび]する","prepare","irr"],["すてき","nice","na"]],
+16:[["起[お]こす","wake (someone) up","u"],["貸[か]す","lend","u"],["直[なお]す","correct; fix","u"],["訳[やく]す","translate","u"],["遅[おく]れる","be late","ru"],["迎[むか]えに来[く]る","come to pick up","irr"],["説明[せつめい]する","explain","irr"],["紹介[しょうかい]する","introduce","irr"],["寝坊[ねぼう]する","oversleep","irr"],["明[あか]るい","bright; cheerful","i"]],
+17:[["付[つ]き合[あ]う","date; go out","u"],["剃[そ]る","shave","u"],["当[あ]たる","win (a lottery)","u"],["似[に]る","resemble","ru"],["離婚[りこん]する","get divorced","irr"],["就職[しゅうしょく]する","get a job","irr"],["卒業[そつぎょう]する","graduate","irr"],["危[あぶ]ない","dangerous","i"],["汚[きたな]い","dirty","i"],["偉[えら]い","great","i"]],
+18:[["開[あ]く","(something) opens","u"],["閉[し]まる","(something) closes","u"],["つく","(light) comes on","u"],["沸[わ]く","(water) boils","u"],["落[お]とす","drop (something)","u"],["壊[こわ]す","break (something)","u"],["汚[よご]す","make dirty","u"],["沸[わ]かす","boil (water)","u"],["押[お]す","push","u"],["転[ころ]ぶ","fall down","u"],["消[き]える","go off","ru"],["壊[こわ]れる","break","ru"],["汚[よご]れる","get dirty","ru"],["片付[かたづ]ける","tidy up","ru"],["暗[くら]い","dark","i"]],
+19:[["いらっしゃる","be; go; come (honorific)","u"],["おっしゃる","say (honorific)","u"],["なさる","do (honorific)","u"],["召[め]し上[あ]がる","eat; drink (honorific)","u"],["くださる","give me (honorific)","u"],["届[とど]ける","deliver","ru"]],
+20:[["いただく","receive (humble)","u"],["伺[うかが]う","visit; ask (humble)","u"],["申[もう]す","say (humble)","u"],["参[まい]る","go; come (humble)","u"],["拝見[はいけん]する","see (humble)","irr"]],
+21:[["盗[ぬす]む","steal","u"],["殴[なぐ]る","hit","u"],["笑[わら]う","laugh","u"],["踏[ふ]む","step on","u"],["叱[しか]る","scold","u"],["なくす","lose","u"],["ほめる","praise","ru"],["いや","unpleasant","na"]],
+22:[["運[はこ]ぶ","carry","u"],["拾[ひろ]う","pick up","u"],["守[まも]る","keep (a promise)","u"],["育[そだ]てる","raise","ru"]],
+23:[["別[わか]れる","break up","ru"],["慣[な]れる","get used to","ru"],["信[しん]じる","believe","ru"],["我慢[がまん]する","endure","irr"],["恥[は]ずかしい","embarrassing","i"]]
+};
+const TYPES = {u:"う-verb",ru:"る-verb",irr:"irregular verb",i:"い-adjective",na:"な-adjective"};
+const KANJI = /([一-鿿々]+)\[([^\]]+)\]/g;
+const read = s => s.replace(KANJI,"$2");
+const surf = s => s.replace(KANJI,"$1");
+const furi = s => s.replace(KANJI,"<span class='fg'>$1<span class='fr'>$2</span></span>");
+
+/* ---------- te-form engine (works on the annotated string) ---------- */
+const isIi = w => { const r=read(w); return r==="いい" || r.endsWith("がいい") || r==="かっこいい"; };
+const UMAP = {"う":"って","つ":"って","る":"って","む":"んで","ぶ":"んで","ぬ":"んで","く":"いて","ぐ":"いで","す":"して"};
+function te(w,t){
+  if(t==="ru") return w.slice(0,-1)+"て";
+  if(t==="irr"){
+    if(w.endsWith("来[く]る")) return w.slice(0,-5)+"来[き]て";
+    if(w.endsWith("くる")) return w.slice(0,-2)+"きて";
+    return w.slice(0,-2)+"して";
+  }
+  if(t==="i"){ return isIi(w) ? w.slice(0,-2)+"よくて" : w.slice(0,-1)+"くて"; }
+  if(t==="na") return w+"で";
+  if(w.endsWith("行[い]く")||w.endsWith("いく")) return w.slice(0,-1)+"って";
+  return w.slice(0,-1)+UMAP[w.slice(-1)];
+}
+function rule(w,t){
+  if(t==="ru") return "る-verb: drop る, add て.";
+  if(t==="irr") return read(w).endsWith("くる") ? "Irregular: くる → きて." : "Irregular: する → して.";
+  if(t==="i") return isIi(w) ? "いい is irregular: いい → よくて." : "い-adjective: drop い, add くて.";
+  if(t==="na") return "な-adjective: add で.";
+  if(read(w).endsWith("いく")) return "Exception: 行く → 行って (not 行いて).";
+  const e=read(w).slice(-1);
+  return "う-verb ending in "+e+": "+({"う":"う・つ・る → って","つ":"う・つ・る → って","る":"う・つ・る → って","む":"む・ぶ・ぬ → んで","ぶ":"む・ぶ・ぬ → んで","ぬ":"む・ぶ・ぬ → んで","く":"く → いて","ぐ":"ぐ → いで","す":"す → して"})[e]+".";
+}
+function distractors(w,t){
+  const r=read(w), c=read(te(w,t)), b=r.slice(0,-1), out=new Set();
+  if(t==="u"){ ["って","んで","いて","いで","して"].forEach(x=>out.add(b+x)); out.add(b+"て"); }
+  else if(t==="ru"){ out.add(b+"って"); out.add(b+"んで"); out.add(r+"て"); out.add(b+"いて"); }
+  else if(t==="irr"){ const s=r.endsWith("くる")?r.slice(0,-2):r.slice(0,-2);
+    if(r.endsWith("くる")){ out.add(s+"くて"); out.add(s+"こて"); out.add(s+"きって"); out.add(s+"くって"); }
+    else { out.add(s+"すて"); out.add(s+"しって"); out.add(s+"さて"); out.add(s+"すって"); } }
+  else if(t==="i"){ if(isIi(w)){ const s=r.slice(0,-2); out.add(s+"いくて"); out.add(s+"いいくて"); out.add(s+"いいで"); out.add(s+"よいて"); }
+    else { out.add(r+"て"); out.add(r+"くて"); out.add(b+"いで"); out.add(r+"で"); } }
+  else { out.add(r+"なで"); out.add(r+"くて"); out.add(r+"だで"); out.add(r+"なくて"); }
+  out.delete(c);
+  return shuffle([...out]).slice(0,3);
+}
+
+/* ---------- romaji → hiragana ---------- */
+const RK = {a:"あ",i:"い",u:"う",e:"え",o:"お",ka:"か",ki:"き",ku:"く",ke:"け",ko:"こ",ga:"が",gi:"ぎ",gu:"ぐ",ge:"げ",go:"ご",sa:"さ",si:"し",shi:"し",su:"す",se:"せ",so:"そ",za:"ざ",zi:"じ",ji:"じ",zu:"ず",ze:"ぜ",zo:"ぞ",ta:"た",ti:"ち",chi:"ち",tu:"つ",tsu:"つ",te:"て",to:"と",da:"だ",di:"ぢ",du:"づ",de:"で",do:"ど",na:"な",ni:"に",nu:"ぬ",ne:"ね",no:"の",ha:"は",hi:"ひ",hu:"ふ",fu:"ふ",he:"へ",ho:"ほ",ba:"ば",bi:"び",bu:"ぶ",be:"べ",bo:"ぼ",pa:"ぱ",pi:"ぴ",pu:"ぷ",pe:"ぺ",po:"ぽ",ma:"ま",mi:"み",mu:"む",me:"め",mo:"も",ya:"や",yu:"ゆ",yo:"よ",ra:"ら",ri:"り",ru:"る",re:"れ",ro:"ろ",wa:"わ",wo:"を",
+kya:"きゃ",kyu:"きゅ",kyo:"きょ",gya:"ぎゃ",gyu:"ぎゅ",gyo:"ぎょ",sha:"しゃ",shu:"しゅ",sho:"しょ",sya:"しゃ",syu:"しゅ",syo:"しょ",ja:"じゃ",ju:"じゅ",jo:"じょ",jya:"じゃ",jyu:"じゅ",jyo:"じょ",cha:"ちゃ",chu:"ちゅ",cho:"ちょ",tya:"ちゃ",tyu:"ちゅ",tyo:"ちょ",nya:"にゃ",nyu:"にゅ",nyo:"にょ",hya:"ひゃ",hyu:"ひゅ",hyo:"ひょ",bya:"びゃ",byu:"びゅ",byo:"びょ",pya:"ぴゃ",pyu:"ぴゅ",pyo:"ぴょ",mya:"みゃ",myu:"みゅ",myo:"みょ",rya:"りゃ",ryu:"りゅ",ryo:"りょ",nn:"ん","-":"ー"};
+function toKana(s){
+  s=s.toLowerCase(); let out="",i=0;
+  while(i<s.length){
+    const c=s[i], n=s[i+1];
+    if(c===n && /[bcdfghjkmpqrstvwxyz]/.test(c)){ out+="っ"; i++; continue; }
+    if(c==="n" && (n===undefined || !/[aiueoyn]/.test(n))){ out+="ん"; i++; continue; }
+    let hit=false;
+    for(const len of [3,2,1]){ const k=s.substr(i,len); if(RK[k]){ out+=RK[k]; i+=len; hit=true; break; } }
+    if(!hit){ out+=c; i++; }
+  }
+  return out;
+}
+const norm = s => { s=s.trim().replace(/[\s。．.、,]/g,""); return /[a-z]/i.test(s) ? toKana(s) : s; };
+
+/* ---------- state + UI ---------- */
+const $ = id => document.getElementById(id);
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+const store = { get(){ try{ return JSON.parse(localStorage.getItem("teDrill")||"null"); }catch(e){ return null; } },
+                set(v){ try{ localStorage.setItem("teDrill",JSON.stringify(v)); }catch(e){} } };
+
+function buildSettings(){
+  const books=[["book1","Genki I",3,12],["book2","Genki II",13,23]];
+  books.forEach(([id,name,a,b])=>{
+    let h=`<div class="book-head"><span class="label">${name}</span>
+      <button class="link" type="button" data-all="${a}-${b}">All</button><button class="link" type="button" data-none="${a}-${b}">None</button></div><div class="lessons">`;
+    for(let n=a;n<=b;n++) h+=`<label class="tog"><input type="checkbox" class="ls" id="L${n}" value="${n}"><span>L${n} <small>${L[n].length}</small></span></label>`;
+    $(id).innerHTML=h+"</div>";
+  });
+  $("types").innerHTML=Object.entries(TYPES).map(([k,v])=>`<label class="tog"><input type="checkbox" class="ty" id="T${k}" value="${k}" checked><span>${v}</span></label>`).join("");
+  document.querySelectorAll("[data-all],[data-none]").forEach(b=>b.addEventListener("click",()=>{
+    const [a,z]=(b.dataset.all||b.dataset.none).split("-").map(Number);
+    for(let n=a;n<=z;n++) $("L"+n).checked=!!b.dataset.all; updateCount();
+  }));
+  const saved=store.get();
+  const lessons = saved?.lessons || [3,4,5,6];
+  lessons.forEach(n=>{ const el=$("L"+n); if(el) el.checked=true; });
+  if(saved?.types) document.querySelectorAll(".ty").forEach(el=>el.checked=saved.types.includes(el.value));
+  if(saved?.mode) $("mode").value=saved.mode;
+  if(saved?.len) $("len").value=saved.len;
+  if(saved?.showType) $("showType").checked=true;
+  document.querySelectorAll(".ls,.ty").forEach(el=>el.addEventListener("change",updateCount));
+  ["mode","len","showType"].forEach(id=>$(id).addEventListener("change",save));
+}
+function pool(){
+  const ls=[...document.querySelectorAll(".ls:checked")].map(e=>+e.value);
+  const ts=[...document.querySelectorAll(".ty:checked")].map(e=>e.value);
+  return ls.flatMap(n=>L[n].filter(x=>ts.includes(x[2])).map(x=>({w:x[0],en:x[1],t:x[2],l:n})));
+}
+function save(){
+  store.set({lessons:[...document.querySelectorAll(".ls:checked")].map(e=>+e.value),
+    types:[...document.querySelectorAll(".ty:checked")].map(e=>e.value),mode:$("mode").value,len:$("len").value,showType:$("showType").checked});
+}
+function updateCount(){ const n=pool().length; $("count").textContent = n ? `${n} words available` : "Select at least one lesson and word type"; $("start").disabled=!n; save(); }
+
+let Q=[],qi=0,right=0,missed=[],answered=false;
+function start(list){
+  const p = list || pool(); if(!p.length) return;
+  const len=$("len").value; Q=shuffle([...p]); if(len!=="all" && !list) Q=Q.slice(0,+len);
+  qi=0; right=0; missed=[]; show();
+}
+function show(){
+  answered=false;
+  const q=Q[qi], mode=$("mode").value, card=$("card");
+  const chip = $("showType").checked ? `<span class="chip ${q.t}">${TYPES[q.t]}</span>` : "";
+  let body;
+  if(mode==="type"){
+    body=`<div class="answer-row"><input id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="te-form (kana or romaji)" aria-label="Your te-form answer">
+      <button class="btn" id="check" type="button">Check</button></div><div class="live" id="live"></div>`;
+  } else {
+    const opts=shuffle([read(te(q.w,q.t)),...distractors(q.w,q.t)]);
+    body=`<div class="choices">${opts.map((o,i)=>`<button class="choice" type="button" data-v="${o}"><span class="k">${i+1}</span>${o}</button>`).join("")}</div>`;
+  }
+  card.innerHTML=`<div class="meta"><span>Question ${qi+1} of ${Q.length} · Lesson ${q.l}</span><span>${right} correct</span></div>
+    <div class="bar"><i style="width:${qi/Q.length*100}%"></i></div>
+    <div class="word"><div class="dict">${furi(q.w)}</div><div class="gloss">${q.en}</div>${chip}</div>
+    <div class="prompt">What is the te-form?</div>${body}<div id="fb"></div>
+    <div class="hint">${mode==="type"?"Press <kbd>Enter</kbd> to check, then <kbd>Enter</kbd> for the next word.":"Press <kbd>1</kbd>–<kbd>4</kbd> to choose, then <kbd>Enter</kbd> for the next word."}</div>`;
+  if(mode==="type"){
+    const inp=$("ans"); inp.focus();
+    inp.addEventListener("input",()=>{ const v=inp.value; $("live").textContent = /[a-z]/i.test(v) ? "→ "+norm(v) : ""; });
+    $("check").addEventListener("click",()=>grade(inp.value));
+  } else {
+    document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>grade(b.dataset.v,b)));
+  }
+}
+function grade(v,btn){
+  if(answered){ next(); return; }
+  const q=Q[qi], ansW=te(q.w,q.t), ok_r=read(ansW), ok_s=surf(ansW), g=norm(v);
+  if(!g) return;
+  answered=true;
+  const ok = g===ok_r || g===ok_s;
+  if(ok) right++; else missed.push(q);
+  if(btn){ document.querySelectorAll(".choice").forEach(b=>{ b.disabled=true; if(b.dataset.v===ok_r) b.classList.add("ok"); }); if(!ok) btn.classList.add("no"); }
+  else { $("ans").readOnly=true; $("check").textContent="Next"; }
+  $("fb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><span class="v">${ok?"Correct!":"Not quite. You answered "+g+"."}</span>
+    <span class="ans">${furi(ansW)}</span><span class="rule">${rule(q.w,q.t)}</span>
+    ${btn?'<button class="btn ghost" type="button" id="nx" style="justify-self:start">Next</button>':""}</div>`;
+  if($("nx")) $("nx").addEventListener("click",next);
+}
+function next(){ qi++; qi<Q.length ? show() : results(); }
+function results(){
+  const pct=Math.round(right/Q.length*100);
+  $("card").innerHTML=`<div class="meta"><span>Drill finished</span><span>${Q.length} words</span></div>
+    <div class="bar"><i style="width:100%"></i></div>
+    <div style="display:flex;gap:18px;align-items:baseline;flex-wrap:wrap"><span class="score">${right}/${Q.length}</span><span class="gloss">${pct}% correct</span></div>
+    ${missed.length?`<div><div class="label" style="margin-bottom:6px">Review these</div><div class="missed">${missed.map(m=>`<div class="miss"><span>${furi(m.w)} → <b>${furi(te(m.w,m.t))}</b></span><em>${TYPES[m.t]} · L${m.l}</em></div>`).join("")}</div></div>`:`<p>Every answer was correct.</p>`}
+    <div class="row">${missed.length?'<button class="btn" id="redo" type="button">Practice missed words</button>':""}<button class="btn ${missed.length?"ghost":""}" id="again" type="button">New drill</button></div>`;
+  if($("redo")) $("redo").addEventListener("click",()=>start(missed.slice()));
+  $("again").addEventListener("click",()=>start());
+}
+document.addEventListener("keydown",e=>{
+  if(!Q.length) return;
+  if($("mode").value==="choice" && !answered && /^[1-4]$/.test(e.key)){ const b=document.querySelectorAll(".choice")[+e.key-1]; if(b) b.click(); }
+  else if(e.key==="Enter"){ if(answered){ e.preventDefault(); next(); } else if($("ans") && document.activeElement===$("ans")){ e.preventDefault(); grade($("ans").value); } }
+});
+$("start").addEventListener("click",()=>start());
+buildSettings(); updateCount(); start();
+</script>
+</body>
+</html>
